@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Foxs Analytics & Solutions</title>
+  <title>Fox Analytics & Solutions</title>
   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
   <style>
     * {
@@ -22,15 +22,22 @@
       color: white;
       padding: 1rem 2rem;
       display: flex;
-      justify-content: space-between;
+      flex-direction: column;
       align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
+    }
+    header .top-contact {
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+      text-align: center;
+    }
+    header nav {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
     }
     header nav a {
       color: white;
-      margin: 0 1rem;
       text-decoration: none;
       font-weight: bold;
     }
@@ -43,7 +50,6 @@
     .hero h1 {
       font-size: 2.8rem;
       margin-bottom: 1rem;
-      opacity: 0;
       animation: fadeIn 1.2s ease forwards;
     }
     @keyframes fadeIn {
@@ -114,29 +120,44 @@
     }
     footer {
       background: #f4f4f4;
-      padding: 1rem;
+      padding: 2rem 1rem;
       text-align: center;
-      color: #888;
+      color: #555;
+    }
+    footer .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+    footer .footer-links a {
+      color: #e91e63;
+      text-decoration: none;
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>Fox Analytics</h1>
+    <div class="top-contact">
+      info@foxanalytics.co.ke | foxanalyticsafrica@gmail.com | Tel: +254733278920 | +447725005525
+    </div>
     <nav>
-      <a href="#about">About</a>
-      <a href="#services">Services</a>
-      <a href="#contact">Contact</a>
+      <a href="#">Home</a>
+      <a href="#about">Who We Are</a>
+      <a href="#services">What We Do</a>
+      <a href="#">Blog</a>
+      <a href="#contact">Contact Us</a>
     </nav>
   </header>
 
   <section class="hero">
-    <h1>Turning Data Into Action</h1>
+    <h1>We offer data-centric research, data analytics and business intelligence services to enable your business scale faster and sustainably</h1>
   </section>
 
   <section class="section" id="about">
     <h2>About Us</h2>
-    <p>Foxs Analytics & Solutions is a data-driven company helping businesses transform insights into actions. Our team specializes in data analysis, program design, and technology outsourcing.</p>
+    <p>Fox Analytics Africa is a prime provider of business offshore outsourcing, data-centric research, data analytics, and business intelligence services. Our office locations are primarily in Kenya but with operation areas in the larger East Africa. We also provide remote/virtual technical support to clients and partners globally.</p>
   </section>
 
   <section class="section" id="services">
@@ -145,17 +166,17 @@
       <div class="service">
         <img src="/mnt/data/40796a36-f456-4726-9552-86d5971f7408.png" alt="Business Outsourcing">
         <h3>Business Offshore Outsourcing</h3>
-        <p>Streamline operations with our cost-effective offshore staffing solutions.</p>
+        <p>Read more</p>
       </div>
       <div class="service">
         <img src="/mnt/data/75b0d7f0-1cad-47be-a33d-30bda1f7377c.png" alt="Program Design">
         <h3>Program Design & Management</h3>
-        <p>Custom-built programs tailored to your business needs.</p>
+        <p>Read more</p>
       </div>
       <div class="service">
         <img src="/mnt/data/be37dac9-7f98-4983-9be9-c30f70989fdd.png" alt="Data Reporting">
         <h3>Data Analysis & Reporting</h3>
-        <p>Real-time dashboards and insights to power decisions.</p>
+        <p>Read more</p>
       </div>
     </div>
   </section>
@@ -167,6 +188,13 @@
   </section>
 
   <footer>
+    <div class="footer-links">
+      <a href="#about">About Us</a>
+      <a href="#">Our Team</a>
+      <a href="#">Careers</a>
+      <a href="#">Blog</a>
+      <a href="#">Privacy Policy</a>
+    </div>
     <p>&copy; 2025 Fox Analytics & Solutions. All rights reserved.</p>
   </footer>
 </body>
