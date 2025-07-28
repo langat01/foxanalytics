@@ -4,166 +4,108 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Fox Analytics & Solutions</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
   <style>
-    * {
-      margin: 0; padding: 0; box-sizing: border-box;
-    }
     body {
-      font-family: 'Poppins', sans-serif;
-      color: #212121;
-      background: #fff;
-      scroll-behavior: smooth;
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fff;
+      color: #333;
     }
     header {
-      background: rgba(255, 255, 255, 0.7);
-      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.85);
       position: sticky;
       top: 0;
-      z-index: 1000;
+      padding: 1rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 15px 30px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      z-index: 1000;
     }
     header h1 {
-      font-size: 22px;
       color: #E91E63;
+      margin: 0;
     }
     nav a {
+      margin-left: 1rem;
+      text-decoration: none;
       color: #212121;
-      margin-left: 20px;
-      text-decoration: none;
-      font-weight: 600;
+      font-weight: 500;
     }
-    nav a:hover {
-      color: #E91E63;
-    }
-    .hero {
-      height: 100vh;
-      background: linear-gradient(to right, rgba(0,0,0,0.6), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1634039012154-7495c5f2fc38') center/cover no-repeat;
-      color: white;
+    section.hero {
+      background: linear-gradient(to right, #111, #000);
+      color: #fff;
+      padding: 100px 30px;
       display: flex;
-      flex-direction: column;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
       text-align: center;
-      padding: 0 20px;
     }
-    .hero h1 {
-      font-size: 3rem;
-      margin-bottom: 20px;
-      animation: fadeUp 2s ease forwards;
+    section.hero h2 {
+      font-size: 2.8rem;
     }
-    .hero p {
-      font-size: 1.2rem;
-      animation: fadeUp 2.5s ease forwards;
-    }
-    .btn {
-      margin-top: 30px;
-      background: #E91E63;
-      color: white;
-      padding: 12px 24px;
-      border-radius: 30px;
-      text-decoration: none;
-      font-weight: 600;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-      transition: background 0.3s;
-    }
-    .btn:hover {
-      background: #C2185B;
-    }
-    section {
-      padding: 60px 20px;
+    section.about, section.services, section.cta {
+      padding: 60px 30px;
       max-width: 1200px;
       margin: auto;
     }
-    h2 {
-      text-align: center;
+    section.about h3, section.services h3 {
       color: #E91E63;
-      margin-bottom: 30px;
+      margin-bottom: 1rem;
     }
-    .about {
-      text-align: center;
-      font-size: 1.1rem;
-      max-width: 800px;
-      margin: auto;
-      color: #444;
-      line-height: 1.7;
-    }
-    .services {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 30px;
+      margin-top: 2rem;
     }
-    .card {
-      width: 300px;
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    .service-card {
+      border-radius: 12px;
       overflow: hidden;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      animation: fadeIn 1s ease-in forwards;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+      background: #fff;
+      transition: transform 0.3s ease;
     }
-    .card:hover {
+    .service-card:hover {
       transform: translateY(-10px);
-      box-shadow: 0 12px 24px rgba(0,0,0,0.15);
     }
-    .card img {
+    .service-card img {
       width: 100%;
       height: 200px;
       object-fit: cover;
     }
-    .card h3 {
-      padding: 15px;
-      font-size: 1.2rem;
-      color: #E91E63;
+    .service-card .content {
+      padding: 1rem;
     }
     .cta {
-      display: flex;
-      flex-wrap: wrap;
-      background: #121212;
+      background: #111;
       color: white;
-      padding: 60px 20px;
-      justify-content: center;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
       align-items: center;
+      border-radius: 8px;
+      padding: 40px 30px;
+      margin-top: 60px;
     }
-    .cta .left {
-      flex: 1;
-      text-align: center;
+    .cta h2 {
       font-size: 2rem;
     }
-    .cta .right {
-      flex: 1;
-      max-width: 500px;
-      text-align: center;
-    }
-    .cta .right p {
-      font-size: 1.1rem;
-      line-height: 1.6;
-      margin-bottom: 20px;
-    }
-    .cta .btn {
-      background: #FF5252;
+    .cta button {
+      background: #E91E63;
+      color: #fff;
+      padding: 12px 24px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
     }
     footer {
+      padding: 1rem;
       text-align: center;
-      padding: 30px;
-      background: #f2f2f2;
+      background: #f7f7f7;
       font-size: 0.9rem;
-      color: #888;
-    }
-    @keyframes fadeIn {
-      0% { opacity: 0; transform: translateY(20px); }
-      100% { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(40px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    @media (max-width: 768px) {
-      .cta { flex-direction: column; }
     }
   </style>
 </head>
@@ -177,47 +119,60 @@
     </nav>
   </header>
 
-  <div class="hero">
-    <h1>Turning Data Into Action</h1>
-    <p>Empowering businesses with analytics, insights, and intelligent tools.</p>
-    <a href="#contact" class="btn">Book Free Consultation</a>
-  </div>
-
-  <section id="about">
-    <h2>About Us</h2>
-    <p class="about">Fox Analytics & Solutions is a modern analytics agency helping businesses make smarter decisions through data science, automation, and digital solutions. We blend creativity, insights, and technology to drive measurable results for every client.</p>
+  <section class="hero" data-aos="fade-up">
+    <h2>Turning Data Into Action</h2>
   </section>
 
-  <section id="services">
-    <h2>Our Services</h2>
-    <div class="services">
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1573497491208-6b1acb260507" alt="Outsourcing">
-        <h3>Business Offshore Outsourcing</h3>
+  <section class="about" id="about" data-aos="fade-up">
+    <h3>About Us</h3>
+    <p>
+      Fox Analytics & Solutions is a data-driven company helping businesses transform insights into actions.
+      Our team specializes in data analysis, program design, and technology outsourcing.
+    </p>
+  </section>
+
+  <section class="services" id="services" data-aos="fade-up">
+    <h3>Our Services</h3>
+    <div class="service-grid">
+      <div class="service-card">
+        <img src="https://i.imgur.com/bM1s2L7.png" alt="Business Outsourcing">
+        <div class="content">
+          <h4>Business Offshore Outsourcing</h4>
+          <p>Streamline operations with our cost-effective offshore staffing solutions.</p>
+        </div>
       </div>
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1601041149611-1acbd0b9bbf5" alt="Program Management">
-        <h3>Program Design & Management</h3>
+      <div class="service-card">
+        <img src="https://i.imgur.com/m2tTbH6.png" alt="Program Design">
+        <div class="content">
+          <h4>Program Design & Management</h4>
+          <p>Custom-built programs tailored to your business needs.</p>
+        </div>
       </div>
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1614851099511-d9d287870d63" alt="Data Reporting">
-        <h3>Data Analysis & Reporting</h3>
+      <div class="service-card">
+        <img src="https://i.imgur.com/ohsK39X.png" alt="Data Reporting">
+        <div class="content">
+          <h4>Data Analysis & Reporting</h4>
+          <p>Real-time dashboards and insights to power decisions.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="cta" id="contact">
-    <div class="left">
-      Ready to Ignite Your Business?
+  <section class="cta" data-aos="fade-up" id="contact">
+    <div>
+      <h2>Ready to Ignite Your Business?</h2>
+      <p>Explore how our data services can propel your business to new heights. Get in touch with us today.</p>
     </div>
-    <div class="right">
-      <p>Explore how our data services can propel your business to new heights. Get in touch with us today to embark on a journey of data-driven success.</p>
-      <a href="mailto:info@foxanalytics.com" class="btn">Get in Touch</a>
-    </div>
+    <button>Get in Touch</button>
   </section>
 
   <footer>
     &copy; 2025 Fox Analytics & Solutions. All rights reserved.
   </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
 </body>
 </html>
