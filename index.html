@@ -3,19 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Nakala Analytics offers problem-based data analytics solutions including machine learning, training, data audits and premium internships in Kenya">
-  <meta name="keywords" content="data analytics Kenya, machine learning, data science, business intelligence, Nairobi analytics">
-  <title>Nakala Analytics | Data Science & AI Solutions</title>
-  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <title>Fox Analytics | Data Solutions for East Africa</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <style>
     :root {
-      --primary: #2c3e50;
-      --secondary: #e74c3c;
-      --accent: #3498db;
-      --light: #ecf0f1;
-      --dark: #2c3e50;
-      --text: #333;
+      --primary: #E91E63; /* Fox Analytics pink */
+      --secondary: #607D8B; /* Complementary dark teal */
+      --accent: #FFC107; /* Accent yellow */
+      --light: #F5F5F5;
+      --dark: #212121;
     }
     
     * {
@@ -25,40 +22,34 @@
     }
     
     body {
-      font-family: 'Raleway', sans-serif;
-      color: var(--text);
+      font-family: 'Montserrat', sans-serif;
+      background-color: white;
+      color: var(--dark);
       line-height: 1.6;
-      overflow-x: hidden;
     }
     
     /* Header Styles */
     header {
-      background: var(--primary);
-      color: white;
-      padding: 1rem 2rem;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    }
-    
-    .header-container {
+      padding: 1.5rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      max-width: 1200px;
-      margin: 0 auto;
+      background-color: white;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
     
     .logo {
       font-size: 1.8rem;
       font-weight: 700;
-      color: white;
+      color: var(--primary);
       text-decoration: none;
     }
     
     .logo span {
-      color: var(--secondary);
+      color: var(--accent);
     }
     
     nav ul {
@@ -71,7 +62,7 @@
     }
     
     nav ul li a {
-      color: white;
+      color: var(--dark);
       text-decoration: none;
       font-weight: 600;
       transition: color 0.3s;
@@ -79,7 +70,7 @@
     }
     
     nav ul li a:hover {
-      color: var(--secondary);
+      color: var(--primary);
     }
     
     nav ul li a::after {
@@ -87,7 +78,7 @@
       position: absolute;
       width: 0;
       height: 2px;
-      background: var(--secondary);
+      background: var(--primary);
       bottom: -5px;
       left: 0;
       transition: width 0.3s;
@@ -97,62 +88,54 @@
       width: 100%;
     }
     
-    .mobile-menu-btn {
-      display: none;
-      background: none;
-      border: none;
-      color: white;
-      font-size: 1.5rem;
-      cursor: pointer;
-    }
-    
     /* Hero Section */
     .hero {
-      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
-      height: 80vh;
+      min-height: 80vh;
       display: flex;
-      align-items: center;
-      text-align: center;
-      color: white;
+      flex-direction: column;
+      justify-content: center;
       padding: 0 2rem;
-    }
-    
-    .hero-content {
-      max-width: 800px;
+      max-width: 1200px;
       margin: 0 auto;
+      text-align: center;
     }
     
     .hero h1 {
-      font-size: 2.8rem;
+      font-size: 4rem;
+      font-weight: 700;
       margin-bottom: 1.5rem;
       line-height: 1.2;
     }
     
     .hero p {
-      font-size: 1.2rem;
-      margin-bottom: 2rem;
+      font-size: 1.5rem;
+      color: var(--secondary);
+      margin-bottom: 3rem;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
     }
     
-    .btn {
+    .cta-button {
       display: inline-block;
-      background: var(--secondary);
+      background: var(--primary);
       color: white;
-      padding: 0.8rem 1.8rem;
+      padding: 1rem 2.5rem;
       border-radius: 30px;
       text-decoration: none;
       font-weight: 600;
+      font-size: 1.1rem;
       transition: all 0.3s;
-      border: none;
-      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(233,30,99,0.3);
     }
     
-    .btn:hover {
-      background: #c0392b;
+    .cta-button:hover {
+      background: #C2185B;
       transform: translateY(-3px);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+      box-shadow: 0 8px 20px rgba(233,30,99,0.4);
     }
     
-    /* Services Section */
+    /* Section Styles */
     .section {
       padding: 5rem 2rem;
       max-width: 1200px;
@@ -168,15 +151,42 @@
       font-size: 2.5rem;
       color: var(--primary);
       margin-bottom: 1rem;
+      position: relative;
+      display: inline-block;
     }
     
-    .section-title p {
-      font-size: 1.1rem;
-      color: #666;
-      max-width: 700px;
-      margin: 0 auto;
+    .section-title h2::after {
+      content: '';
+      position: absolute;
+      width: 50%;
+      height: 4px;
+      background: var(--accent);
+      bottom: -10px;
+      left: 25%;
+      border-radius: 2px;
     }
     
+    /* About Section */
+    .about-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 3rem;
+      align-items: center;
+    }
+    
+    .about-image {
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+    
+    .about-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    
+    /* Services Section */
     .services-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -188,7 +198,7 @@
       border-radius: 10px;
       padding: 2rem;
       box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-      transition: transform 0.3s, box-shadow 0.3s;
+      transition: all 0.3s;
     }
     
     .service-card:hover {
@@ -198,138 +208,33 @@
     
     .service-icon {
       font-size: 2.5rem;
-      color: var(--secondary);
+      color: var(--primary);
       margin-bottom: 1.5rem;
     }
     
-    .service-card h3 {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-      color: var(--primary);
-    }
-    
-    .service-card p {
-      color: #666;
-      margin-bottom: 1.5rem;
-    }
-    
-    /* Method Section */
-    .method-steps {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 2rem;
-      margin-top: 3rem;
-    }
-    
-    .step {
-      flex: 1;
-      min-width: 250px;
-      max-width: 350px;
-      background: white;
-      padding: 2rem;
-      border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-      position: relative;
-      margin-bottom: 2rem;
-    }
-    
-    .step-number {
-      position: absolute;
-      top: -20px;
-      left: 20px;
-      background: var(--secondary);
-      color: white;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-    }
-    
-    .step h3 {
-      margin-top: 1rem;
-      margin-bottom: 1rem;
-      color: var(--primary);
-    }
-    
-    /* Insights Section */
-    .insights-grid {
+    /* Clients Section */
+    .clients-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
       gap: 2rem;
+      align-items: center;
     }
     
-    .insight-card {
-      background: white;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-      transition: transform 0.3s;
+    .client-logo {
+      filter: grayscale(100%);
+      opacity: 0.7;
+      transition: all 0.3s;
+      max-width: 100%;
+      height: auto;
     }
     
-    .insight-card:hover {
-      transform: translateY(-10px);
-    }
-    
-    .insight-img {
-      height: 200px;
-      overflow: hidden;
-    }
-    
-    .insight-img img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.5s;
-    }
-    
-    .insight-card:hover .insight-img img {
-      transform: scale(1.1);
-    }
-    
-    .insight-content {
-      padding: 1.5rem;
-    }
-    
-    .insight-meta {
-      display: flex;
-      justify-content: space-between;
-      color: #666;
-      font-size: 0.9rem;
-      margin-bottom: 0.5rem;
-    }
-    
-    .insight-content h3 {
-      margin-bottom: 1rem;
-      color: var(--primary);
-    }
-    
-    .read-more {
-      color: var(--secondary);
-      font-weight: 600;
-      text-decoration: none;
-      display: inline-block;
-      margin-top: 1rem;
-      transition: color 0.3s;
-    }
-    
-    .read-more:hover {
-      color: #c0392b;
+    .client-logo:hover {
+      filter: grayscale(0%);
+      opacity: 1;
     }
     
     /* Contact Section */
-    .contact {
-      background: var(--primary);
-      color: white;
-      padding: 5rem 2rem;
-    }
-    
     .contact-container {
-      max-width: 1200px;
-      margin: 0 auto;
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 3rem;
@@ -338,6 +243,7 @@
     .contact-info h3 {
       font-size: 1.8rem;
       margin-bottom: 1.5rem;
+      color: var(--primary);
     }
     
     .contact-details {
@@ -352,7 +258,7 @@
     
     .contact-icon {
       margin-right: 1rem;
-      color: var(--secondary);
+      color: var(--primary);
       font-size: 1.2rem;
     }
     
@@ -360,7 +266,7 @@
       background: white;
       padding: 2rem;
       border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
     }
     
     .form-group {
@@ -379,32 +285,53 @@
       padding: 0.8rem 1rem;
       border: 1px solid #ddd;
       border-radius: 5px;
-      font-family: 'Raleway', sans-serif;
+      font-family: 'Montserrat', sans-serif;
     }
     
     textarea.form-control {
       min-height: 150px;
     }
     
-    .captcha {
+    /* Help Bubble */
+    .help-bubble {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: var(--primary);
+      color: white;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
       display: flex;
       align-items: center;
-      margin-bottom: 1.5rem;
+      justify-content: center;
+      font-size: 1.5rem;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      cursor: pointer;
+      transition: all 0.3s;
+      z-index: 100;
     }
     
-    .captcha span {
-      margin: 0 1rem;
+    .help-bubble:hover {
+      transform: scale(1.1);
+      background: #C2185B;
     }
     
-    .form-check {
-      display: flex;
-      align-items: flex-start;
-      margin-bottom: 1.5rem;
+    .help-text {
+      position: absolute;
+      right: 70px;
+      background: white;
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      width: 200px;
+      opacity: 0;
+      transition: opacity 0.3s;
+      pointer-events: none;
     }
     
-    .form-check input {
-      margin-right: 0.5rem;
-      margin-top: 0.2rem;
+    .help-bubble:hover .help-text {
+      opacity: 1;
     }
     
     /* Footer */
@@ -412,44 +339,31 @@
       background: var(--dark);
       color: white;
       padding: 3rem 2rem;
-    }
-    
-    .footer-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 2rem;
-    }
-    
-    .footer-col h3 {
-      font-size: 1.3rem;
-      margin-bottom: 1.5rem;
-      color: var(--secondary);
+      text-align: center;
     }
     
     .footer-links {
-      list-style: none;
-    }
-    
-    .footer-links li {
-      margin-bottom: 0.8rem;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
     }
     
     .footer-links a {
-      color: #bbb;
+      color: white;
       text-decoration: none;
+      margin: 0 1rem;
       transition: color 0.3s;
     }
     
     .footer-links a:hover {
-      color: white;
+      color: var(--accent);
     }
     
     .social-links {
       display: flex;
-      gap: 1rem;
-      margin-top: 1.5rem;
+      justify-content: center;
+      margin-bottom: 2rem;
     }
     
     .social-links a {
@@ -461,69 +375,65 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      margin: 0 0.5rem;
       transition: all 0.3s;
     }
     
     .social-links a:hover {
-      background: var(--secondary);
+      background: var(--primary);
       transform: translateY(-3px);
     }
     
     .copyright {
-      text-align: center;
-      margin-top: 3rem;
-      padding-top: 2rem;
-      border-top: 1px solid rgba(255,255,255,0.1);
-      color: #bbb;
+      color: rgba(255,255,255,0.7);
+      font-size: 0.9rem;
     }
     
     /* Responsive Styles */
     @media (max-width: 768px) {
-      .header-container {
+      header {
         flex-direction: column;
-        text-align: center;
+        padding: 1rem;
       }
       
       nav ul {
-        margin-top: 1.5rem;
-        flex-wrap: wrap;
-        justify-content: center;
+        margin-top: 1rem;
       }
       
       nav ul li {
-        margin: 0 1rem 0.5rem;
+        margin-left: 1rem;
+        margin-right: 1rem;
       }
       
       .hero h1 {
-        font-size: 2.2rem;
+        font-size: 2.5rem;
+      }
+      
+      .hero p {
+        font-size: 1.2rem;
       }
       
       .section {
         padding: 3rem 1.5rem;
       }
-      
-      .section-title h2 {
-        font-size: 2rem;
-      }
     }
     
     @media (max-width: 480px) {
-      .hero {
-        height: auto;
-        padding: 4rem 1.5rem;
+      nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+      nav ul li {
+        margin: 0.5rem;
       }
       
       .hero h1 {
-        font-size: 1.8rem;
+        font-size: 2rem;
       }
       
-      .btn {
-        display: block;
-        width: 100%;
-      }
-      
-      .contact-container {
-        grid-template-columns: 1fr;
+      .section-title h2 {
+        font-size: 2rem;
       }
     }
   </style>
@@ -531,230 +441,114 @@
 <body>
   <!-- Header -->
   <header>
-    <div class="header-container">
-      <a href="#" class="logo">Nakala<span>Analytics</span></a>
-      <button class="mobile-menu-btn">
-        <i class="fas fa-bars"></i>
-      </button>
-      <nav>
-        <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#clients">Clients</a></li>
-          <li><a href="#contact">Contact</a></li>
-          <li><a href="#">More</a></li>
-          <li><a href="#">Products</a></li>
-        </ul>
-      </nav>
-    </div>
+    <a href="#" class="logo">Fox<span>Analytics</span></a>
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#clients">Clients</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#">More</a></li>
+        <li><a href="#">Products</a></li>
+      </ul>
+    </nav>
   </header>
 
   <!-- Hero Section -->
   <section class="hero">
-    <div class="hero-content">
-      <h1>Problem based approach to data analytics challenges</h1>
-      <p>We deliver cutting-edge data solutions that drive business growth and innovation</p>
-      <a href="#contact" class="btn">Get Started</a>
-    </div>
+    <h1>Outsourced Data Analytics Services</h1>
+    <p>We transform raw data into actionable business intelligence for companies across East Africa</p>
+    <a href="#contact" class="cta-button">Get Started</a>
   </section>
 
   <!-- About Section -->
   <section id="about" class="section">
     <div class="section-title">
-      <h2>Our Expertise</h2>
-      <p>We combine technical expertise with business acumen to deliver impactful data solutions</p>
+      <h2>About Fox Analytics</h2>
+      <p>Your trusted partner for data-driven decision making</p>
+    </div>
+    
+    <div class="about-content">
+      <div class="about-image">
+        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Fox Analytics Team" loading="lazy">
+      </div>
+      <div>
+        <p>Fox Analytics is a premier provider of business offshore outsourcing, data-centric research, data analytics, and business intelligence services. Our office locations are primarily in Kenya with operations across East Africa.</p>
+        <p>We combine cutting-edge technology with deep industry knowledge to deliver actionable insights that drive business growth. Our team of experts specializes in transforming complex data into clear, actionable strategies.</p>
+        <p>Whether you need comprehensive data analysis, machine learning solutions, or complete data strategy development, Fox Analytics has the expertise to help your business thrive in today's data-driven economy.</p>
+      </div>
     </div>
   </section>
 
   <!-- Services Section -->
-  <section id="services" class="section">
+  <section id="services" class="section" style="background-color: var(--light);">
     <div class="section-title">
       <h2>Our Services</h2>
       <p>Comprehensive data solutions tailored to your business needs</p>
     </div>
     
     <div class="services-grid">
-      <!-- Service 1 -->
       <div class="service-card">
         <div class="service-icon">
           <i class="fas fa-robot"></i>
         </div>
         <h3>Machine Learning</h3>
-        <p>We are experts in developing advanced machine learning models such as credit scoring, chatbots, real estate etc. Our focus is to reduce risk, increase profits and identify opportunities for our customers using data.</p>
+        <p>We develop advanced ML models for credit scoring, chatbots, real estate predictions, and more to help reduce risk and identify opportunities.</p>
       </div>
       
-      <!-- Service 2 -->
       <div class="service-card">
         <div class="service-icon">
           <i class="fas fa-chalkboard-teacher"></i>
         </div>
         <h3>Training & Coaching</h3>
-        <p>Our world-class offering is designed for business professionals seeking to be agents of transformative change within their organizations in the realm of data visualization, machine learning, data audits, SQL etc.</p>
+        <p>World-class training programs in data visualization, machine learning, data audits, and SQL for business professionals.</p>
       </div>
       
-      <!-- Service 3 -->
       <div class="service-card">
         <div class="service-icon">
           <i class="fas fa-search"></i>
         </div>
-        <h3>Data Audit for Data Science</h3>
-        <p>We identify gaps in the data ecosystem and present a roadmap bespoke to the organization's current and future market positioning. We are ranked first out of 5000 companies globally.</p>
+        <h3>Data Audit</h3>
+        <p>We identify gaps in your data ecosystem and provide a customized roadmap aligned with your market positioning.</p>
       </div>
       
-      <!-- Service 4 -->
       <div class="service-card">
         <div class="service-icon">
           <i class="fas fa-user-graduate"></i>
         </div>
         <h3>Premium Internships</h3>
-        <p>Gain experience in new work settings, equip yourself with skills needed to solve data challenges using cutting edge technology and bring a fresh perspective for companies. This is offered at a premium fee spread over a period of 3 months.</p>
+        <p>3-month intensive programs where participants gain hands-on experience solving real data challenges.</p>
       </div>
     </div>
   </section>
 
-  <!-- Method Section -->
-  <section class="section" style="background: #f9f9f9;">
+  <!-- Clients Section -->
+  <section id="clients" class="section">
     <div class="section-title">
-      <h2>Our Method</h2>
-      <p>Our services are tailored towards rapid solution implementation. Effectiveness of our implementations are visible from week 2 which offers dynamic analytics.</p>
-      <p>Visualizing data empowers organizations to interpret data more effectively and gain quickly answers to current business trends.</p>
+      <h2>Our Clients</h2>
+      <p>Trusted by leading organizations across industries</p>
     </div>
     
-    <div class="method-steps">
-      <!-- Step 1 -->
-      <div class="step">
-        <div class="step-number">1</div>
-        <h3>Requirements analysis & planning</h3>
-        <p>To arrive at the best solution, we start by defining, dissecting and exploring the challenge. Once we understand your business and have familiarised ourselves with your market, your competitors and your audience.</p>
-      </div>
-      
-      <!-- Step 2 -->
-      <div class="step">
-        <div class="step-number">2</div>
-        <h3>Data Audit for Data Science & Solution adoption</h3>
-      </div>
-      
-      <!-- Step 3 -->
-      <div class="step">
-        <div class="step-number">3</div>
-        <h3>Solution Prototyping</h3>
-      </div>
-      
-      <!-- Step 4 -->
-      <div class="step">
-        <div class="step-number">4</div>
-        <h3>Solution Development</h3>
-      </div>
-      
-      <!-- Step 5 -->
-      <div class="step">
-        <div class="step-number">5</div>
-        <h3>Quality Assurance</h3>
-      </div>
-      
-      <!-- Step 6 -->
-      <div class="step">
-        <div class="step-number">6</div>
-        <h3>Training, Deployment & Maintenance</h3>
-      </div>
-    </div>
-  </section>
-
-  <!-- Capabilities Section -->
-  <section class="section">
-    <div class="section-title">
-      <h2>Our Capabilities</h2>
-    </div>
-    
-    <div class="services-grid">
-      <div class="service-card" style="text-align: center;">
-        <div class="service-icon">
-          <i class="fas fa-database"></i>
-        </div>
-        <h3>Data</h3>
-      </div>
-      
-      <div class="service-card" style="text-align: center;">
-        <div class="service-icon">
-          <i class="fas fa-chart-line"></i>
-        </div>
-        <h3>Analytics</h3>
-      </div>
-      
-      <div class="service-card" style="text-align: center;">
-        <div class="service-icon">
-          <i class="fas fa-brain"></i>
-        </div>
-        <h3>ML & AI</h3>
-      </div>
-    </div>
-    
-    <p style="text-align: center; margin-top: 2rem; font-size: 1.1rem;">
-      With a complete range of data science capabilities, you can rely on us for any kind of data innovation work!
-    </p>
-  </section>
-
-  <!-- Insights Section -->
-  <section class="section" style="background: #f9f9f9;">
-    <div class="section-title">
-      <h2>Latest Insights</h2>
-    </div>
-    
-    <div class="insights-grid">
-      <!-- Insight 1 -->
-      <div class="insight-card">
-        <div class="insight-img">
-          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="UI/Backend/Fullstack interns">
-        </div>
-        <div class="insight-content">
-          <div class="insight-meta">
-            <span>16 February 2023</span>
-            <span>Opportunities</span>
-          </div>
-          <h3>UI/Backend/Fullstack interns</h3>
-          <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
-        </div>
-      </div>
-      
-      <!-- Insight 2 -->
-      <div class="insight-card">
-        <div class="insight-img">
-          <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Business Development Expert">
-        </div>
-        <div class="insight-content">
-          <div class="insight-meta">
-            <span>23 January 2023</span>
-            <span>Opportunities</span>
-          </div>
-          <h3>Business Development Expert</h3>
-          <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
-        </div>
-      </div>
-      
-      <!-- Insight 3 -->
-      <div class="insight-card">
-        <div class="insight-img">
-          <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Technical Sales and Marketing Assistant">
-        </div>
-        <div class="insight-content">
-          <div class="insight-meta">
-            <span>21 December 2022</span>
-            <span>Opportunities</span>
-          </div>
-          <h3>Technical Sales and Marketing Assistant</h3>
-          <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
-        </div>
-      </div>
+    <div class="clients-grid">
+      <img src="https://via.placeholder.com/150x80?text=Client+1" alt="Client 1" class="client-logo" loading="lazy">
+      <img src="https://via.placeholder.com/150x80?text=Client+2" alt="Client 2" class="client-logo" loading="lazy">
+      <img src="https://via.placeholder.com/150x80?text=Client+3" alt="Client 3" class="client-logo" loading="lazy">
+      <img src="https://via.placeholder.com/150x80?text=Client+4" alt="Client 4" class="client-logo" loading="lazy">
+      <img src="https://via.placeholder.com/150x80?text=Client+5" alt="Client 5" class="client-logo" loading="lazy">
     </div>
   </section>
 
   <!-- Contact Section -->
-  <section id="contact" class="contact">
+  <section id="contact" class="section" style="background-color: var(--light);">
+    <div class="section-title">
+      <h2>Contact Us</h2>
+      <p>Ready to transform your data into business success?</p>
+    </div>
+    
     <div class="contact-container">
       <div class="contact-info">
-        <h3>Ready to share your data challenges with us?</h3>
-        <p>Here is the best way to get started</p>
+        <h3>Get in touch</h3>
         
         <div class="contact-details">
           <div class="contact-item">
@@ -762,8 +556,8 @@
               <i class="fas fa-phone"></i>
             </div>
             <div>
-              <h4>Call Us on:</h4>
-              <p>(+254) 778 178 098</p>
+              <h4>Call Us</h4>
+              <p>+254 733 278 920</p>
             </div>
           </div>
           
@@ -772,8 +566,8 @@
               <i class="fas fa-envelope"></i>
             </div>
             <div>
-              <h4>Email:</h4>
-              <p>corporate@nakala-analytics.co.ke</p>
+              <h4>Email</h4>
+              <p>info@foxanalytics.co.ke</p>
             </div>
           </div>
           
@@ -782,13 +576,11 @@
               <i class="fas fa-map-marker-alt"></i>
             </div>
             <div>
-              <h4>Visit Us:</h4>
-              <p>4th Floor, Office 412<br>Trance Towers, Tsavo Rd, Nairobi</p>
+              <h4>Visit Us</h4>
+              <p>Nairobi, Kenya</p>
             </div>
           </div>
         </div>
-        
-        <h3>Data Analytics Rapid Analytics Solutions Implementation in Kenya</h3>
       </div>
       
       <div class="contact-form">
@@ -804,18 +596,8 @@
           </div>
           
           <div class="form-group">
-            <label for="phone">Phone</label>
-            <input type="tel" id="phone" class="form-control">
-          </div>
-          
-          <div class="form-group">
             <label for="subject">Subject</label>
             <input type="text" id="subject" class="form-control">
-          </div>
-          
-          <div class="form-group captcha">
-            <label>3 + 33 = ?</label>
-            <input type="text" class="form-control" style="width: 60px;">
           </div>
           
           <div class="form-group">
@@ -823,12 +605,7 @@
             <textarea id="message" class="form-control" required></textarea>
           </div>
           
-          <div class="form-check">
-            <input type="checkbox" id="agree" required>
-            <label for="agree">I agree with the Terms of Use and Privacy Policy and I declare that I have read the information that is required in accordance with Article 13 of GDPR.</label>
-          </div>
-          
-          <button type="submit" class="btn" style="width: 100%;">Send Message</button>
+          <button type="submit" class="cta-button" style="width: 100%;">Send Message</button>
         </form>
       </div>
     </div>
@@ -836,76 +613,35 @@
 
   <!-- Footer -->
   <footer>
-    <div class="footer-container">
-      <div class="footer-col">
-        <h3>About</h3>
-        <ul class="footer-links">
-          <li><a href="#">Company</a></li>
-          <li><a href="#">Team</a></li>
-          <li><a href="#">Careers</a></li>
-          <li><a href="#">Testimonials</a></li>
-        </ul>
-      </div>
-      
-      <div class="footer-col">
-        <h3>Services</h3>
-        <ul class="footer-links">
-          <li><a href="#">Machine Learning</a></li>
-          <li><a href="#">Training & Coaching</a></li>
-          <li><a href="#">Data Audit</a></li>
-          <li><a href="#">Premium Internships</a></li>
-        </ul>
-      </div>
-      
-      <div class="footer-col">
-        <h3>Portfolio</h3>
-        <ul class="footer-links">
-          <li><a href="#">Case Studies</a></li>
-          <li><a href="#">Client Success</a></li>
-          <li><a href="#">Our Approach</a></li>
-        </ul>
-      </div>
-      
-      <div class="footer-col">
-        <h3>Gallery</h3>
-        <ul class="footer-links">
-          <li><a href="#">Photos</a></li>
-          <li><a href="#">Videos</a></li>
-          <li><a href="#">Events</a></li>
-        </ul>
-      </div>
-      
-      <div class="footer-col">
-        <h3>Blog</h3>
-        <ul class="footer-links">
-          <li><a href="#">Latest News</a></li>
-          <li><a href="#">Tech Insights</a></li>
-          <li><a href="#">Industry Trends</a></li>
-        </ul>
-        
-        <div class="social-links">
-          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-        </div>
-      </div>
+    <div class="footer-links">
+      <a href="#">Home</a>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#clients">Clients</a>
+      <a href="#contact">Contact</a>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
     </div>
     
-    <div class="copyright">
-      <p>&copy; 2025 Nakala Analytics Ltd. All rights reserved</p>
+    <div class="social-links">
+      <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+      <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
     </div>
+    
+    <p class="copyright">&copy; 2023 Fox Analytics. All rights reserved.</p>
   </footer>
 
+  <!-- Help Bubble -->
+  <div class="help-bubble">
+    <i class="fas fa-comment-dots"></i>
+    <div class="help-text">
+      Got any questions? I'm happy to help.
+    </div>
+  </div>
+
   <script>
-    // Mobile menu toggle
-    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-    const nav = document.querySelector('nav ul');
-    
-    mobileMenuBtn.addEventListener('click', () => {
-      nav.classList.toggle('show');
-    });
-    
     // Form submission
     const contactForm = document.getElementById('contactForm');
     
@@ -925,29 +661,33 @@
       }
     });
     
-    // Smooth scrolling for anchor links
+    // Smooth scrolling for navigation
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
         e.preventDefault();
         
-        const targetId = this.getAttribute('href');
-        if(targetId === '#') return;
-        
-        const targetElement = document.querySelector(targetId);
-        if(targetElement) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
           window.scrollTo({
-            top: targetElement.offsetTop - 80,
+            top: target.offsetTop - 80,
             behavior: 'smooth'
           });
-          
-          // Close mobile menu if open
-          nav.classList.remove('show');
         }
       });
     });
     
-    // Update copyright year
-    document.querySelector('.copyright p').innerHTML = `&copy; ${new Date().getFullYear()} Nakala Analytics Ltd. All rights reserved`;
+    // Help bubble animation
+    const helpBubble = document.querySelector('.help-bubble');
+    
+    function floatAnimation() {
+      helpBubble.style.transform = 'translateY(-10px)';
+      setTimeout(() => {
+        helpBubble.style.transform = 'translateY(0)';
+      }, 1500);
+    }
+    
+    // Run the animation every 3 seconds
+    setInterval(floatAnimation, 3000);
   </script>
 </body>
 </html>
