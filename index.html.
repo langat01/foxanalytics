@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fox Analytics & Solutions</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: Arial, sans-serif; background: #f9f9f9; }
+    header {
+      background: #0A2F5C;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .hero {
+      padding: 60px 20px;
+      text-align: center;
+      background: #FF5722;
+      color: white;
+    }
+    .hero h1 { font-size: 2.5em; margin-bottom: 10px; }
+    .hero p { font-size: 1.2em; margin-bottom: 20px; }
+    .btn {
+      background: white;
+      color: #FF5722;
+      padding: 12px 20px;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 5px;
+    }
+    section { padding: 40px; text-align: center; }
+    .services, .portfolio {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .card {
+      background: white;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      width: 250px;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #0A2F5C;
+      color: white;
+    }
+    .whatsapp {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #25D366;
+      color: white;
+      padding: 15px;
+      border-radius: 50%;
+      text-decoration: none;
+      font-size: 24px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Fox Analytics & Solutions</h1>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <h1>Smart Solutions, Smarter Decisions</h1>
+    <p>We help businesses turn data into action and ideas into reality.</p>
+    <a href="#contact" class="btn">Get Free Consultation</a>
+  </div>
+
+  <section id="about">
+    <h2>About Us</h2>
+    <p>Fox Analytics & Solutions is a data-driven company offering analytics, automation, and digital solutions to help businesses grow.</p>
+  </section>
+
+  <section id="services">
+    <h2>Our Services</h2>
+    <div class="services">
+      <div class="card">
+        <h3>Data Analytics</h3>
+        <p>Power BI dashboards, business reports, and insights.</p>
+      </div>
+      <div class="card">
+        <h3>AI & Automation</h3>
+        <p>Forecasting tools, chatbots, and process automation.</p>
+      </div>
+      <div class="card">
+        <h3>Web Solutions</h3>
+        <p>Websites, e-commerce platforms, and digital tools.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="portfolio">
+    <h2>Portfolio</h2>
+    <div class="portfolio">
+      <div class="card">
+        <h3>Sales Dashboard</h3>
+        <p>Interactive Power BI dashboard for retail business.</p>
+      </div>
+      <div class="card">
+        <h3>E-commerce Website</h3>
+        <p>Professional online store built for local businesses.</p>
+      </div>
+      <div class="card">
+        <h3>Prediction Tool</h3>
+        <p>Streamlit app for daily sales forecasting.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <p>Email: <a href="mailto:info@foxanalytics.com">info@foxanalytics.com</a></p>
+    <p>Phone: +254 111 203 826</p>
+    <a href="https://wa.me/254111203826" class="btn">WhatsApp Us</a>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Fox Analytics & Solutions. All rights reserved.</p>
+  </footer>
+
+  <a href="https://wa.me/254111203826" class="whatsapp">💬</a>
+</body>
+</html>
