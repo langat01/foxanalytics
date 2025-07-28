@@ -42,25 +42,25 @@
       font-weight: bold;
     }
     .hero {
-      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1555949963-aa79dcee981d?fit=crop&w=1600&q=80') center/cover no-repeat;
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1555949963-aa79dcee981d?fit=crop&w=1600&q=80') center/cover no-repeat;
       padding: 6rem 2rem;
       color: white;
       text-align: center;
+      animation: fadeInHero 2s ease-in-out;
     }
-    .hero h1 {
-      font-size: 2.8rem;
-      margin-bottom: 1rem;
-      animation: fadeIn 1.2s ease forwards;
-    }
-    @keyframes fadeIn {
-      to {
-        opacity: 1;
-      }
+    @keyframes fadeInHero {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
     .section {
       padding: 4rem 2rem;
       max-width: 1100px;
       margin: auto;
+      animation: fadeInSection 1.5s ease-in-out;
+    }
+    @keyframes fadeInSection {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
     }
     .section h2 {
       font-size: 2rem;
@@ -118,6 +118,38 @@
       border-radius: 5px;
       cursor: pointer;
     }
+    .blog {
+      background: #fafafa;
+      padding: 4rem 2rem;
+      animation: fadeInSection 1.5s ease-in-out;
+    }
+    .blog h2 {
+      color: #e91e63;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .blog-posts {
+      display: grid;
+      gap: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+    .post {
+      background: white;
+      border-radius: 10px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+    .post:hover {
+      transform: translateY(-5px);
+    }
+    .post h4 {
+      margin-bottom: 0.5rem;
+      color: #212121;
+    }
+    .post p {
+      color: #555;
+    }
     footer {
       background: #f4f4f4;
       padding: 2rem 1rem;
@@ -135,6 +167,15 @@
       color: #e91e63;
       text-decoration: none;
     }
+    footer .social-icons {
+      margin-top: 1rem;
+    }
+    footer .social-icons a {
+      margin: 0 10px;
+      color: #212121;
+      font-size: 20px;
+      text-decoration: none;
+    }
   </style>
 </head>
 <body>
@@ -146,7 +187,7 @@
       <a href="#">Home</a>
       <a href="#about">Who We Are</a>
       <a href="#services">What We Do</a>
-      <a href="#">Blog</a>
+      <a href="#blog">Blog</a>
       <a href="#contact">Contact Us</a>
     </nav>
   </header>
@@ -181,6 +222,24 @@
     </div>
   </section>
 
+  <section class="blog" id="blog">
+    <h2>Latest from Blog</h2>
+    <div class="blog-posts">
+      <div class="post">
+        <h4>Artificial Intelligence in HealthCare</h4>
+        <p>The potential for AI in healthcare is still being unlocked every day...</p>
+      </div>
+      <div class="post">
+        <h4>Hybrid Working and Shared Spaces</h4>
+        <p>The COVID-19 pandemic has changed the idea of what an office means...</p>
+      </div>
+      <div class="post">
+        <h4>Cyber Security: Basic Concepts</h4>
+        <p>Cyber security remains a major focus in the digital age...</p>
+      </div>
+    </div>
+  </section>
+
   <section class="cta" id="contact">
     <h3>Ready to Ignite Your Business?</h3>
     <p>Explore how our data services can propel your business to new heights. Get in touch with us today.</p>
@@ -192,8 +251,13 @@
       <a href="#about">About Us</a>
       <a href="#">Our Team</a>
       <a href="#">Careers</a>
-      <a href="#">Blog</a>
+      <a href="#blog">Blog</a>
       <a href="#">Privacy Policy</a>
+    </div>
+    <div class="social-icons">
+      <a href="#">🌐</a>
+      <a href="#">📘</a>
+      <a href="#">🐦</a>
     </div>
     <p>&copy; 2025 Fox Analytics & Solutions. All rights reserved.</p>
   </footer>
