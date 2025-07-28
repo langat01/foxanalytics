@@ -3,8 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Fox Analytics & Solutions</title>
+  <meta name="description" content="Fox Analytics Africa provides data research, analytics, and business intelligence services to help businesses scale sustainably.">
+  <meta name="keywords" content="data analytics, business intelligence, Kenya, East Africa, outsourcing, research">
+  <meta name="author" content="Fox Analytics & Solutions">
+  <title>Fox Analytics & Solutions | Data Research & Business Intelligence</title>
   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <style>
     * {
       margin: 0;
@@ -16,43 +20,79 @@
       background-color: #ffffff;
       color: #212121;
       line-height: 1.6;
+      scroll-behavior: smooth;
     }
     header {
       background: #e91e63;
       color: white;
       padding: 1rem 2rem;
-      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
     header .top-contact {
       font-size: 0.9rem;
       margin-bottom: 0.5rem;
+      text-align: center;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 100%;
     }
-    nav {
+    header nav {
       display: flex;
+      gap: 1.5rem;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 1rem;
-      margin-bottom: 1rem;
     }
-    nav a {
+    header nav a {
       color: white;
       text-decoration: none;
       font-weight: bold;
+      padding: 0.3rem 0;
+      transition: all 0.3s ease;
+    }
+    header nav a:hover {
+      text-decoration: underline;
+      transform: translateY(-2px);
     }
     .hero {
-      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1555949963-aa79dcee981d?fit=crop&w=1600&q=80') center/cover no-repeat;
-      color: white;
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1555949963-aa79dcee981d?fit=crop&w=1600&q=80&auto=format') center/cover no-repeat;
       padding: 6rem 2rem;
+      color: white;
       text-align: center;
-      animation: fadeIn 2s ease-in-out forwards;
+      opacity: 0;
+      animation: fadeIn 1.5s ease-out forwards;
+      min-height: 70vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
     .hero h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-      opacity: 0;
-      animation: fadeInText 2s ease forwards 0.5s;
+      font-size: 2.8rem;
+      margin-bottom: 2rem;
+      max-width: 900px;
     }
-    @keyframes fadeInText {
+    .hero-btn {
+      background: #e91e63;
+      color: white;
+      border: none;
+      padding: 1rem 2rem;
+      font-size: 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 1.5rem;
+      transition: all 0.3s ease;
+    }
+    .hero-btn:hover {
+      background: #c2185b;
+      transform: scale(1.05);
+    }
+    @keyframes fadeIn {
       to {
         opacity: 1;
       }
@@ -62,51 +102,72 @@
       max-width: 1100px;
       margin: auto;
       opacity: 0;
+      transform: translateY(30px);
       animation: fadeUp 1s ease forwards;
     }
+    .section:nth-of-type(2) {
+      animation-delay: 0.3s;
+    }
+    .section:nth-of-type(3) {
+      animation-delay: 0.6s;
+    }
     @keyframes fadeUp {
-      from {
-        transform: translateY(30px);
-        opacity: 0;
-      }
       to {
-        transform: translateY(0);
         opacity: 1;
+        transform: translateY(0);
       }
     }
     .section h2 {
       font-size: 2rem;
       color: #e91e63;
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
     }
-    .services, .blog-posts {
+    .services {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 2rem;
+      margin-top: 2rem;
     }
-    .card {
-      background: rgba(255,255,255,0.9);
+    .service {
+      background: rgba(255,255,255,0.97);
       border-radius: 10px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.08);
       padding: 1.5rem;
+      text-align: center;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-    .card:hover {
+    .service:hover {
       transform: translateY(-8px);
       box-shadow: 0 10px 20px rgba(0,0,0,0.15);
     }
-    .card img {
+    .service img {
       width: 100%;
-      height: 180px;
+      height: 200px;
       object-fit: cover;
       border-radius: 10px;
       margin-bottom: 1rem;
     }
+    .read-more {
+      color: #e91e63;
+      font-weight: bold;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 1rem;
+      transition: all 0.3s ease;
+    }
+    .read-more:hover {
+      text-decoration: underline;
+      transform: translateX(5px);
+    }
     .cta {
       background: #212121;
       color: white;
+      padding: 3rem 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       text-align: center;
-      padding: 4rem 2rem;
     }
     .cta h3 {
       font-size: 2rem;
@@ -114,7 +175,7 @@
     }
     .cta p {
       max-width: 600px;
-      margin: auto auto 2rem;
+      margin-bottom: 2rem;
     }
     .cta button {
       background: #e91e63;
@@ -124,6 +185,35 @@
       font-size: 1rem;
       border-radius: 5px;
       cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .cta button:hover {
+      background: #c2185b;
+      transform: scale(1.05);
+    }
+    .contact-form {
+      max-width: 500px;
+      width: 100%;
+      margin-top: 2rem;
+    }
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      text-align: left;
+    }
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.8rem;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-family: 'Raleway', sans-serif;
+    }
+    .form-group textarea {
+      min-height: 120px;
     }
     footer {
       background: #f4f4f4;
@@ -133,14 +223,43 @@
     }
     .footer-links {
       display: flex;
-      flex-wrap: wrap;
       justify-content: center;
-      gap: 1rem;
-      margin-bottom: 1rem;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
     }
     .footer-links a {
       color: #e91e63;
       text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    .footer-links a:hover {
+      text-decoration: underline;
+    }
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .social-links a {
+      color: #e91e63;
+      font-size: 1.5rem;
+      transition: all 0.3s ease;
+    }
+    .social-links a:hover {
+      transform: translateY(-3px);
+    }
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+      header nav {
+        gap: 1rem;
+      }
+      .section {
+        padding: 3rem 1.5rem;
+      }
     }
   </style>
 </head>
@@ -151,84 +270,115 @@
     </div>
     <nav>
       <a href="#">Home</a>
-      <a href="#about">About</a>
-      <a href="#services">Services</a>
-      <a href="#blog">Blog</a>
-      <a href="#contact">Contact</a>
+      <a href="#about">Who We Are</a>
+      <a href="#services">What We Do</a>
+      <a href="#">Blog</a>
+      <a href="#contact">Contact Us</a>
     </nav>
   </header>
 
-  <section class="hero">
-    <h1>Turning Data Into Action</h1>
-  </section>
+  <main>
+    <section class="hero" role="img" aria-label="Data analytics workspace">
+      <h1>We offer data-centric research, data analytics and business intelligence services to enable your business scale faster and sustainably</h1>
+      <button class="hero-btn" onclick="window.location.href='#contact'">Get Started Today</button>
+    </section>
 
-  <section class="section" id="about">
-    <h2>About Us</h2>
-    <p>Fox Analytics & Solutions is a data-driven company helping businesses transform insights into actions. Our team specializes in data analysis, program design, and technology outsourcing.</p>
-  </section>
+    <section class="section" id="about">
+      <h2>About Us</h2>
+      <p>Fox Analytics Africa is a prime provider of business offshore outsourcing, data-centric research, data analytics, and business intelligence services. Our office locations are primarily in Kenya but with operation areas in the larger East Africa. We also provide remote/virtual technical support to clients and partners globally.</p>
+      <p>Our team of experts combines cutting-edge technology with deep industry knowledge to deliver actionable insights that drive business growth. We believe in building long-term partnerships with our clients by providing tailored solutions that address their unique challenges.</p>
+    </section>
 
-  <section class="section" id="services">
-    <h2>Our Services</h2>
-    <div class="services">
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1551836022-4c4c79ecde72?auto=format&fit=crop&w=800&q=80" alt="Outsourcing">
-        <h3>Business Offshore Outsourcing</h3>
-        <p>Streamline operations with our cost-effective offshore staffing solutions.</p>
+    <section class="section" id="services">
+      <h2>Our Services</h2>
+      <div class="services">
+        <div class="service">
+          <img src="https://images.unsplash.com/photo-1625941133296-d06d1b9443cb?fit=crop&w=800&q=80&auto=format" alt="Business Offshore Outsourcing" loading="lazy">
+          <h3>Business Offshore Outsourcing</h3>
+          <p>Cost-effective outsourcing solutions for your business processes, allowing you to focus on core competencies.</p>
+          <a href="#contact" class="read-more">Read more →</a>
+        </div>
+        <div class="service">
+          <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?fit=crop&w=800&q=80&auto=format" alt="Program Design and Management" loading="lazy">
+          <h3>Program Design & Management</h3>
+          <p>End-to-end program design and management services to ensure your initiatives deliver maximum impact.</p>
+          <a href="#contact" class="read-more">Read more →</a>
+        </div>
+        <div class="service">
+          <img src="https://images.unsplash.com/photo-1612831666985-d4a664be09c0?fit=crop&w=800&q=80&auto=format" alt="Data Analysis and Reporting" loading="lazy">
+          <h3>Data Analysis & Reporting</h3>
+          <p>Transform raw data into meaningful insights with our comprehensive analysis and visualization services.</p>
+          <a href="#contact" class="read-more">Read more →</a>
+        </div>
       </div>
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1564869733276-963e8effe8ca?auto=format&fit=crop&w=800&q=80" alt="Program Design">
-        <h3>Program Design & Management</h3>
-        <p>Custom-built programs tailored to your business needs.</p>
-      </div>
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?auto=format&fit=crop&w=800&q=80" alt="Data Reporting">
-        <h3>Data Analysis & Reporting</h3>
-        <p>Real-time dashboards and insights to power decisions.</p>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="section" id="blog">
-    <h2>Latest Insights</h2>
-    <div class="blog-posts">
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1629909615303-f2ef97c5b6d4?auto=format&fit=crop&w=800&q=80" alt="Interns">
-        <h3>UI/Backend/Fullstack Interns</h3>
-        <p>16 February 2023 — Opportunities</p>
+    <section class="cta" id="contact">
+      <h3>Ready to Ignite Your Business?</h3>
+      <p>Explore how our data services can propel your business to new heights. Get in touch with us today.</p>
+      <button onclick="window.location.href='mailto:info@foxanalytics.co.ke'">Get in Touch</button>
+      
+      <div class="contact-form">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" placeholder="Your name">
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="Your email">
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" placeholder="How can we help you?"></textarea>
+        </div>
+        <button type="submit" class="cta-btn">Send Message</button>
       </div>
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1634643063732-80a57993933d?auto=format&fit=crop&w=800&q=80" alt="Business Dev">
-        <h3>Business Development Expert</h3>
-        <p>23 January 2023 — Opportunities</p>
-      </div>
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1612832021189-8b10f9c8c6b4?auto=format&fit=crop&w=800&q=80" alt="Sales Assistant">
-        <h3>Technical Sales and Marketing Assistant</h3>
-        <p>21 December 2022 — Opportunities</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="cta" id="contact">
-    <h3>Ready to Ignite Your Business?</h3>
-    <p>Explore how our data services can propel your business to new heights. Get in touch with us today.</p>
-    <button>Contact Us</button>
-  </section>
+    </section>
+  </main>
 
   <footer>
     <div class="footer-links">
-      <a href="#about">About</a>
-      <a href="#services">Services</a>
-      <a href="#blog">Blog</a>
-      <a href="#contact">Contact</a>
-      <a href="#">Privacy</a>
+      <a href="#about">About Us</a>
+      <a href="#">Our Team</a>
+      <a href="#">Careers</a>
+      <a href="#">Blog</a>
+      <a href="#">Privacy Policy</a>
     </div>
-    <p>Follow us on:
-      <a href="#">Twitter</a> |
-      <a href="#">LinkedIn</a> |
-      <a href="#">Facebook</a>
-    </p>
-    <p>&copy; 2025 Fox Analytics & Solutions. All rights reserved.</p>
+    <div class="social-links">
+      <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+      <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+      <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+      <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    </div>
+    <p>&copy; <span id="year"></span> Fox Analytics & Solutions. All rights reserved.</p>
   </footer>
+
+  <script>
+    // Update copyright year automatically
+    document.getElementById('year').textContent = new Date().getFullYear();
+    
+    // Simple form handling (would be replaced with actual form submission in production)
+    document.querySelector('.cta-btn').addEventListener('click', function() {
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const message = document.getElementById('message').value;
+      
+      if(name && email && message) {
+        alert(`Thank you, ${name}! We'll contact you soon at ${email}.`);
+      } else {
+        alert('Please fill in all fields.');
+      }
+    });
+    
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
 </body>
 </html>
