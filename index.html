@@ -16,45 +16,43 @@
       background-color: #ffffff;
       color: #212121;
       line-height: 1.6;
-      scroll-behavior: smooth;
     }
     header {
       background: #e91e63;
       color: white;
       padding: 1rem 2rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      text-align: center;
     }
     header .top-contact {
       font-size: 0.9rem;
       margin-bottom: 0.5rem;
-      text-align: center;
     }
-    header nav {
+    nav {
       display: flex;
-      gap: 1rem;
       flex-wrap: wrap;
       justify-content: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
     }
-    header nav a {
+    nav a {
       color: white;
       text-decoration: none;
       font-weight: bold;
     }
     .hero {
-      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1555949963-aa79dcee981d?fit=crop&w=1600&q=80') center/cover no-repeat;
-      padding: 6rem 2rem;
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1555949963-aa79dcee981d?fit=crop&w=1600&q=80') center/cover no-repeat;
       color: white;
+      padding: 6rem 2rem;
       text-align: center;
-      opacity: 0;
-      animation: fadeIn 1.5s ease-out forwards;
+      animation: fadeIn 2s ease-in-out forwards;
     }
     .hero h1 {
-      font-size: 2.8rem;
+      font-size: 2.5rem;
       margin-bottom: 1rem;
+      opacity: 0;
+      animation: fadeInText 2s ease forwards 0.5s;
     }
-    @keyframes fadeIn {
+    @keyframes fadeInText {
       to {
         opacity: 1;
       }
@@ -64,19 +62,16 @@
       max-width: 1100px;
       margin: auto;
       opacity: 0;
-      transform: translateY(30px);
       animation: fadeUp 1s ease forwards;
     }
-    .section:nth-of-type(2) {
-      animation-delay: 0.3s;
-    }
-    .section:nth-of-type(3) {
-      animation-delay: 0.6s;
-    }
     @keyframes fadeUp {
+      from {
+        transform: translateY(30px);
+        opacity: 0;
+      }
       to {
-        opacity: 1;
         transform: translateY(0);
+        opacity: 1;
       }
     }
     .section h2 {
@@ -84,27 +79,25 @@
       color: #e91e63;
       margin-bottom: 1rem;
     }
-    .services {
+    .services, .blog-posts {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 2rem;
-      margin-top: 2rem;
     }
-    .service {
-      background: rgba(255,255,255,0.97);
+    .card {
+      background: rgba(255,255,255,0.9);
       border-radius: 10px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.08);
       padding: 1.5rem;
-      text-align: center;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-    .service:hover {
+    .card:hover {
       transform: translateY(-8px);
       box-shadow: 0 10px 20px rgba(0,0,0,0.15);
     }
-    .service img {
+    .card img {
       width: 100%;
-      height: 200px;
+      height: 180px;
       object-fit: cover;
       border-radius: 10px;
       margin-bottom: 1rem;
@@ -112,11 +105,8 @@
     .cta {
       background: #212121;
       color: white;
-      padding: 3rem 2rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
       text-align: center;
+      padding: 4rem 2rem;
     }
     .cta h3 {
       font-size: 2rem;
@@ -124,7 +114,7 @@
     }
     .cta p {
       max-width: 600px;
-      margin-bottom: 2rem;
+      margin: auto auto 2rem;
     }
     .cta button {
       background: #e91e63;
@@ -141,14 +131,14 @@
       text-align: center;
       color: #555;
     }
-    footer .footer-links {
+    .footer-links {
       display: flex;
+      flex-wrap: wrap;
       justify-content: center;
       gap: 1rem;
       margin-bottom: 1rem;
-      flex-wrap: wrap;
     }
-    footer .footer-links a {
+    .footer-links a {
       color: #e91e63;
       text-decoration: none;
     }
@@ -161,39 +151,60 @@
     </div>
     <nav>
       <a href="#">Home</a>
-      <a href="#about">Who We Are</a>
-      <a href="#services">What We Do</a>
-      <a href="#">Blog</a>
-      <a href="#contact">Contact Us</a>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#blog">Blog</a>
+      <a href="#contact">Contact</a>
     </nav>
   </header>
 
   <section class="hero">
-    <h1>We offer data-centric research, data analytics and business intelligence services to enable your business scale faster and sustainably</h1>
+    <h1>Turning Data Into Action</h1>
   </section>
 
   <section class="section" id="about">
     <h2>About Us</h2>
-    <p>Fox Analytics Africa is a prime provider of business offshore outsourcing, data-centric research, data analytics, and business intelligence services. Our office locations are primarily in Kenya but with operation areas in the larger East Africa. We also provide remote/virtual technical support to clients and partners globally.</p>
+    <p>Fox Analytics & Solutions is a data-driven company helping businesses transform insights into actions. Our team specializes in data analysis, program design, and technology outsourcing.</p>
   </section>
 
   <section class="section" id="services">
     <h2>Our Services</h2>
     <div class="services">
-      <div class="service">
-        <img src="https://images.unsplash.com/photo-1625941133296-d06d1b9443cb?fit=crop&w=800&q=80" alt="Business Outsourcing">
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1551836022-4c4c79ecde72?auto=format&fit=crop&w=800&q=80" alt="Outsourcing">
         <h3>Business Offshore Outsourcing</h3>
-        <p>Read more</p>
+        <p>Streamline operations with our cost-effective offshore staffing solutions.</p>
       </div>
-      <div class="service">
-        <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?fit=crop&w=800&q=80" alt="Program Design">
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1564869733276-963e8effe8ca?auto=format&fit=crop&w=800&q=80" alt="Program Design">
         <h3>Program Design & Management</h3>
-        <p>Read more</p>
+        <p>Custom-built programs tailored to your business needs.</p>
       </div>
-      <div class="service">
-        <img src="https://images.unsplash.com/photo-1612831666985-d4a664be09c0?fit=crop&w=800&q=80" alt="Data Reporting">
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?auto=format&fit=crop&w=800&q=80" alt="Data Reporting">
         <h3>Data Analysis & Reporting</h3>
-        <p>Read more</p>
+        <p>Real-time dashboards and insights to power decisions.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="blog">
+    <h2>Latest Insights</h2>
+    <div class="blog-posts">
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1629909615303-f2ef97c5b6d4?auto=format&fit=crop&w=800&q=80" alt="Interns">
+        <h3>UI/Backend/Fullstack Interns</h3>
+        <p>16 February 2023 — Opportunities</p>
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1634643063732-80a57993933d?auto=format&fit=crop&w=800&q=80" alt="Business Dev">
+        <h3>Business Development Expert</h3>
+        <p>23 January 2023 — Opportunities</p>
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1612832021189-8b10f9c8c6b4?auto=format&fit=crop&w=800&q=80" alt="Sales Assistant">
+        <h3>Technical Sales and Marketing Assistant</h3>
+        <p>21 December 2022 — Opportunities</p>
       </div>
     </div>
   </section>
@@ -201,17 +212,22 @@
   <section class="cta" id="contact">
     <h3>Ready to Ignite Your Business?</h3>
     <p>Explore how our data services can propel your business to new heights. Get in touch with us today.</p>
-    <button>Get in Touch</button>
+    <button>Contact Us</button>
   </section>
 
   <footer>
     <div class="footer-links">
-      <a href="#about">About Us</a>
-      <a href="#">Our Team</a>
-      <a href="#">Careers</a>
-      <a href="#">Blog</a>
-      <a href="#">Privacy Policy</a>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#blog">Blog</a>
+      <a href="#contact">Contact</a>
+      <a href="#">Privacy</a>
     </div>
+    <p>Follow us on:
+      <a href="#">Twitter</a> |
+      <a href="#">LinkedIn</a> |
+      <a href="#">Facebook</a>
+    </p>
     <p>&copy; 2025 Fox Analytics & Solutions. All rights reserved.</p>
   </footer>
 </body>
