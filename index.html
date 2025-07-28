@@ -4,282 +4,208 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Fox Analytics & Solutions</title>
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Roboto&display=swap" rel="stylesheet">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      font-family: 'Poppins', sans-serif;
-      background: url('https://images.unsplash.com/photo-1629904853696-fb7e7497ebcc?auto=format&fit=crop&w=1950&q=80') no-repeat center center fixed;
-      background-size: cover;
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background: #fff;
       color: #212121;
-      scroll-behavior: smooth;
     }
     header {
-      background: rgba(233, 30, 99, 0.9);
-      color: white;
-      padding: 15px 20px;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 1rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
       position: sticky;
       top: 0;
       z-index: 1000;
     }
     header h1 {
-      font-family: 'Great Vibes', cursive;
-      font-size: 28px;
-      animation: slideIn 1s ease-out;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: #E91E63;
     }
     nav a {
-      color: white;
-      margin: 0 10px;
+      margin-left: 1.5rem;
       text-decoration: none;
-      font-weight: 600;
-      transition: 0.3s;
-    }
-    nav a:hover { color: #fff9c4; }
-    .hero {
-      padding: 100px 20px;
-      text-align: center;
-      background: rgba(255,255,255,0.4);
-      backdrop-filter: blur(10px);
-      margin: 40px;
-      border-radius: 16px;
-      animation: fadeIn 2s;
-    }
-    .hero h1 { font-size: 3em; margin-bottom: 10px; }
-    .hero p { font-size: 1.2em; margin-bottom: 20px; font-style: italic; }
-    .btn {
-      background: white;
-      color: #E91E63;
-      padding: 14px 25px;
-      text-decoration: none;
+      color: #212121;
       font-weight: bold;
-      border-radius: 30px;
-      transition: 0.3s;
-      display: inline-block;
-      margin-top: 10px;
+      transition: color 0.3s;
     }
-    .btn:hover { background: #212121; color: white; transform: scale(1.05); }
-    section {
-      padding: 60px 20px;
+    nav a:hover {
+      color: #E91E63;
+    }
+    section.hero {
+      background: url('https://images.unsplash.com/photo-1605283164526-3d4f5a5013c1') no-repeat center center/cover;
+      color: white;
+      padding: 8rem 2rem;
       text-align: center;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 1s ease-out, transform 1s ease-out;
-      background: rgba(255,255,255,0.6);
-      backdrop-filter: blur(12px);
-      margin: 40px auto;
-      border-radius: 16px;
-      max-width: 1000px;
+      position: relative;
     }
-    section.visible { opacity: 1; transform: translateY(0); }
-    h2 { font-size: 2em; margin-bottom: 20px; color: #E91E63; }
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.6);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+    .hero h2 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+    }
+    .btn {
+      padding: 0.75rem 2rem;
+      background: #E91E63;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+    .btn:hover {
+      background: #d81b60;
+    }
+    section.services {
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+    .services h3 {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+    }
     .card-container {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 20px;
+      gap: 2rem;
     }
     .card {
-      background: white;
-      border-radius: 12px;
-      padding: 20px;
-      width: 280px;
-      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
-      transition: transform 0.3s, box-shadow 0.3s;
+      width: 300px;
+      background: #f9f9f9;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
     }
     .card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+      transform: translateY(-5px);
     }
     .card img {
       width: 100%;
-      border-radius: 10px;
-      margin-bottom: 15px;
+      height: 200px;
+      object-fit: cover;
+    }
+    .card h4 {
+      margin: 1rem;
+      color: #E91E63;
+    }
+    .card p {
+      padding: 0 1rem 1rem;
+      color: #555;
+    }
+    section.cta {
+      background: #111;
+      color: white;
+      padding: 4rem 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .cta-text {
+      flex: 1;
+      max-width: 600px;
+    }
+    .cta h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    .cta p {
+      font-size: 1.1rem;
+    }
+    .cta-action {
+      margin-top: 2rem;
     }
     footer {
-      background: #212121;
-      color: white;
+      background: #f1f1f1;
       text-align: center;
-      padding: 20px;
+      padding: 1rem;
+      font-size: 0.9rem;
     }
-    .social-icons a {
-      color: white;
-      margin: 0 10px;
-      text-decoration: none;
-    }
-    form {
-      max-width: 500px;
-      margin: auto;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    input, textarea {
-      padding: 10px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-      width: 100%;
-    }
-    input[type="submit"] {
-      background: #E91E63;
-      color: white;
-      border: none;
-      cursor: pointer;
-    }
-    input[type="submit"]:hover { background: #212121; }
-    .whatsapp {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: #25D366;
-      color: white;
-      padding: 15px;
-      border-radius: 50%;
-      text-decoration: none;
-      font-size: 24px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-    @keyframes slideIn {
-      from { transform: translateX(-50px); opacity: 0; }
-      to { transform: translateX(0); opacity: 1; }
+    @media (max-width: 768px) {
+      .card-container {
+        flex-direction: column;
+        align-items: center;
+      }
+      .cta {
+        flex-direction: column;
+        text-align: center;
+      }
     }
   </style>
 </head>
 <body>
+  <header>
+    <h1>Fox Analytics & Solutions</h1>
+    <nav>
+      <a href="#services">Services</a>
+      <a href="#cta">Get in Touch</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
 
-<header>
-  <h1>Fox Analytics</h1>
-  <nav>
-    <a href="#about">About</a>
-    <a href="#services">Services</a>
-    <a href="#portfolio">Portfolio</a>
-    <a href="#testimonials">Testimonials</a>
-    <a href="#pricing">Pricing</a>
-    <a href="#contact">Contact</a>
-  </nav>
-</header>
+  <section class="hero">
+    <div class="hero-content">
+      <h2>Turning Data into Action</h2>
+      <p>We deliver smart, AI-powered analytics that transform your business</p>
+      <a href="#cta" class="btn">Start Your Journey</a>
+    </div>
+  </section>
 
-<div class="hero">
-  <h1>Smart Solutions, Smarter Decisions</h1>
-  <p>Turning data into action and ideas into reality.</p>
-  <a href="#contact" class="btn">Get Free Consultation</a>
-</div>
+  <section class="services" id="services">
+    <h3>Our Core Services</h3>
+    <div class="card-container">
+      <div class="card">
+        <img src="/mnt/data/75b0d7f0-1cad-47be-a33d-30bda1f7377c.png" alt="Service 1" />
+        <h4>Business Outsourcing</h4>
+        <p>We handle data-heavy tasks so you can focus on strategy and growth.</p>
+      </div>
+      <div class="card">
+        <img src="/mnt/data/40796a36-f456-4726-9552-86d5971f7408.png" alt="Service 2" />
+        <h4>Program Design</h4>
+        <p>Our experts plan & execute custom data programs with impact.</p>
+      </div>
+      <div class="card">
+        <img src="/mnt/data/be37dac9-7f98-4983-9be9-c30f70989fdd.png" alt="Service 3" />
+        <h4>Data Reporting</h4>
+        <p>Get visual insights and dashboards that help drive decision-making.</p>
+      </div>
+    </div>
+  </section>
 
-<section id="about" class="visible">
-  <h2>About Us</h2>
-  <p>Fox Analytics & Solutions is a data-driven company offering analytics, automation, and digital solutions to help businesses grow.</p>
-</section>
+  <section class="cta" id="cta">
+    <div class="cta-text">
+      <h2>Ready to Ignite Your Business?</h2>
+      <p>Explore how our data services can propel your business to new heights. Get in touch with us today to embark on a journey of data-driven success.</p>
+      <div class="cta-action">
+        <a href="#contact" class="btn">Get in Touch</a>
+      </div>
+    </div>
+  </section>
 
-<section id="services" class="visible">
-  <h2>Our Services</h2>
-  <div class="card-container">
-    <div class="card">
-      <img src="https://source.unsplash.com/300x200/?data" alt="Data Analytics" />
-      <h3>Data Analytics</h3>
-      <p>Power BI dashboards, business reports, and insights.</p>
-    </div>
-    <div class="card">
-      <img src="https://source.unsplash.com/300x200/?ai,robot" alt="AI" />
-      <h3>AI & Automation</h3>
-      <p>Forecasting tools, chatbots, and process automation.</p>
-    </div>
-    <div class="card">
-      <img src="https://source.unsplash.com/300x200/?website" alt="Web Solutions" />
-      <h3>Web Solutions</h3>
-      <p>Websites, e-commerce platforms, and digital tools.</p>
-    </div>
-  </div>
-</section>
-
-<section id="portfolio" class="visible">
-  <h2>Portfolio</h2>
-  <div class="card-container">
-    <div class="card">
-      <img src="https://source.unsplash.com/300x200/?dashboard" alt="Sales Dashboard" />
-      <h3>Sales Dashboard</h3>
-      <p>Interactive Power BI dashboard for retail business.</p>
-    </div>
-    <div class="card">
-      <img src="https://source.unsplash.com/300x200/?ecommerce" alt="E-commerce" />
-      <h3>E-commerce Website</h3>
-      <p>Professional online store built for local businesses.</p>
-    </div>
-    <div class="card">
-      <img src="https://source.unsplash.com/300x200/?prediction" alt="Prediction Tool" />
-      <h3>Prediction Tool</h3>
-      <p>Streamlit app for daily sales forecasting.</p>
-    </div>
-  </div>
-</section>
-
-<section id="testimonials" class="visible">
-  <h2>What Our Clients Say</h2>
-  <div class="card-container">
-    <div class="card">
-      <img src="https://source.unsplash.com/100x100/?woman,face" alt="Client Photo" />
-      <h3>Jane N.</h3>
-      <p><em>CEO, TechHive Africa</em></p>
-      <p>“Fox Analytics helped us uncover growth opportunities. Their dashboards are incredibly insightful.”</p>
-    </div>
-    <div class="card">
-      <img src="https://source.unsplash.com/100x100/?man,profile" alt="Client Photo" />
-      <h3>David O.</h3>
-      <p><em>Operations Lead, AfriSupply</em></p>
-      <p>“Thanks to their automation tools, we’ve saved hours every week. Highly recommend!”</p>
-    </div>
-    <div class="card">
-      <img src="https://source.unsplash.com/100x100/?lady,tech" alt="Client Photo" />
-      <h3>Linda M.</h3>
-      <p><em>Marketing Manager, BriteStart</em></p>
-      <p>“Their AI-powered predictions transformed how we plan campaigns. Impressive!”</p>
-    </div>
-  </div>
-</section>
-
-<section id="pricing" class="visible">
-  <h2>Pricing Plans</h2>
-  <div class="card-container">
-    <div class="card">
-      <h3>Basic</h3>
-      <p><strong>KES 10,000</strong></p>
-      <p>✔ 1 Dashboard<br>✔ Email Support</p>
-    </div>
-    <div class="card">
-      <h3>Standard</h3>
-      <p><strong>KES 25,000</strong></p>
-      <p>✔ 3 Dashboards<br>✔ Forecast Tool<br>✔ Chatbot</p>
-    </div>
-    <div class="card">
-      <h3>Premium</h3>
-      <p><strong>KES 50,000</strong></p>
-      <p>✔ Full AI Automation<br>✔ Integrations<br>✔ Ongoing Support</p>
-    </div>
-  </div>
-</section>
-
-<section id="contact" class="visible">
-  <h2>Contact Us</h2>
-  <p>Email: <a href=\"mailto:info@foxanalytics.com\">info@foxanalytics.com</a></p>
-  <p>Phone: +254 111 203 826</p>
-  <a href=\"https://wa.me/254111203826\" class=\"btn\">WhatsApp Us</a>
-</section>
-
-<footer>
-  <p>&copy; 2025 Fox Analytics & Solutions. All rights reserved.</p>
-  <div class="social-icons">
-    <a href=\"#\">LinkedIn</a>
-    <a href=\"#\">Facebook</a>
-    <a href=\"#\">Twitter</a>
-  </div>
-</footer>
-
-<a href=\"https://wa.me/254111203826\" class=\"whatsapp\">💬</a>
-
+  <footer id="contact">
+    <p>Contact us: langatweldon665@gmail.com | WhatsApp</p>
+    <p>&copy; 2025 Fox Analytics & Solutions. All rights reserved.</p>
+  </footer>
 </body>
 </html>
