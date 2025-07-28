@@ -693,7 +693,49 @@
       </div>
     </div>
   </section>
+<!-- Add after Services Section -->
+<section class="demo-section">
+  <div class="section-title">
+    <h2>See Our Analytics in Action</h2>
+    <p>Explore interactive examples of our data solutions</p>
+  </div>
+  
+  <div class="dashboard-container">
+    <div class="dashboard-tabs">
+      <button class="tab-btn active" data-tab="financial">Financial Insights</button>
+      <button class="tab-btn" data-tab="customer">Customer Behavior</button>
+    </div>
+    <div class="dashboard-content">
+      <div class="chart-container">
+        <canvas id="dataChart"></canvas>
+      </div>
+      <div class="metrics-container">
+        <div class="metric" id="conversionRate">
+          <h5>Conversion Rate</h5>
+          <div class="metric-value">12.8%</div>
+        </div>
+        <!-- Add 3 more metrics -->
+      </div>
+    </div>
+  </div>
+</section>
 
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  // Initialize sample chart
+  const ctx = document.getElementById('dataChart').getContext('2d');
+  const sampleChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['Q1', 'Q2', 'Q3', 'Q4'],
+      datasets: [{
+        label: 'Revenue Growth',
+        data: [12, 19, 15, 27],
+        backgroundColor: '#E91E63'
+      }]
+    }
+  });
+</script>
   <!-- More Section -->
   <section id="more" class="section more-section">
     <div class="section-title">
@@ -758,7 +800,77 @@
 </div>
 
 </section>
+<!-- Add after Clients Section -->
+<section class="case-studies">
+  <div class="section-title">
+    <h2>Success Stories</h2>
+    <p>Quantifiable results we've delivered for clients</p>
+  </div>
+  
+  <div class="case-study-carousel">
+    <div class="case-study">
+      <div class="results-grid">
+        <div class="result-card">
+          <div class="result-value" data-target="42">0</div>
+          <p>% Reduction in Fraud Cases</p>
+        </div>
+        <div class="result-card">
+          <div class="result-value" data-target="35">0</div>
+          <p>% Faster Loan Approvals</p>
+        </div>
+      </div>
+      <div class="case-content">
+        <h3>Kenyan Commercial Bank</h3>
+        <p>Implemented AI-powered fraud detection system that reduced false positives by 42% while maintaining 99.8% accuracy.</p>
+        <a href="#" class="read-more">Read Full Case Study →</a>
+      </div>
+    </div>
+  </div>
+</section>
 
+<script>
+  // Animated counter
+  const counters = document.querySelectorAll('.result-value');
+  const speed = 200;
+  
+  counters.forEach(counter => {
+    const target = +counter.getAttribute('data-target');
+    const count = +counter.innerText;
+    const increment = target / speed;
+    
+    const updateCounter = () => {
+      if(count < target) {
+        counter.innerText = Math.ceil(count + increment);
+        setTimeout(updateCounter, 1);
+      } else {
+        counter.innerText = target + '%';
+      }
+    }
+    updateCounter();
+  });
+</script>
+  <!-- Add before Contact Section -->
+<section class="insights">
+  <div class="section-title">
+    <h2>Latest Insights</h2>
+    <p>Data trends and industry analysis</p>
+  </div>
+  
+  <div class="insights-grid">
+    <article class="insight-card">
+      <div class="insight-img">
+        <img src="ai-trends.jpg" alt="AI Trends" loading="lazy">
+        <div class="insight-tag">Machine Learning</div>
+      </div>
+      <div class="insight-content">
+        <h3>AI Adoption in East African Banks</h3>
+        <p>How financial institutions are leveraging machine learning to reduce fraud and improve customer experience.</p>
+        <a href="#" class="read-more">Read Article →</a>
+      </div>
+    </article>
+    <!-- Add 2 more articles -->
+  </div>
+</section>
 
   <!-- Contact Section -->
   <section id="contact" class="section" style="background-color: var(--light);">
