@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Fox Analytics & Solutions</title>
   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <style>
     * {
       margin: 0;
@@ -25,6 +24,9 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
     header nav a {
       color: white;
@@ -33,9 +35,7 @@
       font-weight: bold;
     }
     .hero {
-      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1555949963-aa79dcee981d?fit=crop&w=1600&q=80');
-      background-size: cover;
-      background-position: center;
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1555949963-aa79dcee981d?fit=crop&w=1600&q=80') center/cover no-repeat;
       padding: 6rem 2rem;
       color: white;
       text-align: center;
@@ -43,6 +43,13 @@
     .hero h1 {
       font-size: 2.8rem;
       margin-bottom: 1rem;
+      opacity: 0;
+      animation: fadeIn 1.2s ease forwards;
+    }
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
     }
     .section {
       padding: 4rem 2rem;
@@ -61,37 +68,40 @@
       margin-top: 2rem;
     }
     .service {
-      background: rgba(255,255,255,0.9);
+      background: rgba(255,255,255,0.97);
       border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      padding: 1rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      padding: 1.5rem;
       text-align: center;
-      transition: transform 0.3s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
     .service:hover {
-      transform: translateY(-10px);
+      transform: translateY(-8px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
     }
     .service img {
       width: 100%;
       height: 200px;
       object-fit: cover;
       border-radius: 10px;
+      margin-bottom: 1rem;
     }
     .cta {
       background: #212121;
       color: white;
       padding: 3rem 2rem;
       display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
+      flex-direction: column;
       align-items: center;
-      gap: 2rem;
+      text-align: center;
     }
     .cta h3 {
       font-size: 2rem;
+      margin-bottom: 1rem;
     }
     .cta p {
-      flex: 1;
+      max-width: 600px;
+      margin-bottom: 2rem;
     }
     .cta button {
       background: #e91e63;
@@ -124,47 +134,40 @@
     <h1>Turning Data Into Action</h1>
   </section>
 
-  <section class="section" id="about" data-aos="fade-up">
+  <section class="section" id="about">
     <h2>About Us</h2>
     <p>Fox Analytics & Solutions is a data-driven company helping businesses transform insights into actions. Our team specializes in data analysis, program design, and technology outsourcing.</p>
   </section>
 
-  <section class="section" id="services" data-aos="fade-up">
+  <section class="section" id="services">
     <h2>Our Services</h2>
     <div class="services">
       <div class="service">
-        <img src="https://chat.openai.com/mnt/data/40796a36-f456-4726-9552-86d5971f7408.png" alt="Business Outsourcing">
+        <img src="/mnt/data/40796a36-f456-4726-9552-86d5971f7408.png" alt="Business Outsourcing">
         <h3>Business Offshore Outsourcing</h3>
         <p>Streamline operations with our cost-effective offshore staffing solutions.</p>
       </div>
       <div class="service">
-        <img src="https://chat.openai.com/mnt/data/75b0d7f0-1cad-47be-a33d-30bda1f7377c.png" alt="Program Design">
+        <img src="/mnt/data/75b0d7f0-1cad-47be-a33d-30bda1f7377c.png" alt="Program Design">
         <h3>Program Design & Management</h3>
         <p>Custom-built programs tailored to your business needs.</p>
       </div>
       <div class="service">
-        <img src="https://chat.openai.com/mnt/data/be37dac9-7f98-4983-9be9-c30f70989fdd.png" alt="Data Reporting">
+        <img src="/mnt/data/be37dac9-7f98-4983-9be9-c30f70989fdd.png" alt="Data Reporting">
         <h3>Data Analysis & Reporting</h3>
         <p>Real-time dashboards and insights to power decisions.</p>
       </div>
     </div>
   </section>
 
-  <section class="cta" id="contact" data-aos="fade-in">
-    <div>
-      <h3>Ready to Ignite Your Business?</h3>
-      <p>Explore how our data services can propel your business to new heights. Get in touch with us today.</p>
-    </div>
+  <section class="cta" id="contact">
+    <h3>Ready to Ignite Your Business?</h3>
+    <p>Explore how our data services can propel your business to new heights. Get in touch with us today.</p>
     <button>Get in Touch</button>
   </section>
 
   <footer>
     <p>&copy; 2025 Fox Analytics & Solutions. All rights reserved.</p>
   </footer>
-
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>
-    AOS.init();
-  </script>
 </body>
 </html>
