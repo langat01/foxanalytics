@@ -4,208 +4,220 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Fox Analytics & Solutions</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Roboto&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+    }
     body {
-      margin: 0;
-      font-family: 'Roboto', sans-serif;
-      background: #fff;
+      font-family: 'Poppins', sans-serif;
       color: #212121;
+      background: #fff;
+      scroll-behavior: smooth;
     }
     header {
-      background: rgba(255, 255, 255, 0.9);
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(10px);
       position: sticky;
       top: 0;
       z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
     }
     header h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.5rem;
+      font-size: 22px;
       color: #E91E63;
     }
     nav a {
-      margin-left: 1.5rem;
-      text-decoration: none;
       color: #212121;
-      font-weight: bold;
-      transition: color 0.3s;
+      margin-left: 20px;
+      text-decoration: none;
+      font-weight: 600;
     }
     nav a:hover {
       color: #E91E63;
     }
-    section.hero {
-      background: url('https://images.unsplash.com/photo-1605283164526-3d4f5a5013c1') no-repeat center center/cover;
+    .hero {
+      height: 100vh;
+      background: linear-gradient(to right, rgba(0,0,0,0.6), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1634039012154-7495c5f2fc38') center/cover no-repeat;
       color: white;
-      padding: 8rem 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       text-align: center;
-      position: relative;
+      padding: 0 20px;
     }
-    .hero::after {
-      content: "";
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0, 0, 0, 0.6);
-    }
-    .hero-content {
-      position: relative;
-      z-index: 1;
-    }
-    .hero h2 {
+    .hero h1 {
       font-size: 3rem;
-      margin-bottom: 1rem;
+      margin-bottom: 20px;
+      animation: fadeUp 2s ease forwards;
     }
     .hero p {
       font-size: 1.2rem;
-      margin-bottom: 2rem;
+      animation: fadeUp 2.5s ease forwards;
     }
     .btn {
-      padding: 0.75rem 2rem;
+      margin-top: 30px;
       background: #E91E63;
       color: white;
+      padding: 12px 24px;
+      border-radius: 30px;
       text-decoration: none;
-      border-radius: 5px;
-      font-weight: bold;
+      font-weight: 600;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
       transition: background 0.3s;
     }
     .btn:hover {
-      background: #d81b60;
+      background: #C2185B;
     }
-    section.services {
-      padding: 4rem 2rem;
+    section {
+      padding: 60px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+    h2 {
       text-align: center;
+      color: #E91E63;
+      margin-bottom: 30px;
     }
-    .services h3 {
-      font-size: 2rem;
-      margin-bottom: 2rem;
+    .about {
+      text-align: center;
+      font-size: 1.1rem;
+      max-width: 800px;
+      margin: auto;
+      color: #444;
+      line-height: 1.7;
     }
-    .card-container {
+    .services {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 2rem;
+      gap: 30px;
     }
     .card {
       width: 300px;
-      background: #f9f9f9;
+      background: white;
       border-radius: 10px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
       overflow: hidden;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      transition: transform 0.3s;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: fadeIn 1s ease-in forwards;
     }
     .card:hover {
-      transform: translateY(-5px);
+      transform: translateY(-10px);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.15);
     }
     .card img {
       width: 100%;
       height: 200px;
       object-fit: cover;
     }
-    .card h4 {
-      margin: 1rem;
+    .card h3 {
+      padding: 15px;
+      font-size: 1.2rem;
       color: #E91E63;
     }
-    .card p {
-      padding: 0 1rem 1rem;
-      color: #555;
-    }
-    section.cta {
-      background: #111;
-      color: white;
-      padding: 4rem 2rem;
+    .cta {
       display: flex;
       flex-wrap: wrap;
-      justify-content: space-between;
+      background: #121212;
+      color: white;
+      padding: 60px 20px;
+      justify-content: center;
       align-items: center;
     }
-    .cta-text {
+    .cta .left {
       flex: 1;
-      max-width: 600px;
-    }
-    .cta h2 {
+      text-align: center;
       font-size: 2rem;
-      margin-bottom: 1rem;
     }
-    .cta p {
+    .cta .right {
+      flex: 1;
+      max-width: 500px;
+      text-align: center;
+    }
+    .cta .right p {
       font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 20px;
     }
-    .cta-action {
-      margin-top: 2rem;
+    .cta .btn {
+      background: #FF5252;
     }
     footer {
-      background: #f1f1f1;
       text-align: center;
-      padding: 1rem;
+      padding: 30px;
+      background: #f2f2f2;
       font-size: 0.9rem;
+      color: #888;
+    }
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
     }
     @media (max-width: 768px) {
-      .card-container {
-        flex-direction: column;
-        align-items: center;
-      }
-      .cta {
-        flex-direction: column;
-        text-align: center;
-      }
+      .cta { flex-direction: column; }
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>Fox Analytics & Solutions</h1>
+    <h1>Fox Analytics</h1>
     <nav>
+      <a href="#about">About</a>
       <a href="#services">Services</a>
-      <a href="#cta">Get in Touch</a>
       <a href="#contact">Contact</a>
     </nav>
   </header>
 
-  <section class="hero">
-    <div class="hero-content">
-      <h2>Turning Data into Action</h2>
-      <p>We deliver smart, AI-powered analytics that transform your business</p>
-      <a href="#cta" class="btn">Start Your Journey</a>
+  <div class="hero">
+    <h1>Turning Data Into Action</h1>
+    <p>Empowering businesses with analytics, insights, and intelligent tools.</p>
+    <a href="#contact" class="btn">Book Free Consultation</a>
+  </div>
+
+  <section id="about">
+    <h2>About Us</h2>
+    <p class="about">Fox Analytics & Solutions is a modern analytics agency helping businesses make smarter decisions through data science, automation, and digital solutions. We blend creativity, insights, and technology to drive measurable results for every client.</p>
+  </section>
+
+  <section id="services">
+    <h2>Our Services</h2>
+    <div class="services">
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1573497491208-6b1acb260507" alt="Outsourcing">
+        <h3>Business Offshore Outsourcing</h3>
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1601041149611-1acbd0b9bbf5" alt="Program Management">
+        <h3>Program Design & Management</h3>
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1614851099511-d9d287870d63" alt="Data Reporting">
+        <h3>Data Analysis & Reporting</h3>
+      </div>
     </div>
   </section>
 
-  <section class="services" id="services">
-    <h3>Our Core Services</h3>
-    <div class="card-container">
-      <div class="card">
-        <img src="/mnt/data/75b0d7f0-1cad-47be-a33d-30bda1f7377c.png" alt="Service 1" />
-        <h4>Business Outsourcing</h4>
-        <p>We handle data-heavy tasks so you can focus on strategy and growth.</p>
-      </div>
-      <div class="card">
-        <img src="/mnt/data/40796a36-f456-4726-9552-86d5971f7408.png" alt="Service 2" />
-        <h4>Program Design</h4>
-        <p>Our experts plan & execute custom data programs with impact.</p>
-      </div>
-      <div class="card">
-        <img src="/mnt/data/be37dac9-7f98-4983-9be9-c30f70989fdd.png" alt="Service 3" />
-        <h4>Data Reporting</h4>
-        <p>Get visual insights and dashboards that help drive decision-making.</p>
-      </div>
+  <section class="cta" id="contact">
+    <div class="left">
+      Ready to Ignite Your Business?
     </div>
-  </section>
-
-  <section class="cta" id="cta">
-    <div class="cta-text">
-      <h2>Ready to Ignite Your Business?</h2>
+    <div class="right">
       <p>Explore how our data services can propel your business to new heights. Get in touch with us today to embark on a journey of data-driven success.</p>
-      <div class="cta-action">
-        <a href="#contact" class="btn">Get in Touch</a>
-      </div>
+      <a href="mailto:info@foxanalytics.com" class="btn">Get in Touch</a>
     </div>
   </section>
 
-  <footer id="contact">
-    <p>Contact us: langatweldon665@gmail.com | WhatsApp</p>
-    <p>&copy; 2025 Fox Analytics & Solutions. All rights reserved.</p>
+  <footer>
+    &copy; 2025 Fox Analytics & Solutions. All rights reserved.
   </footer>
 </body>
 </html>
