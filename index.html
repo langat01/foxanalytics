@@ -39,6 +39,12 @@
       position: sticky;
       top: 0;
       z-index: 100;
+      animation: slideDown 0.5s ease-out;
+    }
+    
+    @keyframes slideDown {
+      from { transform: translateY(-100%); }
+      to { transform: translateY(0); }
     }
     
     .logo {
@@ -65,7 +71,7 @@
       color: var(--dark);
       text-decoration: none;
       font-weight: 600;
-      transition: color 0.3s;
+      transition: all 0.3s;
       position: relative;
     }
     
@@ -98,6 +104,27 @@
       max-width: 1200px;
       margin: 0 auto;
       text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(233,30,99,0.1) 0%, rgba(255,193,7,0.05) 100%);
+      z-index: -1;
+      animation: gradientPulse 15s ease infinite;
+      background-size: 200% 200%;
+    }
+    
+    @keyframes gradientPulse {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
     
     .hero h1 {
@@ -105,6 +132,7 @@
       font-weight: 700;
       margin-bottom: 1.5rem;
       line-height: 1.2;
+      animation: fadeInUp 1s ease-out;
     }
     
     .hero p {
@@ -114,6 +142,7 @@
       max-width: 800px;
       margin-left: auto;
       margin-right: auto;
+      animation: fadeInUp 1s ease-out 0.3s both;
     }
     
     .cta-button {
@@ -127,12 +156,31 @@
       font-size: 1.1rem;
       transition: all 0.3s;
       box-shadow: 0 5px 15px rgba(233,30,99,0.3);
+      animation: fadeInUp 1s ease-out 0.6s both, pulse 2s ease-in-out 2s infinite;
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
     }
     
     .cta-button:hover {
       background: #C2185B;
-      transform: translateY(-3px);
+      transform: translateY(-3px) scale(1.05);
       box-shadow: 0 8px 20px rgba(233,30,99,0.4);
+      animation: none;
     }
     
     /* Section Styles */
@@ -164,6 +212,12 @@
       bottom: -10px;
       left: 25%;
       border-radius: 2px;
+      animation: expand 0.8s ease-out;
+    }
+    
+    @keyframes expand {
+      from { width: 0; }
+      to { width: 50%; }
     }
     
     /* About Section */
@@ -178,12 +232,35 @@
       border-radius: 10px;
       overflow: hidden;
       box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      transform: perspective(1000px) rotateY(-10deg);
+      transition: transform 0.5s;
+      animation: fadeInLeft 1s ease-out;
+    }
+    
+    @keyframes fadeInLeft {
+      from {
+        opacity: 0;
+        transform: perspective(1000px) rotateY(-30deg) translateX(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: perspective(1000px) rotateY(-10deg);
+      }
+    }
+    
+    .about-image:hover {
+      transform: perspective(1000px) rotateY(0deg);
     }
     
     .about-image img {
       width: 100%;
       height: auto;
       display: block;
+      transition: transform 0.5s;
+    }
+    
+    .about-image:hover img {
+      transform: scale(1.05);
     }
     
     /* Services Section */
@@ -199,10 +276,17 @@
       padding: 2rem;
       box-shadow: 0 5px 15px rgba(0,0,0,0.05);
       transition: all 0.3s;
+      opacity: 0;
+      transform: translateY(20px);
     }
     
+    .service-card:nth-child(1) { animation: fadeInUp 0.5s ease-out 0.3s forwards; }
+    .service-card:nth-child(2) { animation: fadeInUp 0.5s ease-out 0.6s forwards; }
+    .service-card:nth-child(3) { animation: fadeInUp 0.5s ease-out 0.9s forwards; }
+    .service-card:nth-child(4) { animation: fadeInUp 0.5s ease-out 1.2s forwards; }
+    
     .service-card:hover {
-      transform: translateY(-10px);
+      transform: translateY(-10px) !important;
       box-shadow: 0 15px 30px rgba(0,0,0,0.1);
     }
     
@@ -210,6 +294,57 @@
       font-size: 2.5rem;
       color: var(--primary);
       margin-bottom: 1.5rem;
+      transition: transform 0.3s;
+    }
+    
+    .service-card:hover .service-icon {
+      transform: scale(1.2) rotate(10deg);
+    }
+    
+    /* More Section */
+    .more-section {
+      background-color: var(--light);
+    }
+    
+    .meeting-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 3rem;
+      align-items: center;
+    }
+    
+    .meeting-image {
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      position: relative;
+    }
+    
+    .meeting-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.5s;
+    }
+    
+    .meeting-image:hover img {
+      transform: scale(1.05);
+    }
+    
+    .meeting-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0,0,0,0.7);
+      color: white;
+      padding: 1rem;
+      transform: translateY(100%);
+      transition: transform 0.3s;
+    }
+    
+    .meeting-image:hover .meeting-caption {
+      transform: translateY(0);
     }
     
     /* Clients Section */
@@ -226,11 +361,13 @@
       transition: all 0.3s;
       max-width: 100%;
       height: auto;
+      transform: scale(0.9);
     }
     
     .client-logo:hover {
       filter: grayscale(0%);
       opacity: 1;
+      transform: scale(1);
     }
     
     /* Contact Section */
@@ -254,6 +391,11 @@
       display: flex;
       align-items: flex-start;
       margin-bottom: 1.5rem;
+      transition: transform 0.3s;
+    }
+    
+    .contact-item:hover {
+      transform: translateX(10px);
     }
     
     .contact-icon {
@@ -267,6 +409,18 @@
       padding: 2rem;
       border-radius: 10px;
       box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      animation: fadeInRight 1s ease-out;
+    }
+    
+    @keyframes fadeInRight {
+      from {
+        opacity: 0;
+        transform: translateX(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
     }
     
     .form-group {
@@ -286,6 +440,12 @@
       border: 1px solid #ddd;
       border-radius: 5px;
       font-family: 'Montserrat', sans-serif;
+      transition: all 0.3s;
+    }
+    
+    .form-control:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(233,30,99,0.1);
     }
     
     textarea.form-control {
@@ -310,11 +470,19 @@
       cursor: pointer;
       transition: all 0.3s;
       z-index: 100;
+      animation: float 3s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+      100% { transform: translateY(0px); }
     }
     
     .help-bubble:hover {
-      transform: scale(1.1);
+      transform: scale(1.1) translateY(-15px);
       background: #C2185B;
+      animation: none;
     }
     
     .help-text {
@@ -416,6 +584,10 @@
       .section {
         padding: 3rem 1.5rem;
       }
+      
+      .meeting-container, .about-content {
+        grid-template-columns: 1fr;
+      }
     }
     
     @media (max-width: 480px) {
@@ -449,8 +621,7 @@
         <li><a href="#services">Services</a></li>
         <li><a href="#clients">Clients</a></li>
         <li><a href="#contact">Contact</a></li>
-        <li><a href="#">More</a></li>
-        <li><a href="#">Products</a></li>
+        <li><a href="#more">More</a></li>
       </ul>
     </nav>
   </header>
@@ -471,7 +642,7 @@
     
     <div class="about-content">
       <div class="about-image">
-        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Fox Analytics Team" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Fox Analytics Team" loading="lazy">
       </div>
       <div>
         <p>Fox Analytics is a premier provider of business offshore outsourcing, data-centric research, data analytics, and business intelligence services. Our office locations are primarily in Kenya with operations across East Africa.</p>
@@ -523,19 +694,44 @@
     </div>
   </section>
 
+  <!-- More Section -->
+  <section id="more" class="section more-section">
+    <div class="section-title">
+      <h2>Our Approach</h2>
+      <p>See how we work with clients to deliver results</p>
+    </div>
+    
+    <div class="meeting-container">
+      <div>
+        <h3>Collaborative Problem Solving</h3>
+        <p>At Fox Analytics, we believe in working closely with our clients to understand their unique challenges and develop customized solutions.</p>
+        <p>Our team of experts will guide you through every step of the process, from initial data collection to final implementation and beyond.</p>
+        <p>We pride ourselves on clear communication and transparent methodologies that ensure you understand exactly how we're helping your business grow.</p>
+      </div>
+      
+      <div class="meeting-image">
+        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Analytics team presenting to clients" loading="lazy">
+        <div class="meeting-caption">
+          Our team presenting data insights to executive clients
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Clients Section -->
   <section id="clients" class="section">
     <div class="section-title">
       <h2>Our Clients</h2>
-      <p>Trusted by leading organizations across industries</p>
+      <p>Trusted by leading organizations across East Africa</p>
     </div>
     
     <div class="clients-grid">
-      <img src="https://via.placeholder.com/150x80?text=Client+1" alt="Client 1" class="client-logo" loading="lazy">
-      <img src="https://via.placeholder.com/150x80?text=Client+2" alt="Client 2" class="client-logo" loading="lazy">
-      <img src="https://via.placeholder.com/150x80?text=Client+3" alt="Client 3" class="client-logo" loading="lazy">
-      <img src="https://via.placeholder.com/150x80?text=Client+4" alt="Client 4" class="client-logo" loading="lazy">
-      <img src="https://via.placeholder.com/150x80?text=Client+5" alt="Client 5" class="client-logo" loading="lazy">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/KCB_Group_Logo.svg/1200px-KCB_Group_Logo.svg.png" alt="KCB Bank" class="client-logo" loading="lazy">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Equity_Bank_%28Kenya%29_logo.svg/1200px-Equity_Bank_%28Kenya%29_logo.svg.png" alt="Equity Bank" class="client-logo" loading="lazy">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Co-operative_Bank_of_Kenya_logo.svg/1200px-Co-operative_Bank_of_Kenya_logo.svg.png" alt="Co-operative Bank" class="client-logo" loading="lazy">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/DTB_logo.svg/1200px-DTB_logo.svg.png" alt="Diamond Trust Bank" class="client-logo" loading="lazy">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/NCBA_Bank_Kenya_logo.svg/1200px-NCBA_Bank_Kenya_logo.svg.png" alt="NCBA Bank" class="client-logo" loading="lazy">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Absa_Bank_Kenya_Logo.svg/1200px-Absa_Bank_Kenya_Logo.svg.png" alt="Absa Bank Kenya" class="client-logo" loading="lazy">
     </div>
   </section>
 
@@ -676,18 +872,23 @@
       });
     });
     
-    // Help bubble animation
-    const helpBubble = document.querySelector('.help-bubble');
+    // Animate elements when they come into view
+    const animateOnScroll = () => {
+      const elements = document.querySelectorAll('.service-card, .section-title, .about-image, .contact-form');
+      
+      elements.forEach(element => {
+        const elementPosition = element.getBoundingClientRect().top;
+        const screenPosition = window.innerHeight / 1.3;
+        
+        if(elementPosition < screenPosition) {
+          element.style.opacity = '1';
+          element.style.transform = 'translateY(0)';
+        }
+      });
+    };
     
-    function floatAnimation() {
-      helpBubble.style.transform = 'translateY(-10px)';
-      setTimeout(() => {
-        helpBubble.style.transform = 'translateY(0)';
-      }, 1500);
-    }
-    
-    // Run the animation every 3 seconds
-    setInterval(floatAnimation, 3000);
+    window.addEventListener('scroll', animateOnScroll);
+    window.addEventListener('load', animateOnScroll);
   </script>
 </body>
 </html>
