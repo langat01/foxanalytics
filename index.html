@@ -608,7 +608,48 @@
         font-size: 2rem;
       }
     }
-  </style>
+    .testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.testimonial-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  transition: transform 0.3s;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.testimonial-card:hover {
+  transform: translateY(-5px);
+}
+
+.client-info {
+  margin-top: 1rem;
+  color: var(--primary);
+}
+
+.star-rating {
+  color: #FFD700;
+  font-size: 1.2rem;
+  margin-top: 0.5rem;
+}
+
+.review-form-container {
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  max-width: 600px;
+  margin: 0 auto;
+  animation: fadeInUp 1s ease-out;
+}
+</style>
 </head>
 <body>
   <!-- Header -->
@@ -871,6 +912,73 @@
     <!-- Add 2 more articles -->
   </div>
 </section>
+<!-- Reviews Section -->
+<section id="reviews" class="section" style="background-color: var(--light);">
+  <div class="section-title">
+    <h2>Client Reviews & Testimonials</h2>
+    <p>What our clients are saying about us</p>
+  </div>
+  
+  <!-- Static Testimonials -->
+  <div class="testimonials-grid">
+    <div class="testimonial-card animate-on-scroll">
+      <p>"Fox Analytics completely transformed our reporting process. Their dashboards made it easier to make real-time decisions."</p>
+      <div class="client-info">
+        <strong>Joseph Mwangi</strong><br>
+        <span>Data Manager, KCB Bank</span>
+      </div>
+      <div class="star-rating">★★★★★</div>
+    </div>
+    
+    <div class="testimonial-card animate-on-scroll">
+      <p>"Their fraud detection model helped us reduce suspicious transactions by over 40%. Professional and reliable team."</p>
+      <div class="client-info">
+        <strong>Aisha Lukwago</strong><br>
+        <span>Risk Officer, MTN Uganda</span>
+      </div>
+      <div class="star-rating">★★★★☆</div>
+    </div>
+    
+    <div class="testimonial-card animate-on-scroll">
+      <p>"We appreciated the training sessions. Our staff learned advanced Excel and SQL skills that improved internal workflows."</p>
+      <div class="client-info">
+        <strong>Daniel Oduor</strong><br>
+        <span>Operations Head, Tigo Tanzania</span>
+      </div>
+      <div class="star-rating">★★★★★</div>
+    </div>
+  </div>
+
+  <!-- Client Review Form -->
+  <div class="review-form-container">
+    <h3 style="margin-top: 3rem;">Leave Your Review</h3>
+    <form id="reviewForm">
+      <div class="form-group">
+        <label for="reviewName">Name</label>
+        <input type="text" id="reviewName" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="reviewRole">Your Role/Company</label>
+        <input type="text" id="reviewRole" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="reviewText">Your Review</label>
+        <textarea id="reviewText" class="form-control" required></textarea>
+      </div>
+      <div class="form-group">
+        <label for="reviewRating">Rating</label>
+        <select id="reviewRating" class="form-control" required>
+          <option value="★★★★★">5 - Excellent</option>
+          <option value="★★★★☆">4 - Good</option>
+          <option value="★★★☆☆">3 - Average</option>
+          <option value="★★☆☆☆">2 - Poor</option>
+          <option value="★☆☆☆☆">1 - Bad</option>
+        </select>
+      </div>
+      <button type="submit" class="cta-button" style="width: 100%;">Submit Review</button>
+    </form>
+  </div>
+</section>
 
   <!-- Contact Section -->
   <section id="contact" class="section" style="background-color: var(--light);">
@@ -1026,6 +1134,38 @@
     
     window.addEventListener('scroll', animateOnScroll);
     window.addEventListener('load', animateOnScroll);
+    // Review form handling
+const reviewForm = document.getElementById('reviewForm');
+reviewForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  
+  const name = document.getElementById('reviewName').value;
+  const role = document.getElementById('reviewRole').value;
+  const text = document.getElementById('reviewText').value;
+  const rating = document.getElementById('reviewRating').value;
+
+  if (name && role && text && rating) {
+    alert(`Thank you, ${name}! Your review has been submitted.`);
+    reviewForm.reset();
+  } else {
+    alert("Please fill in all fields.");
+  }
+});
+
+// Scroll animation
+const animateTestimonials = () => {
+  const testimonials = document.querySelectorAll('.animate-on-scroll');
+  testimonials.forEach(card => {
+    const position = card.getBoundingClientRect().top;
+    if (position < window.innerHeight - 100) {
+      card.style.opacity = 1;
+      card.style.transform = 'translateY(0)';
+    }
+  });
+};
+window.addEventListener('scroll', animateTestimonials);
+window.addEventListener('load', animateTestimonials);
+
   </script>
 </body>
 </html>
