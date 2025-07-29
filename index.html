@@ -1461,7 +1461,7 @@
           <div class="insight-tag">Market Trends</div>
         </div>
         <div class="insight-content">
-          <h3>East Africa Fintech Growth 2025</h3>
+          <h3>East Africa Fintech Growth 2023</h3>
           <p>Analysis of the latest trends in financial technology adoption across Kenya, Uganda, and Tanzania.</p>
           <a href="#" class="read-more">Read Article →</a>
         </div>
@@ -1766,6 +1766,44 @@
           document.getElementById('customerRetention').querySelector('.metric-value').textContent = '92%';
         }
         sampleChart.update();
+      });
+    });
+
+    // Rotating Text Animation
+    const messages = document.querySelectorAll('.rotating-message');
+    let currentMessage = 0;
+    
+    function rotateMessages() {
+      // Hide current message
+      messages[currentMessage].classList.remove('active');
+      
+      // Move to next message
+      currentMessage = (currentMessage + 1) % messages.length;
+      
+      // Show next message
+      messages[currentMessage].classList.add('active');
+    }
+    
+    // Start rotation every 5 seconds
+    setInterval(rotateMessages, 5000);
+    
+    // Header Transparency on Scroll
+    const header = document.getElementById('mainHeader');
+    const heroSection = document.getElementById('clickableHero');
+    
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > heroSection.offsetHeight * 0.8) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+    
+    // Make hero section clickable
+    heroSection.addEventListener('click', () => {
+      window.scrollTo({
+        top: heroSection.offsetHeight,
+        behavior: 'smooth'
       });
     });
 
