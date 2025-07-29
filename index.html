@@ -39,32 +39,41 @@
       overflow-x: hidden;
     }
     
-    /* Header Styles */
+    /* Transparent Header Styles */
     header {
       padding: 1.5rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background-color: white;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-      position: sticky;
+      background-color: transparent;
+      position: fixed;
       top: 0;
+      width: 100%;
       z-index: 100;
-      animation: slideDown 0.5s ease-out;
+      transition: all 0.3s ease;
     }
     
-    @keyframes slideDown {
-      from { transform: translateY(-100%); }
-      to { transform: translateY(0); }
+    header.scrolled {
+      background-color: white;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+    
+    header.scrolled nav ul li a {
+      color: var(--dark);
+    }
+    
+    header.scrolled .logo {
+      color: var(--primary);
     }
     
     .logo {
       font-size: 1.8rem;
       font-weight: 700;
-      color: var(--primary);
+      color: white;
       text-decoration: none;
       display: flex;
       align-items: center;
+      transition: color 0.3s;
     }
     
     .logo span {
@@ -86,15 +95,16 @@
     }
     
     nav ul li a {
-      color: var(--dark);
+      color: white;
       text-decoration: none;
       font-weight: 600;
       transition: all 0.3s;
       position: relative;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
     }
     
     nav ul li a:hover {
-      color: var(--primary);
+      color: var(--accent);
     }
     
     nav ul li a::after {
@@ -102,7 +112,7 @@
       position: absolute;
       width: 0;
       height: 2px;
-      background: var(--primary);
+      background: var(--accent);
       bottom: -5px;
       left: 0;
       transition: width 0.3s;
@@ -115,7 +125,7 @@
     /* Enhanced Hero Section */
     .hero {
       position: relative;
-      min-height: 90vh;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -125,6 +135,12 @@
       background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.3)), 
                   url('https://images.unsplash.com/photo-1603574693312-c4e2c2a4ac68?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
       padding: 0 2rem;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+    
+    .hero:active {
+      transform: scale(0.99);
     }
     
     .hero-content {
@@ -143,23 +159,27 @@
       text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
     }
     
-    .value-prop {
-      font-size: 1.8rem;
-      font-weight: 300;
-      margin: 1rem auto 2rem;
-      max-width: 800px;
-      color: rgba(255,255,255,0.9);
-      animation: fadeInUp 1s ease-out 0.3s both;
+    /* Rotating Text Container */
+    .rotating-text {
+      position: relative;
+      height: 80px;
+      margin: 1.5rem auto;
     }
     
-    .hero p {
-      font-size: 1.3rem;
-      color: rgba(255,255,255,0.85);
-      margin-bottom: 3rem;
-      max-width: 800px;
-      margin-left: auto;
-      margin-right: auto;
-      animation: fadeInUp 1s ease-out 0.5s both;
+    .rotating-message {
+      position: absolute;
+      width: 100%;
+      text-align: center;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+      font-size: 1.8rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.9);
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    }
+    
+    .rotating-message.active {
+      opacity: 1;
     }
     
     .cta-container {
@@ -1086,7 +1106,7 @@
         font-size: 2.5rem;
       }
       
-      .value-prop {
+      .rotating-message {
         font-size: 1.3rem;
       }
       
@@ -1113,6 +1133,10 @@
         font-size: 2rem;
       }
       
+      .rotating-text {
+        height: 120px;
+      }
+      
       .section-title h2 {
         font-size: 2rem;
       }
@@ -1126,7 +1150,7 @@
 </head>
 <body>
   <!-- Header -->
-  <header>
+  <header id="mainHeader">
     <a href="#" class="logo">
       <i class="fas fa-chart-line logo-icon"></i>Fox<span>Analytics</span>
     </a>
@@ -1142,12 +1166,18 @@
     </nav>
   </header>
 
-  <!-- Hero Section -->
-  <section class="hero">
+  <!-- Hero Section with Rotating Messages -->
+  <section class="hero" id="clickableHero">
     <div class="hero-content">
       <h1>Data-Driven Decisions for East African Businesses</h1>
-      <p class="value-prop">We transform raw data into actionable business intelligence that drives growth and reduces risk</p>
-      <p>Trusted by leading banks and telecom companies across the region</p>
+      
+      <div class="rotating-text">
+        <p class="rotating-message active">We transform raw data into actionable business intelligence</p>
+        <p class="rotating-message">Trusted by leading banks and telecom companies</p>
+        <p class="rotating-message">Machine learning solutions tailored for East Africa</p>
+        <p class="rotating-message">Data training programs for business professionals</p>
+      </div>
+      
       <div class="cta-container">
         <a href="#contact" class="cta-button">Get Started</a>
         <a href="#services" class="secondary-button">Learn More</a>
