@@ -122,7 +122,37 @@
       width: 100%;
     }
     
-    /* Enhanced Hero Section with changing background */
+    /* Video Background Styles */
+    .video-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: -1;
+    }
+
+    .video-background video {
+      min-width: 100%;
+      min-height: 100%;
+      object-fit: cover;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .video-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.3));
+    }
+
+    /* Hero Section with Video Background */
     .hero {
       position: relative;
       min-height: 100vh;
@@ -137,36 +167,9 @@
       transition: transform 0.3s;
       overflow: hidden;
     }
-    
+
     .hero:active {
       transform: scale(0.99);
-    }
-    
-    .hero-bg {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-size: cover;
-      background-position: center;
-      opacity: 0;
-      transition: opacity 1.5s ease-in-out;
-      z-index: -1;
-    }
-    
-    .hero-bg.active {
-      opacity: 1;
-    }
-    
-    .hero-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.3));
-      z-index: -1;
     }
     
     .hero-content {
@@ -1152,6 +1155,16 @@
       .meeting-container, .about-content, .contact-container {
         grid-template-columns: 1fr;
       }
+      
+      /* Mobile video fallback */
+      .video-background video {
+        display: none;
+      }
+      .video-background {
+        background-image: url('https://images.unsplash.com/photo-1603574693312-c4e2c2a4ac68?auto=format&fit=crop&w=1400&q=80');
+        background-size: cover;
+        background-position: center;
+      }
     }
     
     @media (max-width: 480px) {
@@ -1192,16 +1205,17 @@
     </nav>
   </header>
 
-  <!-- Hero Section with Rotating Background Images -->
+  <!-- Hero Section with Video Background -->
   <section class="hero" id="clickableHero">
-    <!-- Background images that will rotate -->
-    <div class="hero-bg active" style="background-image: url('https://images.unsplash.com/photo-1603574693312-c4e2c2a4ac68?auto=format&fit=crop&w=1400&q=80');"></div>
-    <div class="hero-bg" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
-    <div class="hero-bg" style="background-image: url('https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
-    <div class="hero-bg" style="background-image: url('https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
-    
-    <!-- Overlay for better text readability -->
-    <div class="hero-overlay"></div>
+    <!-- Video Background -->
+    <div class="video-background">
+      <video autoplay muted loop playsinline>
+        <source src="https://assets.mixkit.co/videos/preview/mixkit-analytics-data-on-a-screen-15808-large.mp4" type="video/mp4">
+        <!-- Fallback image if video doesn't load -->
+        <img src="https://images.unsplash.com/photo-1603574693312-c4e2c2a4ac68?auto=format&fit=crop&w=1400&q=80" alt="Fallback image">
+      </video>
+      <div class="video-overlay"></div>
+    </div>
     
     <div class="hero-content">
       <h1>Data-Driven Decisions for East African Businesses</h1>
@@ -1419,82 +1433,38 @@
   </section>
 
   <!-- Clients Section -->
-  <style>
-  .clients-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2rem;
-    justify-content: center;
-  }
-
-  .client-item {
-    background: white;
-    padding: 1rem;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    text-align: center;
-    transition: transform 0.2s ease;
-    width: 160px;
-  }
-
-  .client-item:hover {
-    transform: translateY(-5px);
-  }
-
-  .client-logo {
-    max-width: 120px;
-    filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.3));
-    transition: transform 0.3s ease;
-    border: 1px solid #eee;
-    border-radius: 8px;
-    background: #fff;
-    padding: 5px;
-  }
-
-  .client-logo:hover {
-    transform: scale(1.05);
-  }
-
-  .client-item p {
-    margin-top: 0.5rem;
-    font-weight: 600;
-    font-size: 14px;
-  }
-</style>
-
-<!-- Clients Section -->
-<section id="clients" class="section">
-  <div class="section-title">
-    <h2>Our Clients</h2>
-    <p>Trusted by leading organizations across East Africa</p>
-  </div>
-  
-  <div class="clients-grid">
-    <div class="client-item">
-      <img src="https://www.kcbgroup.com/themes/custom/kcb/logo.png" alt="KCB Bank" class="client-logo" loading="lazy">
-      <p>KCB Bank</p>
+  <section id="clients" class="section">
+    <div class="section-title">
+      <h2>Our Clients</h2>
+      <p>Trusted by leading organizations across East Africa</p>
     </div>
-    <div class="client-item">
-      <img src="https://equitygroupholdings.com/images/logos/Equity-Logo.png" alt="Equity Bank" class="client-logo" loading="lazy">
-      <p>Equity Bank</p>
+    
+    <div class="clients-grid">
+      <div class="client-item">
+        <img src="https://www.kcbgroup.com/themes/custom/kcb/logo.png" alt="KCB Bank" class="client-logo" loading="lazy">
+        <p>KCB Bank</p>
+      </div>
+      <div class="client-item">
+        <img src="https://equitygroupholdings.com/images/logos/Equity-Logo.png" alt="Equity Bank" class="client-logo" loading="lazy">
+        <p>Equity Bank</p>
+      </div>
+      <div class="client-item">
+        <img src="https://www.co-opbank.co.ke/sites/default/files/logo.png" alt="Co-operative Bank" class="client-logo" loading="lazy">
+        <p>Co-operative Bank</p>
+      </div>
+      <div class="client-item">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Safaricom_logo.svg" alt="Safaricom Kenya" class="client-logo" loading="lazy">
+        <p>Safaricom Kenya</p>
+      </div>
+      <div class="client-item">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/f/f6/Tigo.svg" alt="Tigo Tanzania" class="client-logo" loading="lazy">
+        <p>Tigo Tanzania</p>
+      </div>
+      <div class="client-item">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/d/de/MTN_Logo.svg" alt="MTN Uganda" class="client-logo" loading="lazy">
+        <p>MTN Uganda</p>
+      </div>
     </div>
-    <div class="client-item">
-      <img src="https://www.co-opbank.co.ke/sites/default/files/logo.png" alt="Co-operative Bank" class="client-logo" loading="lazy">
-      <p>Co-operative Bank</p>
-    </div>
-    <div class="client-item">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Safaricom_logo.svg" alt="Safaricom Kenya" class="client-logo" loading="lazy">
-      <p>Safaricom Kenya</p>
-    </div>
-    <div class="client-item">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/f/f6/Tigo.svg" alt="Tigo Tanzania" class="client-logo" loading="lazy">
-      <p>Tigo Tanzania</p>
-    </div>
-    <div class="client-item">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/d/de/MTN_Logo.svg" alt="MTN Uganda" class="client-logo" loading="lazy">
-      <p>MTN Uganda</p>
-    </div>
-  </div>
   </section>
 
   <!-- Insights Section -->
@@ -1843,24 +1813,6 @@
       });
     });
 
-    // Background image rotation
-    const heroBgs = document.querySelectorAll('.hero-bg');
-    let currentBg = 0;
-    
-    function rotateBackground() {
-      // Remove active class from current background
-      heroBgs[currentBg].classList.remove('active');
-      
-      // Move to next background
-      currentBg = (currentBg + 1) % heroBgs.length;
-      
-      // Add active class to new background
-      heroBgs[currentBg].classList.add('active');
-    }
-    
-    // Rotate background every 5 seconds
-    setInterval(rotateBackground, 5000);
-    
     // Rotating text functionality
     const messages = document.querySelectorAll('.rotating-message');
     let currentMessage = 0;
