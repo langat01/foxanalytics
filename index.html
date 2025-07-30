@@ -1419,43 +1419,82 @@
   </section>
 
   <!-- Clients Section -->
-  <section id="clients" class="section">
-    <div class="section-title">
-      <h2>Our Clients</h2>
-      <p>Trusted by leading organizations across East Africa</p>
+  <style>
+  .clients-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+  }
+
+  .client-item {
+    background: white;
+    padding: 1rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    transition: transform 0.2s ease;
+    width: 160px;
+  }
+
+  .client-item:hover {
+    transform: translateY(-5px);
+  }
+
+  .client-logo {
+    max-width: 120px;
+    filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.3));
+    transition: transform 0.3s ease;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    background: #fff;
+    padding: 5px;
+  }
+
+  .client-logo:hover {
+    transform: scale(1.05);
+  }
+
+  .client-item p {
+    margin-top: 0.5rem;
+    font-weight: 600;
+    font-size: 14px;
+  }
+</style>
+
+<!-- Clients Section -->
+<section id="clients" class="section">
+  <div class="section-title">
+    <h2>Our Clients</h2>
+    <p>Trusted by leading organizations across East Africa</p>
+  </div>
+  
+  <div class="clients-grid">
+    <div class="client-item">
+      <img src="https://www.kcbgroup.com/themes/custom/kcb/logo.png" alt="KCB Bank" class="client-logo" loading="lazy">
+      <p>KCB Bank</p>
     </div>
-    
-    <div class="clients-grid">
-      <div class="client-item">
-        <img src="https://www.kcbgroup.com/themes/custom/kcb/logo.png" alt="KCB Bank" class="client-logo" loading="lazy">
-        <p>KCB Bank</p>
-      </div>
-      
-      <div class="client-item">
-        <img src="https://equitygroupholdings.com/images/logos/Equity-Logo.png" alt="Equity Bank" class="client-logo" loading="lazy">
-        <p>Equity Bank</p>
-      </div>
-      
-      <div class="client-item">
-        <img src="https://www.co-opbank.co.ke/sites/default/files/logo.png" alt="Co-operative Bank" class="client-logo" loading="lazy">
-        <p>Co-operative Bank</p>
-      </div>
-      
-      <div class="client-item">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Safaricom_logo.svg" alt="Safaricom Kenya" class="client-logo" loading="lazy">
-        <p>Safaricom Kenya</p>
-      </div>
-      
-      <div class="client-item">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/f/f6/Tigo.svg" alt="Tigo Tanzania" class="client-logo" loading="lazy">
-        <p>Tigo Tanzania</p>
-      </div>
-      
-      <div class="client-item">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/d/de/MTN_Logo.svg" alt="MTN Uganda" class="client-logo" loading="lazy">
-        <p>MTN Uganda</p>
-      </div>
+    <div class="client-item">
+      <img src="https://equitygroupholdings.com/images/logos/Equity-Logo.png" alt="Equity Bank" class="client-logo" loading="lazy">
+      <p>Equity Bank</p>
     </div>
+    <div class="client-item">
+      <img src="https://www.co-opbank.co.ke/sites/default/files/logo.png" alt="Co-operative Bank" class="client-logo" loading="lazy">
+      <p>Co-operative Bank</p>
+    </div>
+    <div class="client-item">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Safaricom_logo.svg" alt="Safaricom Kenya" class="client-logo" loading="lazy">
+      <p>Safaricom Kenya</p>
+    </div>
+    <div class="client-item">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/f/f6/Tigo.svg" alt="Tigo Tanzania" class="client-logo" loading="lazy">
+      <p>Tigo Tanzania</p>
+    </div>
+    <div class="client-item">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/d/de/MTN_Logo.svg" alt="MTN Uganda" class="client-logo" loading="lazy">
+      <p>MTN Uganda</p>
+    </div>
+  </div>
   </section>
 
   <!-- Insights Section -->
