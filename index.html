@@ -1796,7 +1796,7 @@
       
       // Simple validation
       if(name && email) {
-        alert(Thank you, ${name}! We'll contact you soon at ${email}.);
+        alert(`Thank you, ${name}! We'll contact you soon at ${email}.`);
         contactForm.reset();
       } else {
         alert('Please fill in all required fields.');
@@ -1812,7 +1812,7 @@
       const rating = document.getElementById('reviewRating').value;
 
       if (name && role && text && rating) {
-        alert(Thank you, ${name}! Your review has been submitted.);
+        alert(`Thank you, ${name}! Your review has been submitted.`);
         reviewForm.reset();
       } else {
         alert("Please fill in all fields.");
