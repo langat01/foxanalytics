@@ -867,6 +867,12 @@
       border: none;
     }
     
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+    
     .chat-btn:hover {
       transform: scale(1.1);
       background: #C2185B;
@@ -1611,8 +1617,8 @@
         </div>
       </div>
       <div class="chat-input">
-        <input type="text" placeholder="Type your message...">
-        <button class="send-btn">
+        <input type="text" placeholder="Type your message..." id="chatMessage">
+        <button class="send-btn" id="sendMessage">
           <i class="fas fa-paper-plane"></i>
         </button>
       </div>
@@ -1660,8 +1666,8 @@
       <div class="footer-column">
         <h3>Newsletter</h3>
         <p>Subscribe to our newsletter for the latest insights and updates.</p>
-        <form class="newsletter-form">
-          <input type="email" placeholder="Your email address">
+        <form class="newsletter-form" id="newsletterForm">
+          <input type="email" placeholder="Your email address" required>
           <button type="submit" class="newsletter-btn">Subscribe</button>
         </form>
       </div>
@@ -1721,7 +1727,7 @@
         tabBtns.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
         
-        // In a real implementation, this would update the chart data
+        // Update chart data based on selected tab
         if(btn.dataset.tab === 'financial') {
           sampleChart.data.datasets[0].data = [12, 19, 15, 27];
           sampleChart.data.datasets[0].label = 'Revenue Growth';
@@ -1739,7 +1745,7 @@
       });
     });
 
-    // Animated counter
+    // Animated counter for case study results
     const animateCounters = () => {
       const counters = document.querySelectorAll('.result-value');
       const speed = 200;
@@ -1774,6 +1780,9 @@
     const chatBtn = document.querySelector('.chat-btn');
     const chatWindow = document.querySelector('.chat-window');
     const closeChat = document.querySelector('.close-chat');
+    const sendMessageBtn = document.getElementById('sendMessage');
+    const chatMessageInput = document.getElementById('chatMessage');
+    const chatBody = document.querySelector('.chat-body');
     
     chatBtn.addEventListener('click', () => {
       chatWindow.classList.toggle('active');
@@ -1783,9 +1792,39 @@
       chatWindow.classList.remove('active');
     });
 
+    // Send message in chat
+    sendMessageBtn.addEventListener('click', () => {
+      const message = chatMessageInput.value.trim();
+      if(message) {
+        // Add user message
+        const userMessage = document.createElement('div');
+        userMessage.className = 'chat-message sent';
+        userMessage.textContent = message;
+        chatBody.appendChild(userMessage);
+        
+        // Clear input
+        chatMessageInput.value = '';
+        
+        // Simulate response after a delay
+        setTimeout(() => {
+          const responseMessage = document.createElement('div');
+          responseMessage.className = 'chat-message received';
+          responseMessage.textContent = "Thank you for your message! Our team will get back to you shortly.";
+          chatBody.appendChild(responseMessage);
+          
+          // Scroll to bottom of chat
+          chatBody.scrollTop = chatBody.scrollHeight;
+        }, 1000);
+        
+        // Scroll to bottom of chat
+        chatBody.scrollTop = chatBody.scrollHeight;
+      }
+    });
+
     // Form submission
     const contactForm = document.getElementById('contactForm');
     const reviewForm = document.getElementById('reviewForm');
+    const newsletterForm = document.getElementById('newsletterForm');
     
     contactForm.addEventListener('submit', (e) => {
       e.preventDefault();
@@ -1816,6 +1855,15 @@
         reviewForm.reset();
       } else {
         alert("Please fill in all fields.");
+      }
+    });
+    
+    newsletterForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = newsletterForm.querySelector('input').value;
+      if(email) {
+        alert(`Thank you for subscribing with ${email}!`);
+        newsletterForm.reset();
       }
     });
     
@@ -1851,8 +1899,12 @@
       animateCounters();
     };
     
+    // Initialize animations on load and scroll
     window.addEventListener('scroll', animateOnScroll);
     window.addEventListener('load', animateOnScroll);
+    
+    // Initialize counters when page loads if already in view
+    window.addEventListener('load', animateCounters);
   </script>
 </body>
 </html>
