@@ -39,41 +39,32 @@
       overflow-x: hidden;
     }
     
-    /* Transparent Header Styles */
+    /* Header Styles */
     header {
       padding: 1.5rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background-color: transparent;
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 100;
-      transition: all 0.3s ease;
-    }
-    
-    header.scrolled {
       background-color: white;
       box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      animation: slideDown 0.5s ease-out;
     }
     
-    header.scrolled nav ul li a {
-      color: var(--dark);
-    }
-    
-    header.scrolled .logo {
-      color: var(--primary);
+    @keyframes slideDown {
+      from { transform: translateY(-100%); }
+      to { transform: translateY(0); }
     }
     
     .logo {
       font-size: 1.8rem;
       font-weight: 700;
-      color: white;
+      color: var(--primary);
       text-decoration: none;
       display: flex;
       align-items: center;
-      transition: color 0.3s;
     }
     
     .logo span {
@@ -95,16 +86,15 @@
     }
     
     nav ul li a {
-      color: white;
+      color: var(--dark);
       text-decoration: none;
       font-weight: 600;
       transition: all 0.3s;
       position: relative;
-      text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
     }
     
     nav ul li a:hover {
-      color: var(--accent);
+      color: var(--primary);
     }
     
     nav ul li a::after {
@@ -112,7 +102,7 @@
       position: absolute;
       width: 0;
       height: 2px;
-      background: var(--accent);
+      background: var(--primary);
       bottom: -5px;
       left: 0;
       transition: width 0.3s;
@@ -122,54 +112,19 @@
       width: 100%;
     }
     
-    /* Video Background Styles */
-    .video-background {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      z-index: -1;
-    }
-
-    .video-background video {
-      min-width: 100%;
-      min-height: 100%;
-      object-fit: cover;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-
-    .video-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.3));
-    }
-
-    /* Hero Section with Video Background */
+    /* Enhanced Hero Section */
     .hero {
       position: relative;
-      min-height: 100vh;
+      min-height: 90vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center;
       color: white;
+      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.3)), 
+                  url('https://images.unsplash.com/photo-1603574693312-c4e2c2a4ac68?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
       padding: 0 2rem;
-      cursor: pointer;
-      transition: transform 0.3s;
-      overflow: hidden;
-    }
-
-    .hero:active {
-      transform: scale(0.99);
     }
     
     .hero-content {
@@ -188,27 +143,23 @@
       text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
     }
     
-    /* Rotating Text Container */
-    .rotating-text {
-      position: relative;
-      height: 80px;
-      margin: 1.5rem auto;
-    }
-    
-    .rotating-message {
-      position: absolute;
-      width: 100%;
-      text-align: center;
-      opacity: 0;
-      transition: opacity 1s ease-in-out;
+    .value-prop {
       font-size: 1.8rem;
       font-weight: 300;
+      margin: 1rem auto 2rem;
+      max-width: 800px;
       color: rgba(255,255,255,0.9);
-      text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+      animation: fadeInUp 1s ease-out 0.3s both;
     }
     
-    .rotating-message.active {
-      opacity: 1;
+    .hero p {
+      font-size: 1.3rem;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 3rem;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      animation: fadeInUp 1s ease-out 0.5s both;
     }
     
     .cta-container {
@@ -1135,7 +1086,7 @@
         font-size: 2.5rem;
       }
       
-      .rotating-message {
+      .value-prop {
         font-size: 1.3rem;
       }
       
@@ -1155,25 +1106,11 @@
       .meeting-container, .about-content, .contact-container {
         grid-template-columns: 1fr;
       }
-      
-      /* Mobile video fallback */
-      .video-background video {
-        display: none;
-      }
-      .video-background {
-        background-image: url('https://images.unsplash.com/photo-1603574693312-c4e2c2a4ac68?auto=format&fit=crop&w=1400&q=80');
-        background-size: cover;
-        background-position: center;
-      }
     }
     
     @media (max-width: 480px) {
       .hero h1 {
         font-size: 2rem;
-      }
-      
-      .rotating-text {
-        height: 120px;
       }
       
       .section-title h2 {
@@ -1189,7 +1126,7 @@
 </head>
 <body>
   <!-- Header -->
-  <header id="mainHeader">
+  <header>
     <a href="#" class="logo">
       <i class="fas fa-chart-line logo-icon"></i>Fox<span>Analytics</span>
     </a>
@@ -1205,28 +1142,12 @@
     </nav>
   </header>
 
-  <!-- Hero Section with Video Background -->
-  <section class="hero" id="clickableHero">
-    <!-- Video Background -->
-    <div class="video-background">
-      <video autoplay muted loop playsinline>
-        <source src="https://assets.mixkit.co/videos/preview/mixkit-analytics-data-on-a-screen-15808-large.mp4" type="video/mp4">
-        <!-- Fallback image if video doesn't load -->
-        <img src="https://images.unsplash.com/photo-1603574693312-c4e2c2a4ac68?auto=format&fit=crop&w=1400&q=80" alt="Fallback image">
-      </video>
-      <div class="video-overlay"></div>
-    </div>
-    
+  <!-- Hero Section -->
+  <section class="hero">
     <div class="hero-content">
       <h1>Data-Driven Decisions for East African Businesses</h1>
-      
-      <div class="rotating-text">
-        <p class="rotating-message active">We transform raw data into actionable business intelligence</p>
-        <p class="rotating-message">Trusted by leading banks and telecom companies</p>
-        <p class="rotating-message">Machine learning solutions tailored for East Africa</p>
-        <p class="rotating-message">Data training programs for business professionals</p>
-      </div>
-      
+      <p class="value-prop">We transform raw data into actionable business intelligence that drives growth and reduces risk</p>
+      <p>Trusted by leading banks and telecom companies across the region</p>
       <div class="cta-container">
         <a href="#contact" class="cta-button">Get Started</a>
         <a href="#services" class="secondary-button">Learn More</a>
@@ -1444,22 +1365,27 @@
         <img src="https://www.kcbgroup.com/themes/custom/kcb/logo.png" alt="KCB Bank" class="client-logo" loading="lazy">
         <p>KCB Bank</p>
       </div>
+      
       <div class="client-item">
         <img src="https://equitygroupholdings.com/images/logos/Equity-Logo.png" alt="Equity Bank" class="client-logo" loading="lazy">
         <p>Equity Bank</p>
       </div>
+      
       <div class="client-item">
         <img src="https://www.co-opbank.co.ke/sites/default/files/logo.png" alt="Co-operative Bank" class="client-logo" loading="lazy">
         <p>Co-operative Bank</p>
       </div>
+      
       <div class="client-item">
         <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Safaricom_logo.svg" alt="Safaricom Kenya" class="client-logo" loading="lazy">
         <p>Safaricom Kenya</p>
       </div>
+      
       <div class="client-item">
         <img src="https://upload.wikimedia.org/wikipedia/commons/f/f6/Tigo.svg" alt="Tigo Tanzania" class="client-logo" loading="lazy">
         <p>Tigo Tanzania</p>
       </div>
+      
       <div class="client-item">
         <img src="https://upload.wikimedia.org/wikipedia/commons/d/de/MTN_Logo.svg" alt="MTN Uganda" class="client-logo" loading="lazy">
         <p>MTN Uganda</p>
@@ -1505,7 +1431,7 @@
           <div class="insight-tag">Market Trends</div>
         </div>
         <div class="insight-content">
-          <h3>East Africa Fintech Growth 2025</h3>
+          <h3>East Africa Fintech Growth 2023</h3>
           <p>Analysis of the latest trends in financial technology adoption across Kenya, Uganda, and Tanzania.</p>
           <a href="#" class="read-more">Read Article →</a>
         </div>
@@ -1813,34 +1739,6 @@
       });
     });
 
-    // Rotating text functionality
-    const messages = document.querySelectorAll('.rotating-message');
-    let currentMessage = 0;
-    
-    function rotateMessage() {
-      // Remove active class from current message
-      messages[currentMessage].classList.remove('active');
-      
-      // Move to next message
-      currentMessage = (currentMessage + 1) % messages.length;
-      
-      // Add active class to new message
-      messages[currentMessage].classList.add('active');
-    }
-    
-    // Rotate message every 3 seconds
-    setInterval(rotateMessage, 3000);
-    
-    // Header scroll effect
-    window.addEventListener('scroll', function() {
-      const header = document.getElementById('mainHeader');
-      if (window.scrollY > 50) {
-        header.classList.add('scrolled');
-      } else {
-        header.classList.remove('scrolled');
-      }
-    });
-
     // Animated counter
     const animateCounters = () => {
       const counters = document.querySelectorAll('.result-value');
@@ -1898,7 +1796,7 @@
       
       // Simple validation
       if(name && email) {
-        alert(`Thank you, ${name}! We'll contact you soon at ${email}.`);
+        alert(Thank you, ${name}! We'll contact you soon at ${email}.);
         contactForm.reset();
       } else {
         alert('Please fill in all required fields.');
@@ -1914,7 +1812,7 @@
       const rating = document.getElementById('reviewRating').value;
 
       if (name && role && text && rating) {
-        alert(`Thank you, ${name}! Your review has been submitted.`);
+        alert(Thank you, ${name}! Your review has been submitted.);
         reviewForm.reset();
       } else {
         alert("Please fill in all fields.");
