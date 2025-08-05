@@ -39,32 +39,41 @@
       overflow-x: hidden;
     }
     
-    /* Header Styles */
+    /* Transparent Header Styles */
     header {
       padding: 1.5rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background-color: white;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-      position: sticky;
+      background-color: transparent;
+      position: fixed;
       top: 0;
+      width: 100%;
       z-index: 100;
-      animation: slideDown 0.5s ease-out;
+      transition: all 0.3s ease;
     }
     
-    @keyframes slideDown {
-      from { transform: translateY(-100%); }
-      to { transform: translateY(0); }
+    header.scrolled {
+      background-color: white;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+    
+    header.scrolled nav ul li a {
+      color: var(--dark);
+    }
+    
+    header.scrolled .logo {
+      color: var(--primary);
     }
     
     .logo {
       font-size: 1.8rem;
       font-weight: 700;
-      color: var(--primary);
+      color: white;
       text-decoration: none;
       display: flex;
       align-items: center;
+      transition: color 0.3s;
     }
     
     .logo span {
@@ -86,7 +95,7 @@
     }
     
     nav ul li a {
-      color: var(--dark);
+      color: white;
       text-decoration: none;
       font-weight: 600;
       transition: all 0.3s;
@@ -94,7 +103,7 @@
     }
     
     nav ul li a:hover {
-      color: var(--primary);
+      color: var(--accent);
     }
     
     nav ul li a::after {
@@ -102,7 +111,7 @@
       position: absolute;
       width: 0;
       height: 2px;
-      background: var(--primary);
+      background: var(--accent);
       bottom: -5px;
       left: 0;
       transition: width 0.3s;
@@ -112,19 +121,37 @@
       width: 100%;
     }
     
-    /* Enhanced Hero Section */
+    /* Hero Section with Animated Gradient */
     .hero {
       position: relative;
-      min-height: 90vh;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center;
       color: white;
-      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.3)), 
-                  url('https://images.unsplash.com/photo-1603574693312-c4e2c2a4ac68?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
       padding: 0 2rem;
+      background: linear-gradient(-45deg, #E91E63, #607D8B, #FFC107, #4CAF50);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      overflow: hidden;
+    }
+    
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      z-index: 0;
     }
     
     .hero-content {
@@ -143,23 +170,27 @@
       text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
     }
     
-    .value-prop {
-      font-size: 1.8rem;
-      font-weight: 300;
-      margin: 1rem auto 2rem;
-      max-width: 800px;
-      color: rgba(255,255,255,0.9);
-      animation: fadeInUp 1s ease-out 0.3s both;
+    /* Rotating Text Container */
+    .rotating-text {
+      position: relative;
+      height: 80px;
+      margin: 1.5rem auto;
     }
     
-    .hero p {
-      font-size: 1.3rem;
-      color: rgba(255,255,255,0.85);
-      margin-bottom: 3rem;
-      max-width: 800px;
-      margin-left: auto;
-      margin-right: auto;
-      animation: fadeInUp 1s ease-out 0.5s both;
+    .rotating-message {
+      position: absolute;
+      width: 100%;
+      text-align: center;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+      font-size: 1.8rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.9);
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    }
+    
+    .rotating-message.active {
+      opacity: 1;
     }
     
     .cta-container {
@@ -210,6 +241,7 @@
       font-size: 1.5rem;
       opacity: 0;
       animation: fadeInUp 1s ease-out 1s forwards, bounce 2s infinite 2s;
+      z-index: 2;
     }
     
     @keyframes bounce {
@@ -867,12 +899,6 @@
       border: none;
     }
     
-    @keyframes float {
-      0% { transform: translateY(0px); }
-      50% { transform: translateY(-10px); }
-      100% { transform: translateY(0px); }
-    }
-    
     .chat-btn:hover {
       transform: scale(1.1);
       background: #C2185B;
@@ -1092,7 +1118,7 @@
         font-size: 2.5rem;
       }
       
-      .value-prop {
+      .rotating-message {
         font-size: 1.3rem;
       }
       
@@ -1119,6 +1145,10 @@
         font-size: 2rem;
       }
       
+      .rotating-text {
+        height: 120px;
+      }
+      
       .section-title h2 {
         font-size: 2rem;
       }
@@ -1132,7 +1162,7 @@
 </head>
 <body>
   <!-- Header -->
-  <header>
+  <header id="mainHeader">
     <a href="#" class="logo">
       <i class="fas fa-chart-line logo-icon"></i>Fox<span>Analytics</span>
     </a>
@@ -1148,12 +1178,19 @@
     </nav>
   </header>
 
-  <!-- Hero Section -->
+  <!-- Hero Section with Animated Gradient -->
   <section class="hero">
+    <div class="hero-overlay"></div>
     <div class="hero-content">
       <h1>Data-Driven Decisions for East African Businesses</h1>
-      <p class="value-prop">We transform raw data into actionable business intelligence that drives growth and reduces risk</p>
-      <p>Trusted by leading banks and telecom companies across the region</p>
+      
+      <div class="rotating-text">
+        <p class="rotating-message active">We transform raw data into actionable business intelligence</p>
+        <p class="rotating-message">Trusted by leading banks and telecom companies</p>
+        <p class="rotating-message">Machine learning solutions tailored for East Africa</p>
+        <p class="rotating-message">Data training programs for business professionals</p>
+      </div>
+      
       <div class="cta-container">
         <a href="#contact" class="cta-button">Get Started</a>
         <a href="#services" class="secondary-button">Learn More</a>
@@ -1617,8 +1654,8 @@
         </div>
       </div>
       <div class="chat-input">
-        <input type="text" placeholder="Type your message..." id="chatMessage">
-        <button class="send-btn" id="sendMessage">
+        <input type="text" placeholder="Type your message...">
+        <button class="send-btn">
           <i class="fas fa-paper-plane"></i>
         </button>
       </div>
@@ -1666,8 +1703,8 @@
       <div class="footer-column">
         <h3>Newsletter</h3>
         <p>Subscribe to our newsletter for the latest insights and updates.</p>
-        <form class="newsletter-form" id="newsletterForm">
-          <input type="email" placeholder="Your email address" required>
+        <form class="newsletter-form">
+          <input type="email" placeholder="Your email address">
           <button type="submit" class="newsletter-btn">Subscribe</button>
         </form>
       </div>
@@ -1727,7 +1764,7 @@
         tabBtns.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
         
-        // Update chart data based on selected tab
+        // In a real implementation, this would update the chart data
         if(btn.dataset.tab === 'financial') {
           sampleChart.data.datasets[0].data = [12, 19, 15, 27];
           sampleChart.data.datasets[0].label = 'Revenue Growth';
@@ -1745,7 +1782,7 @@
       });
     });
 
-    // Animated counter for case study results
+    // Animated counter
     const animateCounters = () => {
       const counters = document.querySelectorAll('.result-value');
       const speed = 200;
@@ -1780,9 +1817,6 @@
     const chatBtn = document.querySelector('.chat-btn');
     const chatWindow = document.querySelector('.chat-window');
     const closeChat = document.querySelector('.close-chat');
-    const sendMessageBtn = document.getElementById('sendMessage');
-    const chatMessageInput = document.getElementById('chatMessage');
-    const chatBody = document.querySelector('.chat-body');
     
     chatBtn.addEventListener('click', () => {
       chatWindow.classList.toggle('active');
@@ -1792,39 +1826,9 @@
       chatWindow.classList.remove('active');
     });
 
-    // Send message in chat
-    sendMessageBtn.addEventListener('click', () => {
-      const message = chatMessageInput.value.trim();
-      if(message) {
-        // Add user message
-        const userMessage = document.createElement('div');
-        userMessage.className = 'chat-message sent';
-        userMessage.textContent = message;
-        chatBody.appendChild(userMessage);
-        
-        // Clear input
-        chatMessageInput.value = '';
-        
-        // Simulate response after a delay
-        setTimeout(() => {
-          const responseMessage = document.createElement('div');
-          responseMessage.className = 'chat-message received';
-          responseMessage.textContent = "Thank you for your message! Our team will get back to you shortly.";
-          chatBody.appendChild(responseMessage);
-          
-          // Scroll to bottom of chat
-          chatBody.scrollTop = chatBody.scrollHeight;
-        }, 1000);
-        
-        // Scroll to bottom of chat
-        chatBody.scrollTop = chatBody.scrollHeight;
-      }
-    });
-
     // Form submission
     const contactForm = document.getElementById('contactForm');
     const reviewForm = document.getElementById('reviewForm');
-    const newsletterForm = document.getElementById('newsletterForm');
     
     contactForm.addEventListener('submit', (e) => {
       e.preventDefault();
@@ -1855,15 +1859,6 @@
         reviewForm.reset();
       } else {
         alert("Please fill in all fields.");
-      }
-    });
-    
-    newsletterForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const email = newsletterForm.querySelector('input').value;
-      if(email) {
-        alert(`Thank you for subscribing with ${email}!`);
-        newsletterForm.reset();
       }
     });
     
@@ -1899,12 +1894,8 @@
       animateCounters();
     };
     
-    // Initialize animations on load and scroll
     window.addEventListener('scroll', animateOnScroll);
     window.addEventListener('load', animateOnScroll);
-    
-    // Initialize counters when page loads if already in view
-    window.addEventListener('load', animateCounters);
   </script>
 </body>
 </html>
