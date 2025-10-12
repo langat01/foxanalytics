@@ -3,9 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fox Analytics | Data Solutions for East African Businesses</title>
-  <meta name="description" content="Fox Analytics provides data solutions, business intelligence, and analytics tools for small to medium businesses across East Africa.">
-  <meta name="keywords" content="data analytics, business intelligence, East Africa, Kenya, machine learning, data training, small business analytics">
+  <title>Fox Analytics | Inventory & Sales Management</title>
+  <meta name="description" content="Track inventory, sales, and profits with our Excel-like system. Hire data professionals for your business needs.">
   
   <!-- Preconnect for performance -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,12 +16,13 @@
   
   <style>
     :root {
-      --primary: #E91E63; /* Fox Analytics pink */
-      --secondary: #607D8B; /* Complementary dark teal */
-      --accent: #FFC107; /* Accent yellow */
+      --primary: #E91E63;
+      --secondary: #607D8B;
+      --accent: #FFC107;
       --light: #F5F5F5;
       --dark: #212121;
       --success: #4CAF50;
+      --danger: #F44336;
     }
     
     * {
@@ -60,7 +60,6 @@
       text-decoration: none;
       display: flex;
       align-items: center;
-      transition: color 0.3s;
     }
     
     .logo span {
@@ -162,29 +161,6 @@
       font-size: 1.3rem;
       margin-bottom: 2rem;
       animation: fadeInUp 1s ease-out 0.3s both;
-    }
-    
-    /* Rotating Text Container */
-    .rotating-text {
-      position: relative;
-      height: 80px;
-      margin: 1.5rem auto;
-    }
-    
-    .rotating-message {
-      position: absolute;
-      width: 100%;
-      text-align: center;
-      opacity: 0;
-      transition: opacity 1s ease-in-out;
-      font-size: 1.8rem;
-      font-weight: 300;
-      color: rgba(255,255,255,0.9);
-      text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
-    }
-    
-    .rotating-message.active {
-      opacity: 1;
     }
     
     .cta-container {
@@ -300,12 +276,12 @@
       to { width: 50%; }
     }
     
-    /* Business Analytics Dashboard */
-    .dashboard-section {
+    /* Inventory Management System */
+    .inventory-section {
       background-color: var(--light);
     }
     
-    .dashboard-container {
+    .inventory-container {
       background: white;
       border-radius: 10px;
       overflow: hidden;
@@ -314,7 +290,7 @@
       margin: 0 auto;
     }
     
-    .dashboard-tabs {
+    .inventory-tabs {
       display: flex;
       border-bottom: 1px solid #eee;
     }
@@ -344,83 +320,31 @@
       background: var(--primary);
     }
     
-    .dashboard-content {
+    .inventory-content {
       padding: 2rem;
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 2rem;
     }
     
-    .chart-container {
-      height: 300px;
+    .tab-content {
+      display: none;
     }
     
-    .metrics-container {
+    .tab-content.active {
+      display: block;
+    }
+    
+    /* Product Entry Form */
+    .product-form {
       display: grid;
-      grid-template-columns: 1fr;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 1.5rem;
-    }
-    
-    .metric {
-      background: var(--light);
+      margin-bottom: 2rem;
       padding: 1.5rem;
-      border-radius: 8px;
-      text-align: center;
-      transition: all 0.3s;
-    }
-    
-    .metric:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    }
-    
-    .metric-value {
-      font-size: 2.5rem;
-      font-weight: 700;
-      color: var(--primary);
-      margin: 0.5rem 0;
-    }
-    
-    /* Data Input Section */
-    .data-input-section {
-      background-color: white;
-    }
-    
-    .data-input-container {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      align-items: start;
-    }
-    
-    .upload-area {
-      border: 2px dashed #ddd;
-      border-radius: 10px;
-      padding: 2rem;
-      text-align: center;
-      transition: all 0.3s;
-      cursor: pointer;
-    }
-    
-    .upload-area:hover {
-      border-color: var(--primary);
-      background: rgba(233,30,99,0.05);
-    }
-    
-    .upload-icon {
-      font-size: 3rem;
-      color: var(--primary);
-      margin-bottom: 1rem;
-    }
-    
-    .manual-input {
       background: var(--light);
-      padding: 2rem;
-      border-radius: 10px;
+      border-radius: 8px;
     }
     
     .form-group {
-      margin-bottom: 1.5rem;
+      margin-bottom: 1rem;
     }
     
     .form-group label {
@@ -445,131 +369,152 @@
       outline: none;
     }
     
-    /* Pricing Plans */
-    .pricing-section {
+    /* Data Table */
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1.5rem;
+    }
+    
+    .data-table th,
+    .data-table td {
+      padding: 1rem;
+      text-align: left;
+      border-bottom: 1px solid #eee;
+    }
+    
+    .data-table th {
+      background: var(--light);
+      font-weight: 600;
+      color: var(--primary);
+    }
+    
+    .data-table tr:hover {
+      background: rgba(233,30,99,0.05);
+    }
+    
+    .action-buttons {
+      display: flex;
+      gap: 0.5rem;
+    }
+    
+    .btn {
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+    
+    .btn-edit {
+      background: var(--accent);
+      color: var(--dark);
+    }
+    
+    .btn-delete {
+      background: var(--danger);
+      color: white;
+    }
+    
+    .btn-sell {
+      background: var(--success);
+      color: white;
+    }
+    
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    }
+    
+    /* Analytics Dashboard */
+    .analytics-dashboard {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    
+    .metric-card {
+      background: white;
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+      text-align: center;
+      transition: all 0.3s;
+    }
+    
+    .metric-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    .metric-value {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin: 0.5rem 0;
+    }
+    
+    .chart-container {
+      margin-top: 2rem;
+      height: 300px;
+    }
+    
+    /* Job Portal */
+    .jobs-section {
       background-color: var(--light);
     }
     
-    .pricing-grid {
+    .jobs-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 2rem;
     }
     
-    .pricing-card {
-      background: white;
-      border-radius: 10px;
-      padding: 2.5rem 2rem;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-      transition: all 0.3s;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .pricing-card.featured {
-      transform: scale(1.05);
-      border: 2px solid var(--primary);
-    }
-    
-    .pricing-card.featured::before {
-      content: 'Most Popular';
-      position: absolute;
-      top: 20px;
-      right: -30px;
-      background: var(--primary);
-      color: white;
-      padding: 0.3rem 3rem;
-      transform: rotate(45deg);
-      font-size: 0.8rem;
-      font-weight: 600;
-    }
-    
-    .pricing-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-    }
-    
-    .pricing-card.featured:hover {
-      transform: scale(1.05) translateY(-10px);
-    }
-    
-    .plan-name {
-      font-size: 1.5rem;
-      color: var(--primary);
-      margin-bottom: 1rem;
-    }
-    
-    .plan-price {
-      font-size: 3rem;
-      font-weight: 700;
-      color: var(--dark);
-      margin-bottom: 1.5rem;
-    }
-    
-    .plan-price span {
-      font-size: 1rem;
-      color: var(--secondary);
-    }
-    
-    .plan-features {
-      list-style: none;
-      margin-bottom: 2rem;
-      text-align: left;
-    }
-    
-    .plan-features li {
-      margin-bottom: 0.8rem;
-      display: flex;
-      align-items: center;
-    }
-    
-    .plan-features li i {
-      color: var(--success);
-      margin-right: 0.5rem;
-    }
-    
-    /* Services Section */
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-    }
-    
-    .service-card {
+    .job-card {
       background: white;
       border-radius: 10px;
       padding: 2rem;
       box-shadow: 0 5px 15px rgba(0,0,0,0.05);
       transition: all 0.3s;
-      opacity: 0;
-      transform: translateY(20px);
     }
     
-    .service-card:nth-child(1) { animation: fadeInUp 0.5s ease-out 0.3s forwards; }
-    .service-card:nth-child(2) { animation: fadeInUp 0.5s ease-out 0.6s forwards; }
-    .service-card:nth-child(3) { animation: fadeInUp 0.5s ease-out 0.9s forwards; }
-    .service-card:nth-child(4) { animation: fadeInUp 0.5s ease-out 1.2s forwards; }
-    
-    .service-card:hover {
-      transform: translateY(-10px) !important;
+    .job-card:hover {
+      transform: translateY(-10px);
       box-shadow: 0 15px 30px rgba(0,0,0,0.1);
     }
     
-    .service-icon {
-      font-size: 2.5rem;
-      color: var(--primary);
-      margin-bottom: 1.5rem;
-      transition: transform 0.3s;
+    .job-type {
+      display: inline-block;
+      background: var(--primary);
+      color: white;
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
     }
     
-    .service-card:hover .service-icon {
-      transform: scale(1.2) rotate(10deg);
+    .job-requirements {
+      list-style: none;
+      margin: 1rem 0;
+    }
+    
+    .job-requirements li {
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+    }
+    
+    .job-requirements li i {
+      color: var(--success);
+      margin-right: 0.5rem;
     }
     
     /* Contact Section */
     .contact-section {
-      background-color: var(--light);
+      background-color: white;
     }
     
     .contact-container {
@@ -607,155 +552,15 @@
     }
     
     .contact-form {
-      background: white;
+      background: var(--light);
       padding: 2rem;
       border-radius: 10px;
       box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-      animation: fadeInRight 1s ease-out;
-    }
-    
-    @keyframes fadeInRight {
-      from {
-        opacity: 0;
-        transform: translateX(50px);
-      }
-      to {
-        opacity: 1;
-        transform: translateX(0);
-      }
     }
     
     textarea.form-control {
       min-height: 150px;
       resize: vertical;
-    }
-    
-    /* Live Chat */
-    .live-chat {
-      position: fixed;
-      bottom: 2rem;
-      right: 2rem;
-      z-index: 100;
-    }
-    
-    .chat-btn {
-      background: var(--primary);
-      color: white;
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.5rem;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-      cursor: pointer;
-      transition: all 0.3s;
-      animation: float 3s ease-in-out infinite;
-      border: none;
-    }
-    
-    @keyframes float {
-      0% { transform: translateY(0px); }
-      50% { transform: translateY(-10px); }
-      100% { transform: translateY(0px); }
-    }
-    
-    .chat-btn:hover {
-      transform: scale(1.1);
-      background: #C2185B;
-      animation: none;
-    }
-    
-    .chat-window {
-      position: absolute;
-      bottom: 70px;
-      right: 0;
-      width: 300px;
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-      overflow: hidden;
-      transform: scale(0);
-      transform-origin: bottom right;
-      transition: transform 0.3s;
-    }
-    
-    .chat-window.active {
-      transform: scale(1);
-    }
-    
-    .chat-header {
-      background: var(--primary);
-      color: white;
-      padding: 1rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    
-    .close-chat {
-      background: none;
-      border: none;
-      color: white;
-      font-size: 1.2rem;
-      cursor: pointer;
-    }
-    
-    .chat-body {
-      padding: 1rem;
-      height: 300px;
-      overflow-y: auto;
-    }
-    
-    .chat-message {
-      margin-bottom: 1rem;
-      padding: 0.5rem 1rem;
-      border-radius: 5px;
-      max-width: 80%;
-    }
-    
-    .received {
-      background: var(--light);
-      margin-right: auto;
-    }
-    
-    .sent {
-      background: var(--primary);
-      color: white;
-      margin-left: auto;
-    }
-    
-    .chat-input {
-      display: flex;
-      padding: 1rem;
-      border-top: 1px solid #eee;
-    }
-    
-    .chat-input input {
-      flex: 1;
-      padding: 0.5rem 1rem;
-      border: 1px solid #ddd;
-      border-radius: 20px;
-      margin-right: 0.5rem;
-    }
-    
-    .send-btn {
-      background: var(--primary);
-      color: white;
-      border: none;
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: all 0.3s;
-    }
-    
-    .send-btn:hover {
-      background: #C2185B;
     }
     
     /* Footer */
@@ -852,10 +657,6 @@
         font-size: 2.5rem;
       }
       
-      .rotating-message {
-        font-size: 1.3rem;
-      }
-      
       .cta-container {
         flex-direction: column;
         gap: 1rem;
@@ -865,16 +666,21 @@
         padding: 3rem 1.5rem;
       }
       
-      .dashboard-content, .data-input-container, .contact-container {
+      .inventory-tabs {
+        flex-wrap: wrap;
+      }
+      
+      .tab-btn {
+        flex: 1;
+        min-width: 120px;
+      }
+      
+      .product-form {
         grid-template-columns: 1fr;
       }
       
-      .pricing-card.featured {
-        transform: scale(1);
-      }
-      
-      .pricing-card.featured:hover {
-        transform: translateY(-10px);
+      .contact-container {
+        grid-template-columns: 1fr;
       }
     }
     
@@ -883,17 +689,17 @@
         font-size: 2rem;
       }
       
-      .rotating-text {
-        height: 120px;
-      }
-      
       .section-title h2 {
         font-size: 2rem;
       }
       
-      .tab-btn {
-        padding: 0.8rem 1rem;
+      .data-table {
         font-size: 0.9rem;
+      }
+      
+      .data-table th,
+      .data-table td {
+        padding: 0.5rem;
       }
     }
   </style>
@@ -907,9 +713,9 @@
     <nav>
       <ul>
         <li><a href="#">Home</a></li>
-        <li><a href="#dashboard">Dashboard</a></li>
-        <li><a href="#pricing">Pricing</a></li>
-        <li><a href="#services">Services</a></li>
+        <li><a href="#inventory">Inventory System</a></li>
+        <li><a href="#analytics">Analytics</a></li>
+        <li><a href="#jobs">Hire Experts</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
@@ -919,19 +725,12 @@
   <section class="hero">
     <div class="hero-overlay"></div>
     <div class="hero-content">
-      <h1>Data-Driven Decisions for East African Businesses</h1>
-      <p>Powerful analytics tools designed for wholesalers, retailers, and SMEs</p>
-      
-      <div class="rotating-text">
-        <p class="rotating-message active">Track sales, inventory, and customer behavior</p>
-        <p class="rotating-message">Predict demand with machine learning</p>
-        <p class="rotating-message">Optimize pricing and promotions</p>
-        <p class="rotating-message">Gain competitive insights</p>
-      </div>
+      <h1>Inventory & Sales Management System</h1>
+      <p>Track products, sales, and profits with our Excel-like system. Hire data experts for your business.</p>
       
       <div class="cta-container">
-        <a href="#dashboard" class="cta-button">Try Demo Dashboard</a>
-        <a href="#pricing" class="secondary-button">View Plans</a>
+        <a href="#inventory" class="cta-button">Start Tracking Inventory</a>
+        <a href="#jobs" class="secondary-button">Hire Data Experts</a>
       </div>
     </div>
     <div class="scroll-indicator">
@@ -939,193 +738,221 @@
     </div>
   </section>
 
-  <!-- Business Analytics Dashboard -->
-  <section id="dashboard" class="section dashboard-section">
+  <!-- Inventory Management System -->
+  <section id="inventory" class="section inventory-section">
     <div class="section-title">
-      <h2>Business Analytics Dashboard</h2>
-      <p>Interactive analytics for your wholesale or retail business</p>
+      <h2>Inventory Management System</h2>
+      <p>Track your products, sales, and profits in real-time</p>
     </div>
     
-    <div class="dashboard-container">
-      <div class="dashboard-tabs">
-        <button class="tab-btn active" data-tab="sales">Sales Analytics</button>
-        <button class="tab-btn" data-tab="inventory">Inventory Management</button>
-        <button class="tab-btn" data-tab="customers">Customer Insights</button>
+    <div class="inventory-container">
+      <div class="inventory-tabs">
+        <button class="tab-btn active" data-tab="products">Products</button>
+        <button class="tab-btn" data-tab="sales">Sales Entry</button>
+        <button class="tab-btn" data-tab="reports">Reports</button>
       </div>
-      <div class="dashboard-content">
-        <div class="chart-container">
-          <canvas id="dataChart"></canvas>
+      
+      <div class="inventory-content">
+        <!-- Products Tab -->
+        <div class="tab-content active" id="products-tab">
+          <h3>Product Management</h3>
+          <p>Add and manage your product inventory</p>
+          
+          <form class="product-form" id="productForm">
+            <div class="form-group">
+              <label for="productName">Product Name</label>
+              <input type="text" id="productName" class="form-control" placeholder="e.g., Sugar 50kg" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="productQuantity">Initial Quantity</label>
+              <input type="number" id="productQuantity" class="form-control" placeholder="e.g., 100" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="productCost">Cost Price (KSh)</label>
+              <input type="number" id="productCost" class="form-control" placeholder="e.g., 5000" step="0.01" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="productPrice">Selling Price (KSh)</label>
+              <input type="number" id="productPrice" class="form-control" placeholder="e.g., 6000" step="0.01" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="productCategory">Category</label>
+              <select id="productCategory" class="form-control">
+                <option value="food">Food & Beverages</option>
+                <option value="electronics">Electronics</option>
+                <option value="clothing">Clothing</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            
+            <button type="submit" class="cta-button" style="align-self: end;">Add Product</button>
+          </form>
+          
+          <h3>Current Inventory</h3>
+          <table class="data-table" id="inventoryTable">
+            <thead>
+              <tr>
+                <th>Product Name</th>
+                <th>Category</th>
+                <th>Quantity</th>
+                <th>Cost Price</th>
+                <th>Selling Price</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="inventoryTableBody">
+              <!-- Products will be added here dynamically -->
+            </tbody>
+          </table>
         </div>
-        <div class="metrics-container">
-          <div class="metric" id="conversionRate">
-            <h5>Conversion Rate</h5>
-            <div class="metric-value">12.8%</div>
+        
+        <!-- Sales Tab -->
+        <div class="tab-content" id="sales-tab">
+          <h3>Record Sales</h3>
+          <p>Enter daily sales to track revenue and profits</p>
+          
+          <form class="product-form" id="salesForm">
+            <div class="form-group">
+              <label for="salesProduct">Product</label>
+              <select id="salesProduct" class="form-control" required>
+                <option value="">Select a product</option>
+                <!-- Products will be added here dynamically -->
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label for="salesQuantity">Quantity Sold</label>
+              <input type="number" id="salesQuantity" class="form-control" placeholder="e.g., 10" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="salesDate">Date</label>
+              <input type="date" id="salesDate" class="form-control" required>
+            </div>
+            
+            <button type="submit" class="cta-button" style="align-self: end;">Record Sale</button>
+          </form>
+          
+          <h3>Recent Sales</h3>
+          <table class="data-table" id="salesTable">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Revenue</th>
+                <th>Profit</th>
+              </tr>
+            </thead>
+            <tbody id="salesTableBody">
+              <!-- Sales will be added here dynamically -->
+            </tbody>
+          </table>
+        </div>
+        
+        <!-- Reports Tab -->
+        <div class="tab-content" id="reports-tab">
+          <h3>Sales & Profit Reports</h3>
+          <p>View analytics and insights from your sales data</p>
+          
+          <div class="analytics-dashboard">
+            <div class="metric-card">
+              <h4>Total Revenue</h4>
+              <div class="metric-value" id="totalRevenue">KSh 0</div>
+              <p>All time</p>
+            </div>
+            
+            <div class="metric-card">
+              <h4>Total Profit</h4>
+              <div class="metric-value" id="totalProfit">KSh 0</div>
+              <p>All time</p>
+            </div>
+            
+            <div class="metric-card">
+              <h4>Best Selling Product</h4>
+              <div class="metric-value" id="bestProduct">-</div>
+              <p>By quantity sold</p>
+            </div>
+            
+            <div class="metric-card">
+              <h4>Inventory Value</h4>
+              <div class="metric-value" id="inventoryValue">KSh 0</div>
+              <p>Current stock</p>
+            </div>
           </div>
-          <div class="metric" id="revenueGrowth">
-            <h5>Revenue Growth</h5>
-            <div class="metric-value">27%</div>
-          </div>
-          <div class="metric" id="customerRetention">
-            <h5>Customer Retention</h5>
-            <div class="metric-value">84%</div>
+          
+          <div class="chart-container">
+            <canvas id="salesChart"></canvas>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Data Input Section -->
-  <section class="section data-input-section">
+  <!-- Job Portal -->
+  <section id="jobs" class="section jobs-section">
     <div class="section-title">
-      <h2>Upload Your Business Data</h2>
-      <p>Connect your sales, inventory, or customer data for analysis</p>
+      <h2>Hire Data Experts</h2>
+      <p>Connect with skilled professionals for your data needs</p>
     </div>
     
-    <div class="data-input-container">
-      <div class="upload-area" id="uploadArea">
-        <div class="upload-icon">
-          <i class="fas fa-cloud-upload-alt"></i>
-        </div>
-        <h3>Upload Data Files</h3>
-        <p>Drag & drop your CSV, Excel, or connect to your POS system</p>
-        <input type="file" id="fileInput" style="display: none;" accept=".csv,.xlsx,.xls">
-        <button class="cta-button" style="margin-top: 1rem;" onclick="document.getElementById('fileInput').click()">Choose Files</button>
-      </div>
-      
-      <div class="manual-input">
-        <h3>Or Enter Data Manually</h3>
-        <form id="manualDataForm">
-          <div class="form-group">
-            <label for="dataType">Data Type</label>
-            <select id="dataType" class="form-control">
-              <option value="sales">Sales Data</option>
-              <option value="inventory">Inventory Data</option>
-              <option value="customers">Customer Data</option>
-            </select>
-          </div>
-          
-          <div class="form-group">
-            <label for="dataPeriod">Period</label>
-            <select id="dataPeriod" class="form-control">
-              <option value="daily">Daily</option>
-              <option value="weekly">Weekly</option>
-              <option value="monthly">Monthly</option>
-            </select>
-          </div>
-          
-          <div class="form-group">
-            <label for="dataValues">Values (comma separated)</label>
-            <input type="text" id="dataValues" class="form-control" placeholder="e.g., 1200, 1500, 1800, 2100">
-          </div>
-          
-          <button type="submit" class="cta-button" style="width: 100%;">Analyze Data</button>
-        </form>
-      </div>
-    </div>
-  </section>
-
-  <!-- Pricing Plans -->
-  <section id="pricing" class="section pricing-section">
-    <div class="section-title">
-      <h2>Pricing Plans</h2>
-      <p>Choose the plan that fits your business needs</p>
-    </div>
-    
-    <div class="pricing-grid">
-      <div class="pricing-card">
-        <div class="plan-name">Starter</div>
-        <div class="plan-price">KSh 5,000<span>/month</span></div>
-        <ul class="plan-features">
-          <li><i class="fas fa-check"></i> Basic sales analytics</li>
-          <li><i class="fas fa-check"></i> Up to 1,000 transactions/month</li>
-          <li><i class="fas fa-check"></i> 3 user accounts</li>
-          <li><i class="fas fa-check"></i> Email support</li>
-          <li><i class="fas fa-times"></i> Inventory management</li>
-          <li><i class="fas fa-times"></i> Customer segmentation</li>
-          <li><i class="fas fa-times"></i> Predictive analytics</li>
+    <div class="jobs-grid">
+      <div class="job-card">
+        <span class="job-type">Full-time</span>
+        <h3>Data Analyst</h3>
+        <p>Analyze business data, create reports, and provide insights to drive decision-making.</p>
+        
+        <ul class="job-requirements">
+          <li><i class="fas fa-check"></i> SQL and Excel expertise</li>
+          <li><i class="fas fa-check"></i> Data visualization skills</li>
+          <li><i class="fas fa-check"></i> Statistical analysis</li>
+          <li><i class="fas fa-check"></i> 2+ years experience</li>
         </ul>
-        <button class="cta-button">Get Started</button>
+        
+        <button class="cta-button" style="width: 100%;">Hire This Expert</button>
       </div>
       
-      <div class="pricing-card featured">
-        <div class="plan-name">Business</div>
-        <div class="plan-price">KSh 15,000<span>/month</span></div>
-        <ul class="plan-features">
-          <li><i class="fas fa-check"></i> Advanced sales analytics</li>
-          <li><i class="fas fa-check"></i> Up to 10,000 transactions/month</li>
-          <li><i class="fas fa-check"></i> 10 user accounts</li>
-          <li><i class="fas fa-check"></i> Priority support</li>
-          <li><i class="fas fa-check"></i> Inventory management</li>
-          <li><i class="fas fa-check"></i> Customer segmentation</li>
-          <li><i class="fas fa-times"></i> Predictive analytics</li>
+      <div class="job-card">
+        <span class="job-type">Contract</span>
+        <h3>Machine Learning Engineer</h3>
+        <p>Develop and deploy ML models for prediction, classification, and optimization.</p>
+        
+        <ul class="job-requirements">
+          <li><i class="fas fa-check"></i> Python and ML libraries</li>
+          <li><i class="fas fa-check"></i> Data preprocessing</li>
+          <li><i class="fas fa-check"></i> Model deployment</li>
+          <li><i class="fas fa-check"></i> 3+ years experience</li>
         </ul>
-        <button class="cta-button">Get Started</button>
+        
+        <button class="cta-button" style="width: 100%;">Hire This Expert</button>
       </div>
       
-      <div class="pricing-card">
-        <div class="plan-name">Enterprise</div>
-        <div class="plan-price">KSh 35,000<span>/month</span></div>
-        <ul class="plan-features">
-          <li><i class="fas fa-check"></i> Comprehensive analytics suite</li>
-          <li><i class="fas fa-check"></i> Unlimited transactions</li>
-          <li><i class="fas fa-check"></i> Unlimited user accounts</li>
-          <li><i class="fas fa-check"></i> 24/7 dedicated support</li>
-          <li><i class="fas fa-check"></i> Advanced inventory management</li>
-          <li><i class="fas fa-check"></i> Customer lifetime value analysis</li>
-          <li><i class="fas fa-check"></i> Predictive analytics & ML</li>
+      <div class="job-card">
+        <span class="job-type">Part-time</span>
+        <h3>Business Intelligence Developer</h3>
+        <p>Create dashboards and reports to help businesses monitor KPIs and performance.</p>
+        
+        <ul class="job-requirements">
+          <li><i class="fas fa-check"></i> Power BI / Tableau</li>
+          <li><i class="fas fa-check"></i> Database knowledge</li>
+          <li><i class="fas fa-check"></i> ETL processes</li>
+          <li><i class="fas fa-check"></i> 2+ years experience</li>
         </ul>
-        <button class="cta-button">Contact Sales</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- Services Section -->
-  <section id="services" class="section">
-    <div class="section-title">
-      <h2>Our Services</h2>
-      <p>Comprehensive data solutions tailored to your business needs</p>
-    </div>
-    
-    <div class="services-grid">
-      <div class="service-card">
-        <div class="service-icon">
-          <i class="fas fa-robot"></i>
-        </div>
-        <h3>Machine Learning</h3>
-        <p>We develop advanced ML models for demand forecasting, customer segmentation, and pricing optimization tailored for East African markets.</p>
-      </div>
-      
-      <div class="service-card">
-        <div class="service-icon">
-          <i class="fas fa-chalkboard-teacher"></i>
-        </div>
-        <h3>Training & Coaching</h3>
-        <p>World-class training programs in data visualization, machine learning, data audits, and SQL for business professionals.</p>
-      </div>
-      
-      <div class="service-card">
-        <div class="service-icon">
-          <i class="fas fa-search"></i>
-        </div>
-        <h3>Data Audit</h3>
-        <p>We identify gaps in your data ecosystem and provide a customized roadmap aligned with your market positioning.</p>
-      </div>
-      
-      <div class="service-card">
-        <div class="service-icon">
-          <i class="fas fa-user-graduate"></i>
-        </div>
-        <h3>Premium Internships</h3>
-        <p>3-month intensive programs where participants gain hands-on experience solving real data challenges.</p>
+        
+        <button class="cta-button" style="width: 100%;">Hire This Expert</button>
       </div>
     </div>
   </section>
 
   <!-- Contact Section -->
-  <section id="contact" class="contact-section">
+  <section id="contact" class="section contact-section">
     <div class="section-title">
       <h2>Contact Us</h2>
-      <p>Ready to transform your data into business success?</p>
+      <p>Get in touch for custom solutions or support</p>
     </div>
     
     <div class="contact-container">
@@ -1189,11 +1016,6 @@
           </div>
           
           <div class="form-group">
-            <label for="phone">Phone Number</label>
-            <input type="tel" id="phone" class="form-control">
-          </div>
-          
-          <div class="form-group">
             <label for="business">Business Type</label>
             <select id="business" class="form-control">
               <option value="wholesale">Wholesale</option>
@@ -1213,38 +1035,12 @@
     </div>
   </section>
 
-  <!-- Live Chat -->
-  <div class="live-chat">
-    <button class="chat-btn">
-      <i class="fas fa-comment-dots"></i>
-    </button>
-    <div class="chat-window">
-      <div class="chat-header">
-        <h4>Fox Analytics Support</h4>
-        <button class="close-chat">
-          <i class="fas fa-times"></i>
-        </button>
-      </div>
-      <div class="chat-body">
-        <div class="chat-message received">
-          Hello! How can we help you today?
-        </div>
-      </div>
-      <div class="chat-input">
-        <input type="text" placeholder="Type your message...">
-        <button class="send-btn">
-          <i class="fas fa-paper-plane"></i>
-        </button>
-      </div>
-    </div>
-  </div>
-
   <!-- Footer -->
   <footer>
     <div class="footer-content">
       <div class="footer-column">
         <h3>Fox Analytics</h3>
-        <p>Transforming data into business success across East Africa through cutting-edge analytics and machine learning solutions.</p>
+        <p>Inventory management and data solutions for East African businesses.</p>
         <div class="social-links-footer">
           <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
           <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
@@ -1257,9 +1053,9 @@
         <h3>Quick Links</h3>
         <ul class="footer-links">
           <li><a href="#">Home</a></li>
-          <li><a href="#dashboard">Dashboard</a></li>
-          <li><a href="#pricing">Pricing</a></li>
-          <li><a href="#services">Services</a></li>
+          <li><a href="#inventory">Inventory System</a></li>
+          <li><a href="#analytics">Analytics</a></li>
+          <li><a href="#jobs">Hire Experts</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </div>
@@ -1267,193 +1063,407 @@
       <div class="footer-column">
         <h3>Services</h3>
         <ul class="footer-links">
-          <li><a href="#">Machine Learning</a></li>
-          <li><a href="#">Data Training</a></li>
-          <li><a href="#">Data Audits</a></li>
-          <li><a href="#">Premium Internships</a></li>
-          <li><a href="#">Business Intelligence</a></li>
+          <li><a href="#">Inventory Management</a></li>
+          <li><a href="#">Sales Tracking</a></li>
+          <li><a href="#">Profit Analysis</a></li>
+          <li><a href="#">Data Experts</a></li>
           <li><a href="#">Custom Solutions</a></li>
         </ul>
       </div>
       
       <div class="footer-column">
         <h3>Newsletter</h3>
-        <p>Subscribe to our newsletter for the latest insights and updates.</p>
+        <p>Subscribe for business tips and updates.</p>
         <form class="newsletter-form">
           <input type="email" placeholder="Your email address">
-          <button type="submit" class="newsletter-btn">Subscribe</button>
+          <button type="submit" class="cta-button" style="width: 100%; margin-top: 0.5rem;">Subscribe</button>
         </form>
       </div>
     </div>
     
     <div class="copyright">
-      <p>&copy; 2023 Fox Analytics. All rights reserved. | <a href="#" style="color: rgba(255,255,255,0.7);">Privacy Policy</a> | <a href="#" style="color: rgba(255,255,255,0.7);">Terms of Service</a></p>
+      <p>&copy; 2023 Fox Analytics. All rights reserved.</p>
     </div>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script>
-    // Initialize sample chart
-    const ctx = document.getElementById('dataChart').getContext('2d');
-    const sampleChart = new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
-        datasets: [{
-          label: 'Revenue (KSh)',
-          data: [120000, 190000, 150000, 270000, 220000, 300000],
-          backgroundColor: '#E91E63',
-          borderRadius: 5
-        }]
-      },
-      options: {
-        responsive: true,
-        plugins: {
-          legend: {
-            position: 'top',
-          },
-          tooltip: {
-            callbacks: {
-              label: function(context) {
-                return 'KSh ' + context.parsed.y.toLocaleString();
-              }
-            }
-          }
-        },
-        scales: {
-          y: {
-            beginAtZero: true,
-            ticks: {
-              callback: function(value) {
-                return 'KSh ' + value.toLocaleString();
-              }
-            }
-          }
-        }
-      }
-    });
-
+    // Data storage
+    let products = JSON.parse(localStorage.getItem('foxProducts')) || [];
+    let sales = JSON.parse(localStorage.getItem('foxSales')) || [];
+    
+    // Initialize date for sales form
+    document.getElementById('salesDate').valueAsDate = new Date();
+    
     // Tab functionality
     const tabBtns = document.querySelectorAll('.tab-btn');
+    const tabContents = document.querySelectorAll('.tab-content');
+    
     tabBtns.forEach(btn => {
       btn.addEventListener('click', () => {
+        const tabId = btn.dataset.tab;
+        
+        // Update active tab button
         tabBtns.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
         
-        // Update chart based on selected tab
-        if(btn.dataset.tab === 'sales') {
-          sampleChart.data.datasets[0].data = [120000, 190000, 150000, 270000, 220000, 300000];
-          sampleChart.data.datasets[0].label = 'Revenue (KSh)';
-          document.getElementById('conversionRate').querySelector('.metric-value').textContent = '12.8%';
-          document.getElementById('revenueGrowth').querySelector('.metric-value').textContent = '27%';
-          document.getElementById('customerRetention').querySelector('.metric-value').textContent = '84%';
-        } else if(btn.dataset.tab === 'inventory') {
-          sampleChart.data.datasets[0].data = [45, 32, 28, 51, 42, 38];
-          sampleChart.data.datasets[0].label = 'Stock Turnover Rate';
-          document.getElementById('conversionRate').querySelector('.metric-value').textContent = '8.2%';
-          document.getElementById('revenueGrowth').querySelector('.metric-value').textContent = '18%';
-          document.getElementById('customerRetention').querySelector('.metric-value').textContent = '92%';
-        } else {
-          sampleChart.data.datasets[0].data = [450, 520, 480, 610, 580, 650];
-          sampleChart.data.datasets[0].label = 'New Customers';
-          document.getElementById('conversionRate').querySelector('.metric-value').textContent = '5.7%';
-          document.getElementById('revenueGrowth').querySelector('.metric-value').textContent = '15%';
-          document.getElementById('customerRetention').querySelector('.metric-value').textContent = '78%';
+        // Show active tab content
+        tabContents.forEach(content => {
+          content.classList.remove('active');
+          if (content.id === `${tabId}-tab`) {
+            content.classList.add('active');
+          }
+        });
+        
+        // Refresh data when switching to reports tab
+        if (tabId === 'reports') {
+          updateReports();
         }
-        sampleChart.update();
       });
     });
-
-    // File upload functionality
-    const uploadArea = document.getElementById('uploadArea');
-    const fileInput = document.getElementById('fileInput');
     
-    uploadArea.addEventListener('dragover', (e) => {
+    // Product form submission
+    document.getElementById('productForm').addEventListener('submit', function(e) {
       e.preventDefault();
-      uploadArea.style.borderColor = '#E91E63';
-      uploadArea.style.backgroundColor = 'rgba(233,30,99,0.05)';
-    });
-    
-    uploadArea.addEventListener('dragleave', () => {
-      uploadArea.style.borderColor = '#ddd';
-      uploadArea.style.backgroundColor = 'transparent';
-    });
-    
-    uploadArea.addEventListener('drop', (e) => {
-      e.preventDefault();
-      uploadArea.style.borderColor = '#ddd';
-      uploadArea.style.backgroundColor = 'transparent';
       
-      const files = e.dataTransfer.files;
-      if (files.length) {
-        handleFiles(files);
+      const product = {
+        id: Date.now(),
+        name: document.getElementById('productName').value,
+        category: document.getElementById('productCategory').value,
+        quantity: parseInt(document.getElementById('productQuantity').value),
+        costPrice: parseFloat(document.getElementById('productCost').value),
+        sellingPrice: parseFloat(document.getElementById('productPrice').value),
+        sales: 0
+      };
+      
+      products.push(product);
+      saveProducts();
+      renderProducts();
+      updateProductDropdown();
+      this.reset();
+      
+      alert('Product added successfully!');
+    });
+    
+    // Sales form submission
+    document.getElementById('salesForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const productId = parseInt(document.getElementById('salesProduct').value);
+      const quantity = parseInt(document.getElementById('salesQuantity').value);
+      const date = document.getElementById('salesDate').value;
+      
+      const product = products.find(p => p.id === productId);
+      
+      if (!product) {
+        alert('Please select a valid product');
+        return;
       }
+      
+      if (quantity > product.quantity) {
+        alert(`Not enough inventory! Only ${product.quantity} units available.`);
+        return;
+      }
+      
+      // Update product quantity
+      product.quantity -= quantity;
+      product.sales += quantity;
+      
+      // Record sale
+      const sale = {
+        id: Date.now(),
+        productId: productId,
+        productName: product.name,
+        quantity: quantity,
+        revenue: quantity * product.sellingPrice,
+        profit: quantity * (product.sellingPrice - product.costPrice),
+        date: date
+      };
+      
+      sales.push(sale);
+      saveSales();
+      saveProducts();
+      renderProducts();
+      renderSales();
+      updateReports();
+      this.reset();
+      document.getElementById('salesDate').valueAsDate = new Date();
+      
+      alert('Sale recorded successfully!');
     });
     
-    fileInput.addEventListener('change', (e) => {
-      handleFiles(e.target.files);
-    });
-    
-    function handleFiles(files) {
-      // In a real implementation, this would process the files
-      alert(`Successfully uploaded ${files.length} file(s)! Data is being analyzed.`);
-      // Reset file input
-      fileInput.value = '';
+    // Save products to localStorage
+    function saveProducts() {
+      localStorage.setItem('foxProducts', JSON.stringify(products));
     }
-
-    // Manual data form submission
-    const manualDataForm = document.getElementById('manualDataForm');
     
-    manualDataForm.addEventListener('submit', (e) => {
-      e.preventDefault();
+    // Save sales to localStorage
+    function saveSales() {
+      localStorage.setItem('foxSales', JSON.stringify(sales));
+    }
+    
+    // Render products table
+    function renderProducts() {
+      const tbody = document.getElementById('inventoryTableBody');
+      tbody.innerHTML = '';
       
-      const dataType = document.getElementById('dataType').value;
-      const dataPeriod = document.getElementById('dataPeriod').value;
-      const dataValues = document.getElementById('dataValues').value;
-      
-      if (dataValues) {
-        const values = dataValues.split(',').map(val => parseInt(val.trim()));
-        
-        // Update chart with new data
-        sampleChart.data.labels = values.map((_, i) => `${dataPeriod.charAt(0).toUpperCase() + dataPeriod.slice(1)} ${i+1}`);
-        sampleChart.data.datasets[0].data = values;
-        sampleChart.data.datasets[0].label = `${dataType.charAt(0).toUpperCase() + dataType.slice(1)} Data`;
-        sampleChart.update();
-        
-        alert(`Data analyzed successfully! Displaying ${dataType} for ${dataPeriod} periods.`);
-        manualDataForm.reset();
-      } else {
-        alert("Please enter data values.");
+      if (products.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="6" style="text-align: center;">No products added yet</td></tr>';
+        return;
       }
-    });
-
-    // Live chat functionality
-    const chatBtn = document.querySelector('.chat-btn');
-    const chatWindow = document.querySelector('.chat-window');
-    const closeChat = document.querySelector('.close-chat');
+      
+      products.forEach(product => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>${product.name}</td>
+          <td>${product.category}</td>
+          <td>${product.quantity}</td>
+          <td>KSh ${product.costPrice.toLocaleString()}</td>
+          <td>KSh ${product.sellingPrice.toLocaleString()}</td>
+          <td class="action-buttons">
+            <button class="btn btn-sell" onclick="quickSell(${product.id})">Sell</button>
+            <button class="btn btn-edit" onclick="editProduct(${product.id})">Edit</button>
+            <button class="btn btn-delete" onclick="deleteProduct(${product.id})">Delete</button>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
     
-    chatBtn.addEventListener('click', () => {
-      chatWindow.classList.toggle('active');
-    });
+    // Render sales table
+    function renderSales() {
+      const tbody = document.getElementById('salesTableBody');
+      tbody.innerHTML = '';
+      
+      if (sales.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="5" style="text-align: center;">No sales recorded yet</td></tr>';
+        return;
+      }
+      
+      // Show latest sales first
+      const sortedSales = [...sales].sort((a, b) => new Date(b.date) - new Date(a.date));
+      
+      sortedSales.slice(0, 10).forEach(sale => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>${new Date(sale.date).toLocaleDateString()}</td>
+          <td>${sale.productName}</td>
+          <td>${sale.quantity}</td>
+          <td>KSh ${sale.revenue.toLocaleString()}</td>
+          <td>KSh ${sale.profit.toLocaleString()}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
     
-    closeChat.addEventListener('click', () => {
-      chatWindow.classList.remove('active');
-    });
-
-    // Form submission
-    const contactForm = document.getElementById('contactForm');
+    // Update product dropdown
+    function updateProductDropdown() {
+      const select = document.getElementById('salesProduct');
+      select.innerHTML = '<option value="">Select a product</option>';
+      
+      products.forEach(product => {
+        const option = document.createElement('option');
+        option.value = product.id;
+        option.textContent = `${product.name} (${product.quantity} available)`;
+        select.appendChild(option);
+      });
+    }
     
-    contactForm.addEventListener('submit', (e) => {
+    // Quick sell function
+    function quickSell(productId) {
+      const product = products.find(p => p.id === productId);
+      if (!product) return;
+      
+      const quantity = prompt(`How many units of ${product.name} did you sell?`, "1");
+      if (!quantity || isNaN(quantity) || quantity <= 0) return;
+      
+      const qty = parseInt(quantity);
+      if (qty > product.quantity) {
+        alert(`Not enough inventory! Only ${product.quantity} units available.`);
+        return;
+      }
+      
+      // Update product
+      product.quantity -= qty;
+      product.sales += qty;
+      
+      // Record sale
+      const sale = {
+        id: Date.now(),
+        productId: productId,
+        productName: product.name,
+        quantity: qty,
+        revenue: qty * product.sellingPrice,
+        profit: qty * (product.sellingPrice - product.costPrice),
+        date: new Date().toISOString().split('T')[0]
+      };
+      
+      sales.push(sale);
+      saveSales();
+      saveProducts();
+      renderProducts();
+      renderSales();
+      updateReports();
+      updateProductDropdown();
+      
+      alert(`Sold ${qty} units of ${product.name}!`);
+    }
+    
+    // Edit product
+    function editProduct(productId) {
+      const product = products.find(p => p.id === productId);
+      if (!product) return;
+      
+      document.getElementById('productName').value = product.name;
+      document.getElementById('productCategory').value = product.category;
+      document.getElementById('productQuantity').value = product.quantity;
+      document.getElementById('productCost').value = product.costPrice;
+      document.getElementById('productPrice').value = product.sellingPrice;
+      
+      // Remove the product from the list
+      products = products.filter(p => p.id !== productId);
+      saveProducts();
+      renderProducts();
+      updateProductDropdown();
+    }
+    
+    // Delete product
+    function deleteProduct(productId) {
+      if (!confirm('Are you sure you want to delete this product?')) return;
+      
+      products = products.filter(p => p.id !== productId);
+      saveProducts();
+      renderProducts();
+      updateProductDropdown();
+    }
+    
+    // Update reports
+    function updateReports() {
+      // Calculate totals
+      const totalRevenue = sales.reduce((sum, sale) => sum + sale.revenue, 0);
+      const totalProfit = sales.reduce((sum, sale) => sum + sale.profit, 0);
+      const inventoryValue = products.reduce((sum, product) => sum + (product.quantity * product.costPrice), 0);
+      
+      // Find best selling product
+      const productSales = {};
+      sales.forEach(sale => {
+        if (!productSales[sale.productName]) {
+          productSales[sale.productName] = 0;
+        }
+        productSales[sale.productName] += sale.quantity;
+      });
+      
+      let bestProduct = '-';
+      let maxSales = 0;
+      for (const [product, qty] of Object.entries(productSales)) {
+        if (qty > maxSales) {
+          maxSales = qty;
+          bestProduct = product;
+        }
+      }
+      
+      // Update UI
+      document.getElementById('totalRevenue').textContent = `KSh ${totalRevenue.toLocaleString()}`;
+      document.getElementById('totalProfit').textContent = `KSh ${totalProfit.toLocaleString()}`;
+      document.getElementById('bestProduct').textContent = bestProduct;
+      document.getElementById('inventoryValue').textContent = `KSh ${inventoryValue.toLocaleString()}`;
+      
+      // Update chart
+      updateSalesChart();
+    }
+    
+    // Sales chart
+    let salesChart = null;
+    
+    function updateSalesChart() {
+      const ctx = document.getElementById('salesChart').getContext('2d');
+      
+      // Group sales by month
+      const monthlySales = {};
+      sales.forEach(sale => {
+        const date = new Date(sale.date);
+        const monthYear = `${date.getFullYear()}-${date.getMonth() + 1}`;
+        
+        if (!monthlySales[monthYear]) {
+          monthlySales[monthYear] = { revenue: 0, profit: 0 };
+        }
+        
+        monthlySales[monthYear].revenue += sale.revenue;
+        monthlySales[monthYear].profit += sale.profit;
+      });
+      
+      // Sort by date
+      const sortedMonths = Object.keys(monthlySales).sort();
+      
+      const labels = sortedMonths.map(month => {
+        const [year, m] = month.split('-');
+        return new Date(year, m-1).toLocaleDateString('en', { month: 'short', year: 'numeric' });
+      });
+      
+      const revenueData = sortedMonths.map(month => monthlySales[month].revenue);
+      const profitData = sortedMonths.map(month => monthlySales[month].profit);
+      
+      if (salesChart) {
+        salesChart.destroy();
+      }
+      
+      salesChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: labels,
+          datasets: [
+            {
+              label: 'Revenue',
+              data: revenueData,
+              backgroundColor: '#E91E63',
+              borderRadius: 5
+            },
+            {
+              label: 'Profit',
+              data: profitData,
+              backgroundColor: '#4CAF50',
+              borderRadius: 5
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: {
+              position: 'top',
+            },
+            tooltip: {
+              callbacks: {
+                label: function(context) {
+                  return `KSh ${context.parsed.y.toLocaleString()}`;
+                }
+              }
+            }
+          },
+          scales: {
+            y: {
+              beginAtZero: true,
+              ticks: {
+                callback: function(value) {
+                  return 'KSh ' + value.toLocaleString();
+                }
+              }
+            }
+          }
+        }
+      });
+    }
+    
+    // Contact form submission
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
       e.preventDefault();
       
-      // Get form values
       const name = document.getElementById('name').value;
       const email = document.getElementById('email').value;
       
-      // Simple validation
-      if(name && email) {
+      if (name && email) {
         alert(`Thank you, ${name}! We'll contact you soon at ${email}.`);
-        contactForm.reset();
+        this.reset();
       } else {
         alert('Please fill in all required fields.');
       }
@@ -1474,20 +1484,16 @@
       });
     });
     
-    // Rotating text functionality
-    const rotatingMessages = document.querySelectorAll('.rotating-message');
-    let currentMessage = 0;
-    
-    function rotateMessages() {
-      rotatingMessages.forEach(msg => msg.classList.remove('active'));
-      rotatingMessages[currentMessage].classList.add('active');
-      currentMessage = (currentMessage + 1) % rotatingMessages.length;
+    // Initialize the application
+    function initApp() {
+      renderProducts();
+      renderSales();
+      updateProductDropdown();
+      updateReports();
     }
     
-    // Start rotation after page loads
-    window.addEventListener('load', function() {
-      setInterval(rotateMessages, 4000);
-    });
+    // Start the app when page loads
+    window.addEventListener('load', initApp);
   </script>
 </body>
 </html>
