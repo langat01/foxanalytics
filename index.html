@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fox Analytics | Data Solutions for East Africa</title>
-  <meta name="description" content="Fox Analytics provides data solutions and business intelligence services for companies across East Africa including Kenya, Uganda, and Tanzania.">
-  <meta name="keywords" content="data analytics, business intelligence, East Africa, Kenya, machine learning, data training">
+  <title>Fox Analytics | Data Solutions for East African Businesses</title>
+  <meta name="description" content="Fox Analytics provides data solutions, business intelligence, and analytics tools for small to medium businesses across East Africa.">
+  <meta name="keywords" content="data analytics, business intelligence, East Africa, Kenya, machine learning, data training, small business analytics">
   
   <!-- Preconnect for performance -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -39,37 +39,24 @@
       overflow-x: hidden;
     }
     
-    /* Transparent Header Styles */
+    /* Header Styles */
     header {
       padding: 1.5rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background-color: transparent;
+      background-color: white;
       position: fixed;
       top: 0;
       width: 100%;
       z-index: 100;
-      transition: all 0.3s ease;
-    }
-    
-    header.scrolled {
-      background-color: white;
       box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    }
-    
-    header.scrolled nav ul li a {
-      color: var(--dark);
-    }
-    
-    header.scrolled .logo {
-      color: var(--primary);
     }
     
     .logo {
       font-size: 1.8rem;
       font-weight: 700;
-      color: white;
+      color: var(--primary);
       text-decoration: none;
       display: flex;
       align-items: center;
@@ -95,7 +82,7 @@
     }
     
     nav ul li a {
-      color: white;
+      color: var(--dark);
       text-decoration: none;
       font-weight: 600;
       transition: all 0.3s;
@@ -103,7 +90,7 @@
     }
     
     nav ul li a:hover {
-      color: var(--accent);
+      color: var(--primary);
     }
     
     nav ul li a::after {
@@ -111,7 +98,7 @@
       position: absolute;
       width: 0;
       height: 2px;
-      background: var(--accent);
+      background: var(--primary);
       bottom: -5px;
       left: 0;
       transition: width 0.3s;
@@ -121,7 +108,7 @@
       width: 100%;
     }
     
-    /* Hero Section with Animated Gradient */
+    /* Hero Section */
     .hero {
       position: relative;
       min-height: 100vh;
@@ -136,6 +123,7 @@
       background-size: 400% 400%;
       animation: gradientBG 15s ease infinite;
       overflow: hidden;
+      margin-top: 80px;
     }
     
     @keyframes gradientBG {
@@ -168,6 +156,12 @@
       line-height: 1.2;
       animation: fadeInUp 1s ease-out;
       text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    }
+    
+    .hero p {
+      font-size: 1.3rem;
+      margin-bottom: 2rem;
+      animation: fadeInUp 1s ease-out 0.3s both;
     }
     
     /* Rotating Text Container */
@@ -212,6 +206,8 @@
       font-size: 1.1rem;
       transition: all 0.3s;
       box-shadow: 0 5px 15px rgba(233,30,99,0.3);
+      border: none;
+      cursor: pointer;
     }
     
     .secondary-button {
@@ -261,12 +257,6 @@
       }
     }
     
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-      100% { transform: scale(1); }
-    }
-    
     .cta-button:hover {
       background: #C2185B;
       transform: translateY(-3px) scale(1.05);
@@ -310,149 +300,9 @@
       to { width: 50%; }
     }
     
-    /* About Section */
-    .about-content {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 3rem;
-      align-items: center;
-    }
-    
-    .about-image {
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-      transform: perspective(1000px) rotateY(-10deg);
-      transition: transform 0.5s;
-      animation: fadeInLeft 1s ease-out;
-    }
-    
-    @keyframes fadeInLeft {
-      from {
-        opacity: 0;
-        transform: perspective(1000px) rotateY(-30deg) translateX(-50px);
-      }
-      to {
-        opacity: 1;
-        transform: perspective(1000px) rotateY(-10deg);
-      }
-    }
-    
-    .about-image:hover {
-      transform: perspective(1000px) rotateY(0deg);
-    }
-    
-    .about-image img {
-      width: 100%;
-      height: auto;
-      display: block;
-      transition: transform 0.5s;
-    }
-    
-    .about-image:hover img {
-      transform: scale(1.05);
-    }
-    
-    /* Team Section */
-    .team-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      margin-top: 3rem;
-    }
-    
-    .team-member {
-      background: white;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-      transition: all 0.3s;
-      text-align: center;
-    }
-    
-    .team-member:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-    }
-    
-    .member-photo {
-      width: 100%;
-      height: 250px;
-      object-fit: cover;
-    }
-    
-    .member-info {
-      padding: 1.5rem;
-    }
-    
-    .member-info h3 {
-      color: var(--primary);
-      margin-bottom: 0.5rem;
-    }
-    
-    .member-info p {
-      color: var(--secondary);
-      font-size: 0.9rem;
-    }
-    
-    .social-links {
-      display: flex;
-      justify-content: center;
-      margin-top: 1rem;
-      gap: 0.5rem;
-    }
-    
-    .social-links a {
-      color: var(--dark);
-      transition: all 0.3s;
-    }
-    
-    .social-links a:hover {
-      color: var(--primary);
-    }
-    
-    /* Services Section */
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-    }
-    
-    .service-card {
-      background: white;
-      border-radius: 10px;
-      padding: 2rem;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-      transition: all 0.3s;
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    
-    .service-card:nth-child(1) { animation: fadeInUp 0.5s ease-out 0.3s forwards; }
-    .service-card:nth-child(2) { animation: fadeInUp 0.5s ease-out 0.6s forwards; }
-    .service-card:nth-child(3) { animation: fadeInUp 0.5s ease-out 0.9s forwards; }
-    .service-card:nth-child(4) { animation: fadeInUp 0.5s ease-out 1.2s forwards; }
-    
-    .service-card:hover {
-      transform: translateY(-10px) !important;
-      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-    }
-    
-    .service-icon {
-      font-size: 2.5rem;
-      color: var(--primary);
-      margin-bottom: 1.5rem;
-      transition: transform 0.3s;
-    }
-    
-    .service-card:hover .service-icon {
-      transform: scale(1.2) rotate(10deg);
-    }
-    
-    /* Demo Section */
-    .demo-section {
+    /* Business Analytics Dashboard */
+    .dashboard-section {
       background-color: var(--light);
-      padding: 5rem 2rem;
     }
     
     .dashboard-container {
@@ -460,7 +310,7 @@
       border-radius: 10px;
       overflow: hidden;
       box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-      max-width: 1000px;
+      max-width: 1200px;
       margin: 0 auto;
     }
     
@@ -531,263 +381,195 @@
       margin: 0.5rem 0;
     }
     
-    /* More Section */
-    .more-section {
-      background-color: var(--light);
+    /* Data Input Section */
+    .data-input-section {
+      background-color: white;
     }
     
-    .meeting-container {
+    .data-input-container {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: 1fr 1fr;
       gap: 3rem;
-      align-items: center;
+      align-items: start;
     }
     
-    .meeting-image {
+    .upload-area {
+      border: 2px dashed #ddd;
       border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-      position: relative;
-    }
-    
-    .meeting-image img {
-      width: 100%;
-      height: auto;
-      display: block;
-      transition: transform 0.5s;
-    }
-    
-    .meeting-image:hover img {
-      transform: scale(1.05);
-    }
-    
-    .meeting-caption {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: rgba(0,0,0,0.7);
-      color: white;
-      padding: 1rem;
-      transform: translateY(100%);
-      transition: transform 0.3s;
-    }
-    
-    .meeting-image:hover .meeting-caption {
-      transform: translateY(0);
-    }
-    
-    /* Case Studies Section */
-    .case-studies {
-      padding: 5rem 2rem;
-      background: linear-gradient(135deg, rgba(233,30,99,0.03) 0%, rgba(255,193,7,0.02) 100%);
-    }
-    
-    .case-study-carousel {
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-    
-    .case-study {
-      background: white;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    }
-    
-    .results-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1rem;
       padding: 2rem;
-      background: var(--primary);
-      color: white;
-    }
-    
-    .result-card {
-      background: rgba(255,255,255,0.1);
-      padding: 1.5rem;
-      border-radius: 8px;
       text-align: center;
+      transition: all 0.3s;
+      cursor: pointer;
     }
     
-    .result-value {
-      font-size: 2.5rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
+    .upload-area:hover {
+      border-color: var(--primary);
+      background: rgba(233,30,99,0.05);
     }
     
-    .case-content {
+    .upload-icon {
+      font-size: 3rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+    
+    .manual-input {
+      background: var(--light);
       padding: 2rem;
+      border-radius: 10px;
     }
     
-    .read-more {
-      display: inline-block;
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
       color: var(--primary);
       font-weight: 600;
-      margin-top: 1rem;
-      text-decoration: none;
+    }
+    
+    .form-control {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-family: 'Montserrat', sans-serif;
       transition: all 0.3s;
     }
     
-    .read-more:hover {
-      color: #C2185B;
-      transform: translateX(5px);
+    .form-control:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(233,30,99,0.1);
+      outline: none;
     }
     
-    /* Clients Section */
-    .clients-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 2rem;
-      align-items: center;
-    }
-    
-    .client-logo {
-      filter: grayscale(100%);
-      opacity: 0.7;
-      transition: all 0.3s;
-      max-width: 100%;
-      height: auto;
-      transform: scale(0.9);
-    }
-    
-    .client-logo:hover {
-      filter: grayscale(0%);
-      opacity: 1;
-      transform: scale(1);
-    }
-    
-    .client-item {
-      text-align: center;
-      padding: 1rem;
-    }
-    
-    .client-item p {
-      margin-top: 0.5rem;
-      font-weight: 600;
-      color: var(--secondary);
-    }
-    
-    /* Insights Section */
-    .insights {
+    /* Pricing Plans */
+    .pricing-section {
       background-color: var(--light);
-      padding: 5rem 2rem;
     }
     
-    .insights-grid {
+    .pricing-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 2rem;
-      margin-top: 2rem;
     }
     
-    .insight-card {
+    .pricing-card {
       background: white;
       border-radius: 10px;
-      overflow: hidden;
+      padding: 2.5rem 2rem;
       box-shadow: 0 5px 15px rgba(0,0,0,0.05);
       transition: all 0.3s;
-    }
-    
-    .insight-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-    }
-    
-    .insight-img {
+      text-align: center;
       position: relative;
-      height: 200px;
       overflow: hidden;
     }
     
-    .insight-img img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.5s;
+    .pricing-card.featured {
+      transform: scale(1.05);
+      border: 2px solid var(--primary);
     }
     
-    .insight-card:hover .insight-img img {
-      transform: scale(1.1);
-    }
-    
-    .insight-tag {
+    .pricing-card.featured::before {
+      content: 'Most Popular';
       position: absolute;
-      top: 1rem;
-      right: 1rem;
+      top: 20px;
+      right: -30px;
       background: var(--primary);
       color: white;
-      padding: 0.3rem 0.8rem;
-      border-radius: 20px;
+      padding: 0.3rem 3rem;
+      transform: rotate(45deg);
       font-size: 0.8rem;
       font-weight: 600;
     }
     
-    .insight-content {
-      padding: 1.5rem;
+    .pricing-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
     }
     
-    .insight-content h3 {
-      margin-bottom: 0.5rem;
+    .pricing-card.featured:hover {
+      transform: scale(1.05) translateY(-10px);
     }
     
-    /* Reviews Section */
-    .reviews-section {
-      padding: 5rem 2rem;
+    .plan-name {
+      font-size: 1.5rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
     }
     
-    .testimonials-grid {
+    .plan-price {
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 1.5rem;
+    }
+    
+    .plan-price span {
+      font-size: 1rem;
+      color: var(--secondary);
+    }
+    
+    .plan-features {
+      list-style: none;
+      margin-bottom: 2rem;
+      text-align: left;
+    }
+    
+    .plan-features li {
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+    }
+    
+    .plan-features li i {
+      color: var(--success);
+      margin-right: 0.5rem;
+    }
+    
+    /* Services Section */
+    .services-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 2rem;
-      margin-bottom: 2rem;
     }
     
-    .testimonial-card {
+    .service-card {
       background: white;
-      padding: 2rem;
       border-radius: 10px;
+      padding: 2rem;
       box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-      transition: transform 0.3s;
+      transition: all 0.3s;
       opacity: 0;
-      transform: translateY(30px);
+      transform: translateY(20px);
     }
     
-    .testimonial-card.animate-on-scroll {
-      opacity: 1;
-      transform: translateY(0);
+    .service-card:nth-child(1) { animation: fadeInUp 0.5s ease-out 0.3s forwards; }
+    .service-card:nth-child(2) { animation: fadeInUp 0.5s ease-out 0.6s forwards; }
+    .service-card:nth-child(3) { animation: fadeInUp 0.5s ease-out 0.9s forwards; }
+    .service-card:nth-child(4) { animation: fadeInUp 0.5s ease-out 1.2s forwards; }
+    
+    .service-card:hover {
+      transform: translateY(-10px) !important;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
     }
     
-    .testimonial-card:hover {
-      transform: translateY(-5px) !important;
-    }
-    
-    .client-info {
-      margin-top: 1rem;
+    .service-icon {
+      font-size: 2.5rem;
       color: var(--primary);
+      margin-bottom: 1.5rem;
+      transition: transform 0.3s;
     }
     
-    .star-rating {
-      color: #FFD700;
-      font-size: 1.2rem;
-      margin-top: 0.5rem;
-    }
-    
-    .review-form-container {
-      background: white;
-      padding: 2rem;
-      border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-      max-width: 600px;
-      margin: 3rem auto 0;
-      animation: fadeInUp 1s ease-out;
+    .service-card:hover .service-icon {
+      transform: scale(1.2) rotate(10deg);
     }
     
     /* Contact Section */
     .contact-section {
       background-color: var(--light);
-      padding: 5rem 2rem;
     }
     
     .contact-container {
@@ -843,32 +625,6 @@
       }
     }
     
-    .form-group {
-      margin-bottom: 1.5rem;
-    }
-    
-    .form-group label {
-      display: block;
-      margin-bottom: 0.5rem;
-      color: var(--primary);
-      font-weight: 600;
-    }
-    
-    .form-control {
-      width: 100%;
-      padding: 0.8rem 1rem;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-      font-family: 'Montserrat', sans-serif;
-      transition: all 0.3s;
-    }
-    
-    .form-control:focus {
-      border-color: var(--primary);
-      box-shadow: 0 0 0 3px rgba(233,30,99,0.1);
-      outline: none;
-    }
-    
     textarea.form-control {
       min-height: 150px;
       resize: vertical;
@@ -897,6 +653,12 @@
       transition: all 0.3s;
       animation: float 3s ease-in-out infinite;
       border: none;
+    }
+    
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
     }
     
     .chat-btn:hover {
@@ -1061,34 +823,6 @@
       transform: translateY(-3px);
     }
     
-    .newsletter-form {
-      margin-top: 1rem;
-    }
-    
-    .newsletter-form input {
-      width: 100%;
-      padding: 0.8rem;
-      border: none;
-      border-radius: 5px;
-      margin-bottom: 0.5rem;
-    }
-    
-    .newsletter-btn {
-      background: var(--primary);
-      color: white;
-      border: none;
-      padding: 0.8rem;
-      width: 100%;
-      border-radius: 5px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s;
-    }
-    
-    .newsletter-btn:hover {
-      background: #C2185B;
-    }
-    
     .copyright {
       margin-top: 3rem;
       padding-top: 1.5rem;
@@ -1131,12 +865,16 @@
         padding: 3rem 1.5rem;
       }
       
-      .dashboard-content {
+      .dashboard-content, .data-input-container, .contact-container {
         grid-template-columns: 1fr;
       }
       
-      .meeting-container, .about-content, .contact-container {
-        grid-template-columns: 1fr;
+      .pricing-card.featured {
+        transform: scale(1);
+      }
+      
+      .pricing-card.featured:hover {
+        transform: translateY(-10px);
       }
     }
     
@@ -1169,31 +907,31 @@
     <nav>
       <ul>
         <li><a href="#">Home</a></li>
-        <li><a href="#about">About</a></li>
+        <li><a href="#dashboard">Dashboard</a></li>
+        <li><a href="#pricing">Pricing</a></li>
         <li><a href="#services">Services</a></li>
-        <li><a href="#clients">Clients</a></li>
         <li><a href="#contact">Contact</a></li>
-        <li><a href="#insights">Insights</a></li>
       </ul>
     </nav>
   </header>
 
-  <!-- Hero Section with Animated Gradient -->
+  <!-- Hero Section -->
   <section class="hero">
     <div class="hero-overlay"></div>
     <div class="hero-content">
       <h1>Data-Driven Decisions for East African Businesses</h1>
+      <p>Powerful analytics tools designed for wholesalers, retailers, and SMEs</p>
       
       <div class="rotating-text">
-        <p class="rotating-message active">We transform raw data into actionable business intelligence</p>
-        <p class="rotating-message">Trusted by leading banks and telecom companies</p>
-        <p class="rotating-message">Machine learning solutions tailored for East Africa</p>
-        <p class="rotating-message">Data training programs for business professionals</p>
+        <p class="rotating-message active">Track sales, inventory, and customer behavior</p>
+        <p class="rotating-message">Predict demand with machine learning</p>
+        <p class="rotating-message">Optimize pricing and promotions</p>
+        <p class="rotating-message">Gain competitive insights</p>
       </div>
       
       <div class="cta-container">
-        <a href="#contact" class="cta-button">Get Started</a>
-        <a href="#services" class="secondary-button">Learn More</a>
+        <a href="#dashboard" class="cta-button">Try Demo Dashboard</a>
+        <a href="#pricing" class="secondary-button">View Plans</a>
       </div>
     </div>
     <div class="scroll-indicator">
@@ -1201,71 +939,148 @@
     </div>
   </section>
 
-  <!-- About Section -->
-  <section id="about" class="section">
+  <!-- Business Analytics Dashboard -->
+  <section id="dashboard" class="section dashboard-section">
     <div class="section-title">
-      <h2>About Fox Analytics</h2>
-      <p>Your trusted partner for data-driven decision making</p>
+      <h2>Business Analytics Dashboard</h2>
+      <p>Interactive analytics for your wholesale or retail business</p>
     </div>
     
-    <div class="about-content">
-      <div class="about-image">
-        <img src="https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Fox Analytics Team" loading="lazy">
+    <div class="dashboard-container">
+      <div class="dashboard-tabs">
+        <button class="tab-btn active" data-tab="sales">Sales Analytics</button>
+        <button class="tab-btn" data-tab="inventory">Inventory Management</button>
+        <button class="tab-btn" data-tab="customers">Customer Insights</button>
       </div>
-      <div>
-        <p>Fox Analytics is a premier provider of business offshore outsourcing, data-centric research, data analytics, and business intelligence services. Our office locations are primarily in Kenya with operations across East Africa.</p>
-        <p>We combine cutting-edge technology with deep industry knowledge to deliver actionable insights that drive business growth. Our team of experts specializes in transforming complex data into clear, actionable strategies.</p>
-        <p>Whether you need comprehensive data analysis, machine learning solutions, or complete data strategy development, Fox Analytics has the expertise to help your business thrive in today's data-driven economy.</p>
-      </div>
-    </div>
-
-    <!-- Team Section -->
-    <div class="section-title" style="margin-top: 5rem;">
-      <h2>Our Team</h2>
-      <p>Meet the experts behind your data success</p>
-    </div>
-    
-    <div class="team-grid">
-      <div class="team-member">
-        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80" alt="Data Scientist" class="member-photo" loading="lazy">
-        <div class="member-info">
-          <h3>Weldon Langat</h3>
-          <p>Chief Data Scientist</p>
-          <div class="social-links">
-            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-          </div>
+      <div class="dashboard-content">
+        <div class="chart-container">
+          <canvas id="dataChart"></canvas>
         </div>
-      </div>
-      
-      <div class="team-member">
-        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80" alt="Business Analyst" class="member-photo" loading="lazy">
-        <div class="member-info">
-          <h3>Sarah Mwangi</h3>
-          <p>Senior Business Analyst</p>
-          <div class="social-links">
-            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
+        <div class="metrics-container">
+          <div class="metric" id="conversionRate">
+            <h5>Conversion Rate</h5>
+            <div class="metric-value">12.8%</div>
           </div>
-        </div>
-      </div>
-      
-      <div class="team-member">
-        <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80" alt="ML Engineer" class="member-photo" loading="lazy">
-        <div class="member-info">
-          <h3>James Omondi</h3>
-          <p>Machine Learning Engineer</p>
-          <div class="social-links">
-            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
+          <div class="metric" id="revenueGrowth">
+            <h5>Revenue Growth</h5>
+            <div class="metric-value">27%</div>
+          </div>
+          <div class="metric" id="customerRetention">
+            <h5>Customer Retention</h5>
+            <div class="metric-value">84%</div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- Data Input Section -->
+  <section class="section data-input-section">
+    <div class="section-title">
+      <h2>Upload Your Business Data</h2>
+      <p>Connect your sales, inventory, or customer data for analysis</p>
+    </div>
+    
+    <div class="data-input-container">
+      <div class="upload-area" id="uploadArea">
+        <div class="upload-icon">
+          <i class="fas fa-cloud-upload-alt"></i>
+        </div>
+        <h3>Upload Data Files</h3>
+        <p>Drag & drop your CSV, Excel, or connect to your POS system</p>
+        <input type="file" id="fileInput" style="display: none;" accept=".csv,.xlsx,.xls">
+        <button class="cta-button" style="margin-top: 1rem;" onclick="document.getElementById('fileInput').click()">Choose Files</button>
+      </div>
+      
+      <div class="manual-input">
+        <h3>Or Enter Data Manually</h3>
+        <form id="manualDataForm">
+          <div class="form-group">
+            <label for="dataType">Data Type</label>
+            <select id="dataType" class="form-control">
+              <option value="sales">Sales Data</option>
+              <option value="inventory">Inventory Data</option>
+              <option value="customers">Customer Data</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="dataPeriod">Period</label>
+            <select id="dataPeriod" class="form-control">
+              <option value="daily">Daily</option>
+              <option value="weekly">Weekly</option>
+              <option value="monthly">Monthly</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="dataValues">Values (comma separated)</label>
+            <input type="text" id="dataValues" class="form-control" placeholder="e.g., 1200, 1500, 1800, 2100">
+          </div>
+          
+          <button type="submit" class="cta-button" style="width: 100%;">Analyze Data</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Plans -->
+  <section id="pricing" class="section pricing-section">
+    <div class="section-title">
+      <h2>Pricing Plans</h2>
+      <p>Choose the plan that fits your business needs</p>
+    </div>
+    
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <div class="plan-name">Starter</div>
+        <div class="plan-price">KSh 5,000<span>/month</span></div>
+        <ul class="plan-features">
+          <li><i class="fas fa-check"></i> Basic sales analytics</li>
+          <li><i class="fas fa-check"></i> Up to 1,000 transactions/month</li>
+          <li><i class="fas fa-check"></i> 3 user accounts</li>
+          <li><i class="fas fa-check"></i> Email support</li>
+          <li><i class="fas fa-times"></i> Inventory management</li>
+          <li><i class="fas fa-times"></i> Customer segmentation</li>
+          <li><i class="fas fa-times"></i> Predictive analytics</li>
+        </ul>
+        <button class="cta-button">Get Started</button>
+      </div>
+      
+      <div class="pricing-card featured">
+        <div class="plan-name">Business</div>
+        <div class="plan-price">KSh 15,000<span>/month</span></div>
+        <ul class="plan-features">
+          <li><i class="fas fa-check"></i> Advanced sales analytics</li>
+          <li><i class="fas fa-check"></i> Up to 10,000 transactions/month</li>
+          <li><i class="fas fa-check"></i> 10 user accounts</li>
+          <li><i class="fas fa-check"></i> Priority support</li>
+          <li><i class="fas fa-check"></i> Inventory management</li>
+          <li><i class="fas fa-check"></i> Customer segmentation</li>
+          <li><i class="fas fa-times"></i> Predictive analytics</li>
+        </ul>
+        <button class="cta-button">Get Started</button>
+      </div>
+      
+      <div class="pricing-card">
+        <div class="plan-name">Enterprise</div>
+        <div class="plan-price">KSh 35,000<span>/month</span></div>
+        <ul class="plan-features">
+          <li><i class="fas fa-check"></i> Comprehensive analytics suite</li>
+          <li><i class="fas fa-check"></i> Unlimited transactions</li>
+          <li><i class="fas fa-check"></i> Unlimited user accounts</li>
+          <li><i class="fas fa-check"></i> 24/7 dedicated support</li>
+          <li><i class="fas fa-check"></i> Advanced inventory management</li>
+          <li><i class="fas fa-check"></i> Customer lifetime value analysis</li>
+          <li><i class="fas fa-check"></i> Predictive analytics & ML</li>
+        </ul>
+        <button class="cta-button">Contact Sales</button>
+      </div>
+    </div>
+  </section>
+
   <!-- Services Section -->
-  <section id="services" class="section" style="background-color: var(--light);">
+  <section id="services" class="section">
     <div class="section-title">
       <h2>Our Services</h2>
       <p>Comprehensive data solutions tailored to your business needs</p>
@@ -1277,7 +1092,7 @@
           <i class="fas fa-robot"></i>
         </div>
         <h3>Machine Learning</h3>
-        <p>We develop advanced ML models for credit scoring, chatbots, real estate predictions, and more to help reduce risk and identify opportunities.</p>
+        <p>We develop advanced ML models for demand forecasting, customer segmentation, and pricing optimization tailored for East African markets.</p>
       </div>
       
       <div class="service-card">
@@ -1303,248 +1118,6 @@
         <h3>Premium Internships</h3>
         <p>3-month intensive programs where participants gain hands-on experience solving real data challenges.</p>
       </div>
-    </div>
-  </section>
-
-  <!-- Demo Section -->
-  <section class="demo-section">
-    <div class="section-title">
-      <h2>See Our Analytics in Action</h2>
-      <p>Explore interactive examples of our data solutions</p>
-    </div>
-    
-    <div class="dashboard-container">
-      <div class="dashboard-tabs">
-        <button class="tab-btn active" data-tab="financial">Financial Insights</button>
-        <button class="tab-btn" data-tab="customer">Customer Behavior</button>
-      </div>
-      <div class="dashboard-content">
-        <div class="chart-container">
-          <canvas id="dataChart"></canvas>
-        </div>
-        <div class="metrics-container">
-          <div class="metric" id="conversionRate">
-            <h5>Conversion Rate</h5>
-            <div class="metric-value">12.8%</div>
-          </div>
-          <div class="metric" id="revenueGrowth">
-            <h5>Revenue Growth</h5>
-            <div class="metric-value">27%</div>
-          </div>
-          <div class="metric" id="customerRetention">
-            <h5>Customer Retention</h5>
-            <div class="metric-value">84%</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- More Section -->
-  <section id="more" class="section more-section">
-    <div class="section-title">
-      <h2>Our Approach</h2>
-      <p>See how we work with clients to deliver results</p>
-    </div>
-    
-    <div class="meeting-container">
-      <div>
-        <h3>Collaborative Problem Solving</h3>
-        <p>At Fox Analytics, we believe in working closely with our clients to understand their unique challenges and develop customized solutions.</p>
-        <p>Our team of experts will guide you through every step of the process, from initial data collection to final implementation and beyond.</p>
-        <p>We pride ourselves on clear communication and transparent methodologies that ensure you understand exactly how we're helping your business grow.</p>
-      </div>
-      
-      <div class="meeting-image">
-        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Analytics team presenting to clients" loading="lazy">
-        <div class="meeting-caption">
-          Our team presenting data insights to executive clients
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Case Studies Section -->
-  <section class="case-studies">
-    <div class="section-title">
-      <h2>Success Stories</h2>
-      <p>Quantifiable results we've delivered for clients</p>
-    </div>
-    
-    <div class="case-study-carousel">
-      <div class="case-study">
-        <div class="results-grid">
-          <div class="result-card">
-            <div class="result-value" data-target="42">0</div>
-            <p>% Reduction in Fraud Cases</p>
-          </div>
-          <div class="result-card">
-            <div class="result-value" data-target="35">0</div>
-            <p>% Faster Loan Approvals</p>
-          </div>
-          <div class="result-card">
-            <div class="result-value" data-target="18">0</div>
-            <p>% Increase in Customer Satisfaction</p>
-          </div>
-        </div>
-        <div class="case-content">
-          <h3>Kenyan Commercial Bank</h3>
-          <p>Implemented AI-powered fraud detection system that reduced false positives by 42% while maintaining 99.8% accuracy. Our machine learning models also automated loan approval processes, reducing processing time by 35%.</p>
-          <a href="#" class="read-more">Read Full Case Study →</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Clients Section -->
-  <section id="clients" class="section">
-    <div class="section-title">
-      <h2>Our Clients</h2>
-      <p>Trusted by leading organizations across East Africa</p>
-    </div>
-    
-    <div class="clients-grid">
-      <div class="client-item">
-        <img src="https://www.kcbgroup.com/themes/custom/kcb/logo.png" alt="KCB Bank" class="client-logo" loading="lazy">
-        <p>KCB Bank</p>
-      </div>
-      
-      <div class="client-item">
-        <img src="https://equitygroupholdings.com/images/logos/Equity-Logo.png" alt="Equity Bank" class="client-logo" loading="lazy">
-        <p>Equity Bank</p>
-      </div>
-      
-      <div class="client-item">
-        <img src="https://www.co-opbank.co.ke/sites/default/files/logo.png" alt="Co-operative Bank" class="client-logo" loading="lazy">
-        <p>Co-operative Bank</p>
-      </div>
-      
-      <div class="client-item">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Safaricom_logo.svg" alt="Safaricom Kenya" class="client-logo" loading="lazy">
-        <p>Safaricom Kenya</p>
-      </div>
-      
-      <div class="client-item">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/f/f6/Tigo.svg" alt="Tigo Tanzania" class="client-logo" loading="lazy">
-        <p>Tigo Tanzania</p>
-      </div>
-      
-      <div class="client-item">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/d/de/MTN_Logo.svg" alt="MTN Uganda" class="client-logo" loading="lazy">
-        <p>MTN Uganda</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Insights Section -->
-  <section id="insights" class="insights">
-    <div class="section-title">
-      <h2>Latest Insights</h2>
-      <p>Data trends and industry analysis</p>
-    </div>
-    
-    <div class="insights-grid">
-      <article class="insight-card">
-        <div class="insight-img">
-          <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="AI Trends" loading="lazy">
-          <div class="insight-tag">Machine Learning</div>
-        </div>
-        <div class="insight-content">
-          <h3>AI Adoption in East African Banks</h3>
-          <p>How financial institutions are leveraging machine learning to reduce fraud and improve customer experience.</p>
-          <a href="#" class="read-more">Read Article →</a>
-        </div>
-      </article>
-      
-      <article class="insight-card">
-        <div class="insight-img">
-          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Data Visualization" loading="lazy">
-          <div class="insight-tag">Data Visualization</div>
-        </div>
-        <div class="insight-content">
-          <h3>Effective Data Storytelling</h3>
-          <p>Best practices for communicating insights through compelling data visualizations in the African context.</p>
-          <a href="#" class="read-more">Read Article →</a>
-        </div>
-      </article>
-      
-      <article class="insight-card">
-        <div class="insight-img">
-          <img src="https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Market Trends" loading="lazy">
-          <div class="insight-tag">Market Trends</div>
-        </div>
-        <div class="insight-content">
-          <h3>East Africa Fintech Growth 2023</h3>
-          <p>Analysis of the latest trends in financial technology adoption across Kenya, Uganda, and Tanzania.</p>
-          <a href="#" class="read-more">Read Article →</a>
-        </div>
-      </article>
-    </div>
-  </section>
-
-  <!-- Reviews Section -->
-  <section id="reviews" class="reviews-section">
-    <div class="section-title">
-      <h2>Client Reviews</h2>
-      <p>What our clients are saying about us</p>
-    </div>
-    
-    <div class="testimonials-grid">
-      <div class="testimonial-card animate-on-scroll">
-        <p>"Fox Analytics completely transformed our reporting process. Their dashboards made it easier to make real-time decisions, and their team was always available to support us."</p>
-        <div class="client-info">
-          <strong>Joseph Mwangi</strong><br>
-          <span>Data Manager, KCB Bank</span>
-        </div>
-        <div class="star-rating">★★★★★</div>
-      </div>
-      
-      <div class="testimonial-card animate-on-scroll">
-        <p>"Their fraud detection model helped us reduce suspicious transactions by over 40%. Professional and reliable team that understood our specific needs in the Ugandan market."</p>
-        <div class="client-info">
-          <strong>Aisha Lukwago</strong><br>
-          <span>Risk Officer, MTN Uganda</span>
-        </div>
-        <div class="star-rating">★★★★☆</div>
-      </div>
-      
-      <div class="testimonial-card animate-on-scroll">
-        <p>"We appreciated the training sessions. Our staff learned advanced Excel and SQL skills that improved internal workflows and reporting efficiency by 30%."</p>
-        <div class="client-info">
-          <strong>Daniel Oduor</strong><br>
-          <span>Operations Head, Tigo Tanzania</span>
-        </div>
-        <div class="star-rating">★★★★★</div>
-      </div>
-    </div>
-
-    <div class="review-form-container">
-      <h3>Leave Your Review</h3>
-      <form id="reviewForm">
-        <div class="form-group">
-          <label for="reviewName">Name</label>
-          <input type="text" id="reviewName" class="form-control" required>
-        </div>
-        <div class="form-group">
-          <label for="reviewRole">Your Role/Company</label>
-          <input type="text" id="reviewRole" class="form-control" required>
-        </div>
-        <div class="form-group">
-          <label for="reviewText">Your Review</label>
-          <textarea id="reviewText" class="form-control" rows="4" required></textarea>
-        </div>
-        <div class="form-group">
-          <label for="reviewRating">Rating</label>
-          <select id="reviewRating" class="form-control" required>
-            <option value="★★★★★">5 - Excellent</option>
-            <option value="★★★★☆">4 - Good</option>
-            <option value="★★★☆☆">3 - Average</option>
-            <option value="★★☆☆☆">2 - Poor</option>
-            <option value="★☆☆☆☆">1 - Bad</option>
-          </select>
-        </div>
-        <button type="submit" class="cta-button" style="width: 100%;">Submit Review</button>
-      </form>
     </div>
   </section>
 
@@ -1621,8 +1194,12 @@
           </div>
           
           <div class="form-group">
-            <label for="subject">Subject</label>
-            <input type="text" id="subject" class="form-control">
+            <label for="business">Business Type</label>
+            <select id="business" class="form-control">
+              <option value="wholesale">Wholesale</option>
+              <option value="retail">Retail</option>
+              <option value="other">Other</option>
+            </select>
           </div>
           
           <div class="form-group">
@@ -1680,10 +1257,9 @@
         <h3>Quick Links</h3>
         <ul class="footer-links">
           <li><a href="#">Home</a></li>
-          <li><a href="#about">About Us</a></li>
+          <li><a href="#dashboard">Dashboard</a></li>
+          <li><a href="#pricing">Pricing</a></li>
           <li><a href="#services">Services</a></li>
-          <li><a href="#clients">Clients</a></li>
-          <li><a href="#insights">Insights</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </div>
@@ -1722,10 +1298,10 @@
     const sampleChart = new Chart(ctx, {
       type: 'bar',
       data: {
-        labels: ['Q1', 'Q2', 'Q3', 'Q4'],
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
         datasets: [{
-          label: 'Revenue Growth',
-          data: [12, 19, 15, 27],
+          label: 'Revenue (KSh)',
+          data: [120000, 190000, 150000, 270000, 220000, 300000],
           backgroundColor: '#E91E63',
           borderRadius: 5
         }]
@@ -1739,7 +1315,7 @@
           tooltip: {
             callbacks: {
               label: function(context) {
-                return context.parsed.y + '% growth';
+                return 'KSh ' + context.parsed.y.toLocaleString();
               }
             }
           }
@@ -1749,7 +1325,7 @@
             beginAtZero: true,
             ticks: {
               callback: function(value) {
-                return value + '%';
+                return 'KSh ' + value.toLocaleString();
               }
             }
           }
@@ -1764,54 +1340,92 @@
         tabBtns.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
         
-        // In a real implementation, this would update the chart data
-        if(btn.dataset.tab === 'financial') {
-          sampleChart.data.datasets[0].data = [12, 19, 15, 27];
-          sampleChart.data.datasets[0].label = 'Revenue Growth';
+        // Update chart based on selected tab
+        if(btn.dataset.tab === 'sales') {
+          sampleChart.data.datasets[0].data = [120000, 190000, 150000, 270000, 220000, 300000];
+          sampleChart.data.datasets[0].label = 'Revenue (KSh)';
           document.getElementById('conversionRate').querySelector('.metric-value').textContent = '12.8%';
           document.getElementById('revenueGrowth').querySelector('.metric-value').textContent = '27%';
           document.getElementById('customerRetention').querySelector('.metric-value').textContent = '84%';
-        } else {
-          sampleChart.data.datasets[0].data = [45, 32, 28, 51];
-          sampleChart.data.datasets[0].label = 'Customer Engagement';
+        } else if(btn.dataset.tab === 'inventory') {
+          sampleChart.data.datasets[0].data = [45, 32, 28, 51, 42, 38];
+          sampleChart.data.datasets[0].label = 'Stock Turnover Rate';
           document.getElementById('conversionRate').querySelector('.metric-value').textContent = '8.2%';
           document.getElementById('revenueGrowth').querySelector('.metric-value').textContent = '18%';
           document.getElementById('customerRetention').querySelector('.metric-value').textContent = '92%';
+        } else {
+          sampleChart.data.datasets[0].data = [450, 520, 480, 610, 580, 650];
+          sampleChart.data.datasets[0].label = 'New Customers';
+          document.getElementById('conversionRate').querySelector('.metric-value').textContent = '5.7%';
+          document.getElementById('revenueGrowth').querySelector('.metric-value').textContent = '15%';
+          document.getElementById('customerRetention').querySelector('.metric-value').textContent = '78%';
         }
         sampleChart.update();
       });
     });
 
-    // Animated counter
-    const animateCounters = () => {
-      const counters = document.querySelectorAll('.result-value');
-      const speed = 200;
+    // File upload functionality
+    const uploadArea = document.getElementById('uploadArea');
+    const fileInput = document.getElementById('fileInput');
+    
+    uploadArea.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      uploadArea.style.borderColor = '#E91E63';
+      uploadArea.style.backgroundColor = 'rgba(233,30,99,0.05)';
+    });
+    
+    uploadArea.addEventListener('dragleave', () => {
+      uploadArea.style.borderColor = '#ddd';
+      uploadArea.style.backgroundColor = 'transparent';
+    });
+    
+    uploadArea.addEventListener('drop', (e) => {
+      e.preventDefault();
+      uploadArea.style.borderColor = '#ddd';
+      uploadArea.style.backgroundColor = 'transparent';
       
-      counters.forEach(counter => {
-        const target = +counter.getAttribute('data-target');
-        const count = +counter.innerText;
-        const increment = target / speed;
+      const files = e.dataTransfer.files;
+      if (files.length) {
+        handleFiles(files);
+      }
+    });
+    
+    fileInput.addEventListener('change', (e) => {
+      handleFiles(e.target.files);
+    });
+    
+    function handleFiles(files) {
+      // In a real implementation, this would process the files
+      alert(`Successfully uploaded ${files.length} file(s)! Data is being analyzed.`);
+      // Reset file input
+      fileInput.value = '';
+    }
+
+    // Manual data form submission
+    const manualDataForm = document.getElementById('manualDataForm');
+    
+    manualDataForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      const dataType = document.getElementById('dataType').value;
+      const dataPeriod = document.getElementById('dataPeriod').value;
+      const dataValues = document.getElementById('dataValues').value;
+      
+      if (dataValues) {
+        const values = dataValues.split(',').map(val => parseInt(val.trim()));
         
-        if(counter.classList.contains('animated')) return;
+        // Update chart with new data
+        sampleChart.data.labels = values.map((_, i) => `${dataPeriod.charAt(0).toUpperCase() + dataPeriod.slice(1)} ${i+1}`);
+        sampleChart.data.datasets[0].data = values;
+        sampleChart.data.datasets[0].label = `${dataType.charAt(0).toUpperCase() + dataType.slice(1)} Data`;
+        sampleChart.update();
         
-        const position = counter.getBoundingClientRect().top;
-        const screenPosition = window.innerHeight / 1.3;
-        
-        if(position < screenPosition) {
-          counter.classList.add('animated');
-          
-          const updateCounter = () => {
-            if(count < target) {
-              counter.innerText = Math.ceil(count + increment);
-              setTimeout(updateCounter, 1);
-            } else {
-              counter.innerText = target + '%';
-            }
-          }
-          updateCounter();
-        }
-      });
-    };
+        alert(`Data analyzed successfully! Displaying ${dataType} for ${dataPeriod} periods.`);
+        manualDataForm.reset();
+      } else {
+        alert("Please enter data values.");
+      }
+    });
 
     // Live chat functionality
     const chatBtn = document.querySelector('.chat-btn');
@@ -1828,7 +1442,6 @@
 
     // Form submission
     const contactForm = document.getElementById('contactForm');
-    const reviewForm = document.getElementById('reviewForm');
     
     contactForm.addEventListener('submit', (e) => {
       e.preventDefault();
@@ -1843,22 +1456,6 @@
         contactForm.reset();
       } else {
         alert('Please fill in all required fields.');
-      }
-    });
-    
-    reviewForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      
-      const name = document.getElementById('reviewName').value;
-      const role = document.getElementById('reviewRole').value;
-      const text = document.getElementById('reviewText').value;
-      const rating = document.getElementById('reviewRating').value;
-
-      if (name && role && text && rating) {
-        alert(`Thank you, ${name}! Your review has been submitted.`);
-        reviewForm.reset();
-      } else {
-        alert("Please fill in all fields.");
       }
     });
     
@@ -1877,25 +1474,20 @@
       });
     });
     
-    // Animate elements when they come into view
-    const animateOnScroll = () => {
-      const elements = document.querySelectorAll('.service-card, .section-title, .about-image, .contact-form, .animate-on-scroll');
-      
-      elements.forEach(element => {
-        const elementPosition = element.getBoundingClientRect().top;
-        const screenPosition = window.innerHeight / 1.3;
-        
-        if(elementPosition < screenPosition) {
-          element.style.opacity = '1';
-          element.style.transform = 'translateY(0)';
-        }
-      });
-      
-      animateCounters();
-    };
+    // Rotating text functionality
+    const rotatingMessages = document.querySelectorAll('.rotating-message');
+    let currentMessage = 0;
     
-    window.addEventListener('scroll', animateOnScroll);
-    window.addEventListener('load', animateOnScroll);
+    function rotateMessages() {
+      rotatingMessages.forEach(msg => msg.classList.remove('active'));
+      rotatingMessages[currentMessage].classList.add('active');
+      currentMessage = (currentMessage + 1) % rotatingMessages.length;
+    }
+    
+    // Start rotation after page loads
+    window.addEventListener('load', function() {
+      setInterval(rotateMessages, 4000);
+    });
   </script>
 </body>
 </html>
