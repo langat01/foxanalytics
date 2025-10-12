@@ -1,785 +1,295 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Science Portfolio</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        :root {
-            --primary: #4361ee;
-            --secondary: #3a0ca3;
-            --accent: #7209b7;
-            --light: #f8f9fa;
-            --dark: #212529;
-            --gray: #6c757d;
-            --success: #4cc9f0;
-        }
-
-        body {
-            background-color: #f5f7fb;
-            color: var(--dark);
-            line-height: 1.6;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header Styles */
-        header {
-            background-color: white;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 0;
-        }
-
-        .logo {
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--primary);
-            text-decoration: none;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 30px;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--dark);
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary);
-        }
-
-        .auth-buttons {
-            display: flex;
-            gap: 15px;
-        }
-
-        .btn {
-            padding: 8px 20px;
-            border-radius: 5px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s;
-            border: none;
-        }
-
-        .btn-outline {
-            background: transparent;
-            border: 1px solid var(--primary);
-            color: var(--primary);
-        }
-
-        .btn-primary {
-            background: var(--primary);
-            color: white;
-        }
-
-        .btn-outline:hover {
-            background: var(--primary);
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background: var(--secondary);
-        }
-
-        /* Profile Section */
-        .profile-section {
-            display: flex;
-            gap: 40px;
-            margin: 40px 0;
-            background: white;
-            border-radius: 10px;
-            padding: 30px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-
-        .profile-image {
-            width: 200px;
-            height: 200px;
-            border-radius: 10px;
-            background: linear-gradient(135deg, #4361ee, #3a0ca3);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 4rem;
-        }
-
-        .profile-info {
-            flex: 1;
-        }
-
-        .profile-name {
-            font-size: 2rem;
-            margin-bottom: 10px;
-            color: var(--dark);
-        }
-
-        .profile-title {
-            font-size: 1.2rem;
-            color: var(--primary);
-            margin-bottom: 15px;
-        }
-
-        .profile-bio {
-            color: var(--gray);
-            margin-bottom: 20px;
-        }
-
-        .profile-stats {
-            display: flex;
-            gap: 30px;
-            margin-bottom: 20px;
-        }
-
-        .stat {
-            text-align: center;
-        }
-
-        .stat-value {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary);
-        }
-
-        .stat-label {
-            font-size: 0.9rem;
-            color: var(--gray);
-        }
-
-        .profile-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .profile-tag {
-            padding: 5px 15px;
-            background: #e9ecef;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            color: var(--gray);
-        }
-
-        /* Hero Section */
-        .hero {
-            padding: 80px 0;
-            text-align: center;
-            background: linear-gradient(135deg, #4361ee, #3a0ca3);
-            color: white;
-            border-radius: 0 0 20px 20px;
-            margin-bottom: 40px;
-        }
-
-        .hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto 30px;
-        }
-
-        .search-bar {
-            max-width: 600px;
-            margin: 0 auto;
-            display: flex;
-        }
-
-        .search-bar input {
-            flex: 1;
-            padding: 15px;
-            border: none;
-            border-radius: 5px 0 0 5px;
-            font-size: 1rem;
-        }
-
-        .search-bar button {
-            padding: 0 25px;
-            background: var(--accent);
-            color: white;
-            border: none;
-            border-radius: 0 5px 5px 0;
-            cursor: pointer;
-        }
-
-        /* Filters Section */
-        .filters {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-bottom: 30px;
-            justify-content: center;
-        }
-
-        .filter-btn {
-            padding: 8px 20px;
-            background: white;
-            border: 1px solid #ddd;
-            border-radius: 30px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .filter-btn.active, .filter-btn:hover {
-            background: var(--primary);
-            color: white;
-            border-color: var(--primary);
-        }
-
-        /* Projects Grid */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 30px;
-            margin-bottom: 50px;
-        }
-
-        .project-card {
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        }
-
-        .project-image {
-            height: 200px;
-            background-color: #eee;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--gray);
-            font-size: 1.2rem;
-        }
-
-        .project-content {
-            padding: 20px;
-        }
-
-        .project-title {
-            font-size: 1.3rem;
-            margin-bottom: 10px;
-            color: var(--dark);
-        }
-
-        .project-author {
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
-            color: var(--gray);
-            font-size: 0.9rem;
-        }
-
-        .author-avatar {
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            background-color: #ddd;
-            margin-right: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.8rem;
-        }
-
-        .project-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 15px;
-        }
-
-        .tag {
-            padding: 4px 10px;
-            background: #e9ecef;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            color: var(--gray);
-        }
-
-        .project-description {
-            color: var(--gray);
-            font-size: 0.95rem;
-            margin-bottom: 15px;
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-
-        .project-stats {
-            display: flex;
-            justify-content: space-between;
-            color: var(--gray);
-            font-size: 0.85rem;
-            border-top: 1px solid #eee;
-            padding-top: 15px;
-        }
-
-        /* Pagination */
-        .pagination {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 50px;
-        }
-
-        .page-btn {
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 5px;
-            background: white;
-            border: 1px solid #ddd;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .page-btn.active, .page-btn:hover {
-            background: var(--primary);
-            color: white;
-            border-color: var(--primary);
-        }
-
-        /* Footer */
-        footer {
-            background: var(--dark);
-            color: white;
-            padding: 50px 0 20px;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-
-        .footer-column h3 {
-            margin-bottom: 20px;
-            font-size: 1.2rem;
-        }
-
-        .footer-column ul {
-            list-style: none;
-        }
-
-        .footer-column ul li {
-            margin-bottom: 10px;
-        }
-
-        .footer-column a {
-            color: #adb5bd;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .footer-column a:hover {
-            color: white;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .social-links a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            transition: background 0.3s;
-        }
-
-        .social-links a:hover {
-            background: var(--primary);
-        }
-
-        .copyright {
-            text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #adb5bd;
-            font-size: 0.9rem;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .navbar {
-                flex-direction: column;
-                gap: 20px;
-            }
-
-            .nav-links {
-                gap: 15px;
-            }
-
-            .profile-section {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .profile-stats {
-                justify-content: center;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .hero p {
-                font-size: 1rem;
-            }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modern Data Science Portfolio</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+    /* Basic Reset */
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+    body { background: #f5f7fb; color: #212529; }
+
+    /* Container */
+    .container { max-width: 1200px; margin: auto; padding: 20px; }
+
+    /* Header */
+    header { background: white; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 100; }
+    .navbar { display: flex; justify-content: space-between; align-items: center; padding: 15px 0; }
+    .logo { font-size: 24px; font-weight: 700; color: #4361ee; text-decoration: none; }
+    .nav-links { display: flex; gap: 20px; }
+    .nav-links a { text-decoration: none; color: #212529; font-weight: 500; transition: 0.3s; }
+    .nav-links a:hover { color: #4361ee; }
+    .auth-buttons { display: flex; gap: 10px; }
+    .btn { padding: 8px 20px; border-radius: 5px; font-weight: 500; cursor: pointer; border: none; transition: 0.3s; }
+    .btn-outline { background: transparent; border: 1px solid #4361ee; color: #4361ee; }
+    .btn-primary { background: #4361ee; color: white; }
+    .btn-outline:hover { background: #4361ee; color: white; }
+    .btn-primary:hover { background: #3a0ca3; }
+
+    /* Profile Section */
+    .profile-section { display: flex; gap: 30px; margin: 40px 0; background: white; padding: 30px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+    .profile-image { width: 200px; height: 200px; border-radius: 10px; background: linear-gradient(135deg,#4361ee,#3a0ca3); display: flex; align-items: center; justify-content: center; color:white; font-size:4rem; }
+    .profile-info { flex: 1; }
+    .profile-name { font-size:2rem; margin-bottom:10px; }
+    .profile-title { font-size:1.2rem; color:#4361ee; margin-bottom:15px; }
+    .profile-bio { color:#6c757d; margin-bottom:20px; }
+    .profile-stats { display: flex; gap: 30px; margin-bottom: 20px; }
+    .stat { text-align: center; }
+    .stat-value { font-size:1.5rem; font-weight:700; color:#4361ee; }
+    .stat-label { font-size:0.9rem; color:#6c757d; }
+    .profile-tags { display:flex; flex-wrap: wrap; gap: 10px; }
+    .profile-tag { padding: 5px 15px; background: #e9ecef; border-radius: 20px; font-size:0.9rem; color:#6c757d; }
+
+    /* Hero Section */
+    .hero { padding: 60px 0; text-align:center; background: linear-gradient(135deg,#4361ee,#3a0ca3); color:white; border-radius:0 0 20px 20px; margin-bottom:40px; }
+    .hero h1 { font-size:2.5rem; margin-bottom:15px; }
+    .hero p { font-size:1.2rem; margin-bottom:20px; max-width:700px; margin-left:auto; margin-right:auto; }
+    .search-bar { display:flex; max-width:600px; margin:auto; }
+    .search-bar input { flex:1; padding:15px; border:none; border-radius:5px 0 0 5px; font-size:1rem; }
+    .search-bar button { padding:0 20px; background:#7209b7; color:white; border:none; border-radius:0 5px 5px 0; cursor:pointer; }
+
+    /* Filters */
+    .filters { display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin-bottom:30px; }
+    .filter-btn { padding:8px 20px; background:white; border:1px solid #ddd; border-radius:30px; cursor:pointer; transition:0.3s; }
+    .filter-btn.active, .filter-btn:hover { background:#4361ee; color:white; border-color:#4361ee; }
+
+    /* Projects Grid */
+    .projects-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:25px; margin-bottom:50px; }
+    .project-card { background:white; border-radius:10px; box-shadow:0 5px 15px rgba(0,0,0,0.05); overflow:hidden; transition: transform 0.3s, box-shadow 0.3s; }
+    .project-card:hover { transform:translateY(-5px); box-shadow:0 10px 25px rgba(0,0,0,0.1); }
+    .project-image { height:180px; background:#eee; display:flex; align-items:center; justify-content:center; color:#6c757d; font-size:1.2rem; }
+    .project-content { padding:20px; }
+    .project-title { font-size:1.3rem; margin-bottom:10px; }
+    .project-author { display:flex; align-items:center; margin-bottom:10px; color:#6c757d; font-size:0.9rem; }
+    .author-avatar { width:30px; height:30px; border-radius:50%; background:#ddd; margin-right:10px; display:flex; align-items:center; justify-content:center; font-size:0.8rem; }
+    .project-tags { display:flex; flex-wrap: wrap; gap:8px; margin-bottom:10px; }
+    .tag { padding:4px 10px; background:#e9ecef; border-radius:20px; font-size:0.8rem; color:#6c757d; }
+    .project-description { color:#6c757d; font-size:0.95rem; margin-bottom:10px; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; }
+    .project-stats { display:flex; justify-content:space-between; color:#6c757d; font-size:0.85rem; border-top:1px solid #eee; padding-top:10px; }
+
+    /* Pagination */
+    .pagination { display:flex; justify-content:center; gap:10px; margin-bottom:50px; }
+    .page-btn { width:40px; height:40px; display:flex; align-items:center; justify-content:center; border-radius:5px; background:white; border:1px solid #ddd; cursor:pointer; transition:0.3s; }
+    .page-btn.active, .page-btn:hover { background:#4361ee; color:white; border-color:#4361ee; }
+
+    /* Footer */
+    footer { background:#212529; color:white; padding:50px 0 20px; }
+    .footer-content { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:40px; margin-bottom:40px; }
+    .footer-column h3 { margin-bottom:15px; font-size:1.2rem; }
+    .footer-column ul { list-style:none; }
+    .footer-column ul li { margin-bottom:10px; }
+    .footer-column a { color:#adb5bd; text-decoration:none; transition:0.3s; }
+    .footer-column a:hover { color:white; }
+    .social-links { display:flex; gap:15px; margin-top:20px; }
+    .social-links a { display:flex; align-items:center; justify-content:center; width:40px; height:40px; background:rgba(255,255,255,0.1); border-radius:50%; transition:0.3s; }
+    .social-links a:hover { background:#4361ee; }
+    .copyright { text-align:center; padding-top:20px; border-top:1px solid rgba(255,255,255,0.1); color:#adb5bd; font-size:0.9rem; }
+
+    /* Responsive */
+    @media(max-width:768px){
+        .navbar{ flex-direction:column; gap:15px; }
+        .profile-section{ flex-direction:column; text-align:center; }
+        .profile-stats{ justify-content:center; }
+        .projects-grid{ grid-template-columns:1fr; }
+    }
+</style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <div class="navbar">
-                <a href="#" class="logo">DataSciencePortfolio</a>
-                <div class="nav-links">
-                    <a href="#">Explore projects</a>
-                    <a href="#">Portfolio builder</a>
-                    <a href="#">Resources</a>
-                    <a href="#">Community</a>
-                </div>
-                <div class="auth-buttons">
-                    <button class="btn btn-outline">Sign in</button>
-                    <button class="btn btn-primary">Get started</button>
-                </div>
-            </div>
-        </div>
-    </header>
 
-    <!-- Profile Section -->
+<header>
     <div class="container">
-        <div class="profile-section">
-            <div class="profile-image">
-                <i class="fas fa-user"></i>
+        <div class="navbar">
+            <a href="#" class="logo">DataSciencePortfolio</a>
+            <div class="nav-links">
+                <a href="#">Explore Projects</a>
+                <a href="#">Portfolio Builder</a>
+                <a href="#">Resources</a>
+                <a href="#">Community</a>
             </div>
-            <div class="profile-info">
-                <h1 class="profile-name">Alex Johnson</h1>
-                <p class="profile-title">Data Scientist & Machine Learning Engineer</p>
-                <p class="profile-bio">Passionate about transforming complex data into actionable insights. Specialized in machine learning, natural language processing, and data visualization. Currently working on improving healthcare outcomes through predictive analytics.</p>
-                
-                <div class="profile-stats">
-                    <div class="stat">
-                        <div class="stat-value">24</div>
-                        <div class="stat-label">Projects</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-value">3.2k</div>
-                        <div class="stat-label">Followers</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-value">187</div>
-                        <div class="stat-label">Following</div>
-                    </div>
-                </div>
-                
-                <div class="profile-tags">
-                    <div class="profile-tag">Python</div>
-                    <div class="profile-tag">Machine Learning</div>
-                    <div class="profile-tag">SQL</div>
-                    <div class="profile-tag">Data Visualization</div>
-                    <div class="profile-tag">Deep Learning</div>
-                    <div class="profile-tag">NLP</div>
-                </div>
+            <div class="auth-buttons">
+                <button class="btn btn-outline">Sign in</button>
+                <button class="btn btn-primary">Get started</button>
             </div>
         </div>
     </div>
+</header>
 
-    <!-- Main Content -->
-    <main class="container">
-        <!-- Filters -->
-        <div class="filters">
-            <button class="filter-btn active">Any topic</button>
-            <button class="filter-btn">SQL</button>
-            <button class="filter-btn">Python</button>
-            <button class="filter-btn">R</button>
-            <button class="filter-btn">Machine learning</button>
-            <button class="filter-btn">Data visualisation</button>
-        </div>
-
-        <!-- Projects Grid -->
-        <div class="projects-grid">
-            <!-- Project 1 -->
-            <div class="project-card">
-                <div class="project-image">
-                    <i class="fas fa-music fa-3x"></i>
-                </div>
-                <div class="project-content">
-                    <h3 class="project-title">Spotify Recommender and Visualizer</h3>
-                    <div class="project-author">
-                        <div class="author-avatar">JL</div>
-                        Julie Lai
-                    </div>
-                    <div class="project-tags">
-                        <span class="tag">Machine Learning</span>
-                        <span class="tag">Cluster Models</span>
-                        <span class="tag">Data Visualization</span>
-                        <span class="tag">JavaScript</span>
-                    </div>
-                    <p class="project-description">By generating global song recommendations towards highlighting global talent and multilingual songs, our project aims to create a more diverse experience to music listeners while also providing a fun user experience by generating live, audio-responsive artistic visuals.</p>
-                    <div class="project-stats">
-                        <span><i class="far fa-eye"></i> 1.2k views</span>
-                        <span><i class="far fa-heart"></i> 84 likes</span>
-                    </div>
-                </div>
+<div class="container">
+    <div class="profile-section">
+        <div class="profile-image"><i class="fas fa-user"></i></div>
+        <div class="profile-info">
+            <h1 class="profile-name">Alex Johnson</h1>
+            <p class="profile-title">Data Scientist & Machine Learning Engineer</p>
+            <p class="profile-bio">Passionate about transforming complex data into actionable insights. Specialized in ML, NLP, and data visualization.</p>
+            <div class="profile-stats">
+                <div class="stat"><div class="stat-value">24</div><div class="stat-label">Projects</div></div>
+                <div class="stat"><div class="stat-value">3.2k</div><div class="stat-label">Followers</div></div>
+                <div class="stat"><div class="stat-value">187</div><div class="stat-label">Following</div></div>
             </div>
-
-            <!-- Project 2 -->
-            <div class="project-card">
-                <div class="project-image">
-                    <i class="fas fa-map-marked-alt fa-3x"></i>
-                </div>
-                <div class="project-content">
-                    <h3 class="project-title">Using R Shiny to Inform Community Officials</h3>
-                    <div class="project-author">
-                        <div class="author-avatar">BK</div>
-                        Brianna King
-                    </div>
-                    <div class="project-tags">
-                        <span class="tag">R</span>
-                        <span class="tag">R Shiny</span>
-                        <span class="tag">Web App</span>
-                        <span class="tag">Data Analytics</span>
-                    </div>
-                    <p class="project-description">Using a leaflet interactive map, we created a multilevel, informational dashboard that enables community officials to develop better insights into their population, facilities, and areas in need. This project utilized data from Census reports, facilities information, housing, and abandoned...</p>
-                    <div class="project-stats">
-                        <span><i class="far fa-eye"></i> 956 views</span>
-                        <span><i class="far fa-heart"></i> 67 likes</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Project 3 -->
-            <div class="project-card">
-                <div class="project-image">
-                    <i class="fas fa-book fa-3x"></i>
-                </div>
-                <div class="project-content">
-                    <h3 class="project-title">Goodreads - Web Scraping using Beautiful Soup</h3>
-                    <div class="project-author">
-                        <div class="author-avatar">AS</div>
-                        Akriti Sood
-                    </div>
-                    <div class="project-tags">
-                        <span class="tag">Data extraction</span>
-                        <span class="tag">Web Scraping</span>
-                        <span class="tag">Beautiful Soup</span>
-                        <span class="tag">Pandas</span>
-                    </div>
-                    <p class="project-description">A mug of coffee and my favorite novel, an ideal day for me. But deciding which novel to read is a tedious job, I always go for Goodreads for recommendation and reviewing of the novel. Goodreads is one the world's largest community for reviewing and recommending books...</p>
-                    <div class="project-stats">
-                        <span><i class="far fa-eye"></i> 1.5k views</span>
-                        <span><i class="far fa-heart"></i> 112 likes</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Project 4 -->
-            <div class="project-card">
-                <div class="project-image">
-                    <i class="fas fa-mobile-alt fa-3x"></i>
-                </div>
-                <div class="project-content">
-                    <h3 class="project-title">The Effect of Greyscale on Screentime</h3>
-                    <div class="project-author">
-                        <div class="author-avatar">JL</div>
-                        Julie Lai
-                    </div>
-                    <div class="project-tags">
-                        <span class="tag">R</span>
-                        <span class="tag">dplyr</span>
-                        <span class="tag">Hypothesis Testing</span>
-                        <span class="tag">t-test</span>
-                    </div>
-                    <p class="project-description">A high amount of screen time and phone use can have a serious effect on mental health and physical well being. To tackle this issue, our project explores the use of removing colors from mobile phones to reduce overall screen time.</p>
-                    <div class="project-stats">
-                        <span><i class="far fa-eye"></i> 892 views</span>
-                        <span><i class="far fa-heart"></i> 73 likes</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Project 5 -->
-            <div class="project-card">
-                <div class="project-image">
-                    <i class="fas fa-microscope fa-3x"></i>
-                </div>
-                <div class="project-content">
-                    <h3 class="project-title">Sartorius Cell Segmentation Competition</h3>
-                    <div class="project-author">
-                        <div class="author-avatar">AZ</div>
-                        Alberto Zorzetto
-                    </div>
-                    <div class="project-tags">
-                        <span class="tag">Pytorch</span>
-                        <span class="tag">Transfer Learning</span>
-                        <span class="tag">IoU Segmentation</span>
-                        <span class="tag">DeepLabV3Plus</span>
-                    </div>
-                    <p class="project-description">In this competition i detected and delineate distinct objects of interest in biological phase contrast microscopy images depicting neuronal cell types commonly used in the study of neurological disorders.</p>
-                    <div class="project-stats">
-                        <span><i class="far fa-eye"></i> 1.1k views</span>
-                        <span><i class="far fa-heart"></i> 91 likes</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Project 6 -->
-            <div class="project-card">
-                <div class="project-image">
-                    <i class="fas fa-star fa-3x"></i>
-                </div>
-                <div class="project-content">
-                    <h3 class="project-title">Kepler Mission: Celestial Bodies Classification</h3>
-                    <div class="project-author">
-                        <div class="author-avatar">AM</div>
-                        Alberto Monaco
-                    </div>
-                    <div class="project-tags">
-                        <span class="tag">Supervised Learning</span>
-                        <span class="tag">R</span>
-                    </div>
-                    <p class="project-description">Classification of the observed objects by Kepler orbital telescope as Exoplanets or not.</p>
-                    <div class="project-stats">
-                        <span><i class="far fa-eye"></i> 745 views</span>
-                        <span><i class="far fa-heart"></i> 58 likes</span>
-                    </div>
-                </div>
+            <div class="profile-tags">
+                <div class="profile-tag">Python</div>
+                <div class="profile-tag">Machine Learning</div>
+                <div class="profile-tag">SQL</div>
+                <div class="profile-tag">Data Visualization</div>
+                <div class="profile-tag">Deep Learning</div>
+                <div class="profile-tag">NLP</div>
             </div>
         </div>
+    </div>
+</div>
 
-        <!-- Pagination -->
-        <div class="pagination">
-            <button class="page-btn active">1</button>
-            <button class="page-btn">2</button>
-            <button class="page-btn">3</button>
-            <button class="page-btn">4</button>
-            <button class="page-btn"><i class="fas fa-chevron-right"></i></button>
-        </div>
-    </main>
+<!-- Hero with search -->
+<div class="hero">
+    <h1>Showcase Your Data Science Projects</h1>
+    <p>Explore projects, share your work, and get inspired by the global data science community.</p>
+    <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Search projects...">
+        <button onclick="searchProjects()">Search</button>
+    </div>
+</div>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h3>DataSciencePortfolio</h3>
-                    <p>The best platform to showcase your data science projects and discover amazing work from the community.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-github"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                    </div>
-                </div>
-                <div class="footer-column">
-                    <h3>Explore</h3>
-                    <ul>
-                        <li><a href="#">All Projects</a></li>
-                        <li><a href="#">Featured Projects</a></li>
-                        <li><a href="#">Popular Tags</a></li>
-                        <li><a href="#">Top Authors</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Resources</h3>
-                    <ul>
-                        <li><a href="#">Documentation</a></li>
-                        <li><a href="#">Tutorials</a></li>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">Community Guidelines</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Company</h3>
-                    <ul>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Careers</a></li>
-                        <li><a href="#">Contact</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                    </ul>
+<div class="container">
+    <!-- Filters -->
+    <div class="filters">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="Python">Python</button>
+        <button class="filter-btn" data-filter="R">R</button>
+        <button class="filter-btn" data-filter="SQL">SQL</button>
+        <button class="filter-btn" data-filter="Machine Learning">Machine Learning</button>
+        <button class="filter-btn" data-filter="Data Visualization">Data Visualization</button>
+    </div>
+
+    <!-- Projects Grid -->
+    <div class="projects-grid" id="projectsGrid"></div>
+
+    <!-- Pagination -->
+    <div class="pagination" id="pagination"></div>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>DataSciencePortfolio</h3>
+                <p>Showcase your data science projects and discover amazing work from the community.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
                 </div>
             </div>
-            <div class="copyright">
-                <p>Created by Pasquale Bruno - follow me on <a href="#" style="color: var(--success);">Twitter</a></p>
-                <p>Any questions? Chat with us</p>
+            <div class="footer-column">
+                <h3>Explore</h3>
+                <ul>
+                    <li><a href="#">All Projects</a></li>
+                    <li><a href="#">Featured Projects</a></li>
+                    <li><a href="#">Popular Tags</a></li>
+                    <li><a href="#">Top Authors</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Resources</h3>
+                <ul>
+                    <li><a href="#">Documentation</a></li>
+                    <li><a href="#">Tutorials</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Community Guidelines</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Company</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
             </div>
         </div>
-    </footer>
+        <div class="copyright">
+            <p>Created by Pasquale Bruno - follow me on <a href="#" style="color:#4cc9f0;">Twitter</a></p>
+        </div>
+    </div>
+</footer>
 
-    <script>
-        // Simple filter functionality
-        document.querySelectorAll('.filter-btn').forEach(button => {
-            button.addEventListener('click', () => {
-                document.querySelectorAll('.filter-btn').forEach(btn => {
-                    btn.classList.remove('active');
-                });
-                button.classList.add('active');
-            });
+<script>
+    // Project Data
+    const projects = [
+        {title:"Spotify Recommender", author:"Julie Lai", avatar:"JL", tags:["Machine Learning","Python","Data Visualization"], desc:"Global song recommendations with audio-responsive visuals.", views:"1.2k", likes:84, icon:"fa-music"},
+        {title:"Community Dashboard R Shiny", author:"Brianna King", avatar:"BK", tags:["R","R Shiny","Data Visualization"], desc:"Inform community officials using interactive maps.", views:"956", likes:67, icon:"fa-map-marked-alt"},
+        {title:"Goodreads Scraper", author:"Akriti Sood", avatar:"AS", tags:["Python","Web Scraping"], desc:"Scraping Goodreads data for book recommendations.", views:"1.5k", likes:112, icon:"fa-book"},
+        {title:"Screentime Grey Mode", author:"Julie Lai", avatar:"JL", tags:["R","Data Visualization"], desc:"Reducing screen time by greyscale mode.", views:"892", likes:73, icon:"fa-mobile-alt"},
+        {title:"Cell Segmentation Competition", author:"Alberto Zorzetto", avatar:"AZ", tags:["Python","Deep Learning"], desc:"Microscopy images segmentation using DeepLabV3Plus.", views:"1.1k", likes:91, icon:"fa-microscope"},
+        {title:"Kepler Mission Classification", author:"Alberto Monaco", avatar:"AM", tags:["R","Supervised Learning"], desc:"Classifying celestial bodies as exoplanets.", views:"745", likes:58, icon:"fa-star"}
+    ];
+
+    let currentPage = 1;
+    const itemsPerPage = 3;
+    let currentFilter = "all";
+
+    function renderProjects() {
+        const grid = document.getElementById("projectsGrid");
+        grid.innerHTML = "";
+        let filtered = projects.filter(p => currentFilter === "all" || p.tags.includes(currentFilter));
+        const searchTerm = document.getElementById("searchInput").value.toLowerCase();
+        filtered = filtered.filter(p => p.title.toLowerCase().includes(searchTerm));
+
+        const totalPages = Math.ceil(filtered.length / itemsPerPage);
+        const start = (currentPage-1) * itemsPerPage;
+        const end = start + itemsPerPage;
+        const pageProjects = filtered.slice(start, end);
+
+        pageProjects.forEach(p => {
+            const card = document.createElement("div");
+            card.classList.add("project-card");
+            card.innerHTML = `
+                <div class="project-image"><i class="fas ${p.icon} fa-3x"></i></div>
+                <div class="project-content">
+                    <h3 class="project-title">${p.title}</h3>
+                    <div class="project-author"><div class="author-avatar">${p.avatar}</div>${p.author}</div>
+                    <div class="project-tags">${p.tags.map(tag => `<span class="tag">${tag}</span>`).join("")}</div>
+                    <p class="project-description">${p.desc}</p>
+                    <div class="project-stats"><span><i class="far fa-eye"></i> ${p.views}</span><span><i class="far fa-heart"></i> ${p.likes}</span></div>
+                </div>`;
+            grid.appendChild(card);
         });
 
-        // Simple pagination functionality
-        document.querySelectorAll('.page-btn').forEach(button => {
-            button.addEventListener('click', () => {
-                if (button.querySelector('i')) return; // Skip the arrow button
-                
-                document.querySelectorAll('.page-btn').forEach(btn => {
-                    btn.classList.remove('active');
-                });
-                button.classList.add('active');
-            });
+        renderPagination(totalPages);
+    }
+
+    function renderPagination(totalPages) {
+        const pagination = document.getElementById("pagination");
+        pagination.innerHTML = "";
+        for(let i=1;i<=totalPages;i++){
+            const btn = document.createElement("button");
+            btn.classList.add("page-btn");
+            if(i===currentPage) btn.classList.add("active");
+            btn.innerText = i;
+            btn.addEventListener("click",()=>{ currentPage=i; renderProjects(); });
+            pagination.appendChild(btn);
+        }
+    }
+
+    function searchProjects(){
+        currentPage=1;
+        renderProjects();
+    }
+
+    // Filters
+    document.querySelectorAll(".filter-btn").forEach(btn=>{
+        btn.addEventListener("click",()=>{
+            document.querySelectorAll(".filter-btn").forEach(b=>b.classList.remove("active"));
+            btn.classList.add("active");
+            currentFilter = btn.dataset.filter;
+            currentPage = 1;
+            renderProjects();
         });
-    </script>
+    });
+
+    // Initial render
+    renderProjects();
+</script>
+
 </body>
 </html>
