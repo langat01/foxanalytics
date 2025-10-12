@@ -1,2795 +1,671 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fox Analytics | Data Solutions for East Africa</title>
-  <meta name="description" content="Fox Analytics provides data solutions and business intelligence services for companies across East Africa including Kenya, Uganda, and Tanzania.">
-  <meta name="keywords" content="data analytics, business intelligence, East Africa, Kenya, machine learning, data training">
-  
-  <!-- Preconnect for performance -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  
-  <style>
-    :root {
-      --primary: #E91E63; /* Fox Analytics pink */
-      --secondary: #607D8B; /* Complementary dark teal */
-      --accent: #FFC107; /* Accent yellow */
-      --light: #F5F5F5;
-      --dark: #212121;
-      --success: #4CAF50;
-    }
-    
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    
-    body {
-      font-family: 'Montserrat', sans-serif;
-      background-color: white;
-      color: var(--dark);
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-    
-    /* Transparent Header Styles */
-    header {
-      padding: 1.5rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background-color: transparent;
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 100;
-      transition: all 0.3s ease;
-    }
-    
-    header.scrolled {
-      background-color: white;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    }
-    
-    header.scrolled nav ul li a {
-      color: var(--dark);
-    }
-    
-    header.scrolled .logo {
-      color: var(--primary);
-    }
-    
-    .logo {
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: white;
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      transition: color 0.3s;
-    }
-    
-    .logo span {
-      color: var(--accent);
-    }
-    
-    .logo-icon {
-      margin-right: 10px;
-      font-size: 1.5rem;
-    }
-    
-    nav ul {
-      display: flex;
-      list-style: none;
-    }
-    
-    nav ul li {
-      margin-left: 2rem;
-    }
-    
-    nav ul li a {
-      color: white;
-      text-decoration: none;
-      font-weight: 600;
-      transition: all 0.3s;
-      position: relative;
-    }
-    
-    nav ul li a:hover {
-      color: var(--accent);
-    }
-    
-    nav ul li a::after {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 2px;
-      background: var(--accent);
-      bottom: -5px;
-      left: 0;
-      transition: width 0.3s;
-    }
-    
-    nav ul li a:hover::after {
-      width: 100%;
-    }
-    
-    /* Hero Section with Animated Gradient */
-    .hero {
-      position: relative;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      color: white;
-      padding: 0 2rem;
-      background: linear-gradient(-45deg, #E91E63, #607D8B, #FFC107, #4CAF50);
-      background-size: 400% 400%;
-      animation: gradientBG 15s ease infinite;
-      overflow: hidden;
-    }
-    
-    @keyframes gradientBG {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-    
-    .hero-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.5);
-      z-index: 0;
-    }
-    
-    .hero-content {
-      max-width: 900px;
-      margin: 0 auto;
-      position: relative;
-      z-index: 2;
-    }
-    
-    .hero h1 {
-      font-size: 3.5rem;
-      font-weight: 700;
-      margin-bottom: 1.5rem;
-      line-height: 1.2;
-      animation: fadeInUp 1s ease-out;
-      text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
-    }
-    
-    /* Rotating Text Container */
-    .rotating-text {
-      position: relative;
-      height: 80px;
-      margin: 1.5rem auto;
-    }
-    
-    .rotating-message {
-      position: absolute;
-      width: 100%;
-      text-align: center;
-      opacity: 0;
-      transition: opacity 1s ease-in-out;
-      font-size: 1.8rem;
-      font-weight: 300;
-      color: rgba(255,255,255,0.9);
-      text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
-    }
-    
-    .rotating-message.active {
-      opacity: 1;
-    }
-    
-    .cta-container {
-      display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      margin-top: 2rem;
-      animation: fadeInUp 1s ease-out 0.7s both;
-    }
-    
-    .cta-button {
-      display: inline-block;
-      background: var(--primary);
-      color: white;
-      padding: 1rem 2.5rem;
-      border-radius: 30px;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 1.1rem;
-      transition: all 0.3s;
-      box-shadow: 0 5px 15px rgba(233,30,99,0.3);
-      border: none;
-      cursor: pointer;
-    }
-    
-    .secondary-button {
-      display: inline-block;
-      border: 2px solid white;
-      color: white;
-      padding: 1rem 2.5rem;
-      border-radius: 30px;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 1.1rem;
-      transition: all 0.3s;
-    }
-    
-    .secondary-button:hover {
-      background: rgba(255,255,255,0.1);
-      transform: translateY(-3px);
-    }
-    
-    .scroll-indicator {
-      position: absolute;
-      bottom: 30px;
-      left: 50%;
-      transform: translateX(-50%);
-      animation: bounce 2s infinite;
-      color: white;
-      font-size: 1.5rem;
-      opacity: 0;
-      animation: fadeInUp 1s ease-out 1s forwards, bounce 2s infinite 2s;
-      z-index: 2;
-    }
-    
-    @keyframes bounce {
-      0%, 20%, 50%, 80%, 100% {transform: translateY(0) translateX(-50%);}
-      40% {transform: translateY(-20px) translateX(-50%);}
-      60% {transform: translateY(-10px) translateX(-50%);}
-    }
-    
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-      100% { transform: scale(1); }
-    }
-    
-    .cta-button:hover {
-      background: #C2185B;
-      transform: translateY(-3px) scale(1.05);
-      box-shadow: 0 8px 20px rgba(233,30,99,0.4);
-    }
-    
-    /* Section Styles */
-    .section {
-      padding: 5rem 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    
-    .section-title {
-      text-align: center;
-      margin-bottom: 3rem;
-    }
-    
-    .section-title h2 {
-      font-size: 2.5rem;
-      color: var(--primary);
-      margin-bottom: 1rem;
-      position: relative;
-      display: inline-block;
-    }
-    
-    .section-title h2::after {
-      content: '';
-      position: absolute;
-      width: 50%;
-      height: 4px;
-      background: var(--accent);
-      bottom: -10px;
-      left: 25%;
-      border-radius: 2px;
-      animation: expand 0.8s ease-out;
-    }
-    
-    @keyframes expand {
-      from { width: 0; }
-      to { width: 50%; }
-    }
-    
-    /* Login Modal */
-    .login-modal {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.7);
-      z-index: 1000;
-      justify-content: center;
-      align-items: center;
-    }
-    
-    .login-modal.active {
-      display: flex;
-    }
-    
-    .login-container {
-      background: white;
-      border-radius: 10px;
-      padding: 2rem;
-      width: 90%;
-      max-width: 400px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-      animation: modalFadeIn 0.3s ease-out;
-    }
-    
-    @keyframes modalFadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(-30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    
-    .login-header {
-      text-align: center;
-      margin-bottom: 2rem;
-    }
-    
-    .login-header h2 {
-      color: var(--primary);
-      margin-bottom: 0.5rem;
-    }
-    
-    .close-modal {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      background: none;
-      border: none;
-      font-size: 1.5rem;
-      cursor: pointer;
-      color: var(--secondary);
-    }
-    
-    .form-group {
-      margin-bottom: 1.5rem;
-    }
-    
-    .form-group label {
-      display: block;
-      margin-bottom: 0.5rem;
-      color: var(--primary);
-      font-weight: 600;
-    }
-    
-    .form-control {
-      width: 100%;
-      padding: 0.8rem 1rem;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-      font-family: 'Montserrat', sans-serif;
-      transition: all 0.3s;
-    }
-    
-    .form-control:focus {
-      border-color: var(--primary);
-      box-shadow: 0 0 0 3px rgba(233,30,99,0.1);
-      outline: none;
-    }
-    
-    .login-footer {
-      text-align: center;
-      margin-top: 1.5rem;
-    }
-    
-    .login-footer a {
-      color: var(--primary);
-      text-decoration: none;
-    }
-    
-    /* Inventory Section */
-    .inventory-section {
-      display: none;
-      padding: 5rem 2rem;
-      background-color: var(--light);
-    }
-    
-    .inventory-section.active {
-      display: block;
-    }
-    
-    .inventory-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 2rem;
-    }
-    
-    .inventory-container {
-      background: white;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    
-    .inventory-tabs {
-      display: flex;
-      border-bottom: 1px solid #eee;
-    }
-    
-    .tab-btn {
-      padding: 1rem 2rem;
-      background: none;
-      border: none;
-      cursor: pointer;
-      font-weight: 600;
-      color: var(--secondary);
-      transition: all 0.3s;
-      position: relative;
-    }
-    
-    .tab-btn.active {
-      color: var(--primary);
-    }
-    
-    .tab-btn.active::after {
-      content: '';
-      position: absolute;
-      bottom: -1px;
-      left: 0;
-      width: 100%;
-      height: 3px;
-      background: var(--primary);
-    }
-    
-    .inventory-content {
-      padding: 2rem;
-    }
-    
-    .tab-content {
-      display: none;
-    }
-    
-    .tab-content.active {
-      display: block;
-    }
-    
-    /* Product Entry Form */
-    .product-form {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1.5rem;
-      margin-bottom: 2rem;
-      padding: 1.5rem;
-      background: var(--light);
-      border-radius: 8px;
-    }
-    
-    /* Data Table */
-    .data-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 1.5rem;
-    }
-    
-    .data-table th,
-    .data-table td {
-      padding: 1rem;
-      text-align: left;
-      border-bottom: 1px solid #eee;
-    }
-    
-    .data-table th {
-      background: var(--light);
-      font-weight: 600;
-      color: var(--primary);
-    }
-    
-    .data-table tr:hover {
-      background: rgba(233,30,99,0.05);
-    }
-    
-    .action-buttons {
-      display: flex;
-      gap: 0.5rem;
-    }
-    
-    .btn {
-      padding: 0.5rem 1rem;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      font-weight: 600;
-      transition: all 0.3s;
-    }
-    
-    .btn-edit {
-      background: var(--accent);
-      color: var(--dark);
-    }
-    
-    .btn-delete {
-      background: var(--danger);
-      color: white;
-    }
-    
-    .btn-sell {
-      background: var(--success);
-      color: white;
-    }
-    
-    .btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-    }
-    
-    /* Analytics Dashboard */
-    .analytics-dashboard {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
-      margin-top: 2rem;
-    }
-    
-    .metric-card {
-      background: white;
-      border-radius: 8px;
-      padding: 1.5rem;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.05);
-      text-align: center;
-      transition: all 0.3s;
-    }
-    
-    .metric-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    }
-    
-    .metric-value {
-      font-size: 2.5rem;
-      font-weight: 700;
-      color: var(--primary);
-      margin: 0.5rem 0;
-    }
-    
-    .chart-container {
-      margin-top: 2rem;
-      height: 300px;
-    }
-    
-    /* About Section */
-    .about-content {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 3rem;
-      align-items: center;
-    }
-    
-    .about-image {
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-      transform: perspective(1000px) rotateY(-10deg);
-      transition: transform 0.5s;
-      animation: fadeInLeft 1s ease-out;
-    }
-    
-    @keyframes fadeInLeft {
-      from {
-        opacity: 0;
-        transform: perspective(1000px) rotateY(-30deg) translateX(-50px);
-      }
-      to {
-        opacity: 1;
-        transform: perspective(1000px) rotateY(-10deg);
-      }
-    }
-    
-    .about-image:hover {
-      transform: perspective(1000px) rotateY(0deg);
-    }
-    
-    .about-image img {
-      width: 100%;
-      height: auto;
-      display: block;
-      transition: transform 0.5s;
-    }
-    
-    .about-image:hover img {
-      transform: scale(1.05);
-    }
-    
-    /* Team Section */
-    .team-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      margin-top: 3rem;
-    }
-    
-    .team-member {
-      background: white;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-      transition: all 0.3s;
-      text-align: center;
-    }
-    
-    .team-member:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-    }
-    
-    .member-photo {
-      width: 100%;
-      height: 250px;
-      object-fit: cover;
-    }
-    
-    .member-info {
-      padding: 1.5rem;
-    }
-    
-    .member-info h3 {
-      color: var(--primary);
-      margin-bottom: 0.5rem;
-    }
-    
-    .member-info p {
-      color: var(--secondary);
-      font-size: 0.9rem;
-    }
-    
-    .social-links {
-      display: flex;
-      justify-content: center;
-      margin-top: 1rem;
-      gap: 0.5rem;
-    }
-    
-    .social-links a {
-      color: var(--dark);
-      transition: all 0.3s;
-    }
-    
-    .social-links a:hover {
-      color: var(--primary);
-    }
-    
-    /* Services Section */
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-    }
-    
-    .service-card {
-      background: white;
-      border-radius: 10px;
-      padding: 2rem;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-      transition: all 0.3s;
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    
-    .service-card:nth-child(1) { animation: fadeInUp 0.5s ease-out 0.3s forwards; }
-    .service-card:nth-child(2) { animation: fadeInUp 0.5s ease-out 0.6s forwards; }
-    .service-card:nth-child(3) { animation: fadeInUp 0.5s ease-out 0.9s forwards; }
-    .service-card:nth-child(4) { animation: fadeInUp 0.5s ease-out 1.2s forwards; }
-    
-    .service-card:hover {
-      transform: translateY(-10px) !important;
-      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-    }
-    
-    .service-icon {
-      font-size: 2.5rem;
-      color: var(--primary);
-      margin-bottom: 1.5rem;
-      transition: transform 0.3s;
-    }
-    
-    .service-card:hover .service-icon {
-      transform: scale(1.2) rotate(10deg);
-    }
-    
-    /* Demo Section */
-    .demo-section {
-      background-color: var(--light);
-      padding: 5rem 2rem;
-    }
-    
-    .dashboard-container {
-      background: white;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-    
-    .dashboard-tabs {
-      display: flex;
-      border-bottom: 1px solid #eee;
-    }
-    
-    .dashboard-content {
-      padding: 2rem;
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 2rem;
-    }
-    
-    .metrics-container {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1.5rem;
-    }
-    
-    .metric {
-      background: var(--light);
-      padding: 1.5rem;
-      border-radius: 8px;
-      text-align: center;
-      transition: all 0.3s;
-    }
-    
-    .metric:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    }
-    
-    /* More Section */
-    .more-section {
-      background-color: var(--light);
-    }
-    
-    .meeting-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 3rem;
-      align-items: center;
-    }
-    
-    .meeting-image {
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-      position: relative;
-    }
-    
-    .meeting-image img {
-      width: 100%;
-      height: auto;
-      display: block;
-      transition: transform 0.5s;
-    }
-    
-    .meeting-image:hover img {
-      transform: scale(1.05);
-    }
-    
-    .meeting-caption {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: rgba(0,0,0,0.7);
-      color: white;
-      padding: 1rem;
-      transform: translateY(100%);
-      transition: transform 0.3s;
-    }
-    
-    .meeting-image:hover .meeting-caption {
-      transform: translateY(0);
-    }
-    
-    /* Case Studies Section */
-    .case-studies {
-      padding: 5rem 2rem;
-      background: linear-gradient(135deg, rgba(233,30,99,0.03) 0%, rgba(255,193,7,0.02) 100%);
-    }
-    
-    .case-study-carousel {
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-    
-    .case-study {
-      background: white;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    }
-    
-    .results-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1rem;
-      padding: 2rem;
-      background: var(--primary);
-      color: white;
-    }
-    
-    .result-card {
-      background: rgba(255,255,255,0.1);
-      padding: 1.5rem;
-      border-radius: 8px;
-      text-align: center;
-    }
-    
-    .result-value {
-      font-size: 2.5rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-    }
-    
-    .case-content {
-      padding: 2rem;
-    }
-    
-    .read-more {
-      display: inline-block;
-      color: var(--primary);
-      font-weight: 600;
-      margin-top: 1rem;
-      text-decoration: none;
-      transition: all 0.3s;
-    }
-    
-    .read-more:hover {
-      color: #C2185B;
-      transform: translateX(5px);
-    }
-    
-    /* Clients Section */
-    .clients-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 2rem;
-      align-items: center;
-    }
-    
-    .client-logo {
-      filter: grayscale(100%);
-      opacity: 0.7;
-      transition: all 0.3s;
-      max-width: 100%;
-      height: auto;
-      transform: scale(0.9);
-    }
-    
-    .client-logo:hover {
-      filter: grayscale(0%);
-      opacity: 1;
-      transform: scale(1);
-    }
-    
-    .client-item {
-      text-align: center;
-      padding: 1rem;
-    }
-    
-    .client-item p {
-      margin-top: 0.5rem;
-      font-weight: 600;
-      color: var(--secondary);
-    }
-    
-    /* Insights Section */
-    .insights {
-      background-color: var(--light);
-      padding: 5rem 2rem;
-    }
-    
-    .insights-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-    
-    .insight-card {
-      background: white;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-      transition: all 0.3s;
-    }
-    
-    .insight-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-    }
-    
-    .insight-img {
-      position: relative;
-      height: 200px;
-      overflow: hidden;
-    }
-    
-    .insight-img img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.5s;
-    }
-    
-    .insight-card:hover .insight-img img {
-      transform: scale(1.1);
-    }
-    
-    .insight-tag {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      background: var(--primary);
-      color: white;
-      padding: 0.3rem 0.8rem;
-      border-radius: 20px;
-      font-size: 0.8rem;
-      font-weight: 600;
-    }
-    
-    .insight-content {
-      padding: 1.5rem;
-    }
-    
-    .insight-content h3 {
-      margin-bottom: 0.5rem;
-    }
-    
-    /* Reviews Section */
-    .reviews-section {
-      padding: 5rem 2rem;
-    }
-    
-    .testimonials-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      margin-bottom: 2rem;
-    }
-    
-    .testimonial-card {
-      background: white;
-      padding: 2rem;
-      border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-      transition: transform 0.3s;
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    
-    .testimonial-card.animate-on-scroll {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    
-    .testimonial-card:hover {
-      transform: translateY(-5px) !important;
-    }
-    
-    .client-info {
-      margin-top: 1rem;
-      color: var(--primary);
-    }
-    
-    .star-rating {
-      color: #FFD700;
-      font-size: 1.2rem;
-      margin-top: 0.5rem;
-    }
-    
-    .review-form-container {
-      background: white;
-      padding: 2rem;
-      border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-      max-width: 600px;
-      margin: 3rem auto 0;
-      animation: fadeInUp 1s ease-out;
-    }
-    
-    /* Contact Section */
-    .contact-section {
-      background-color: var(--light);
-      padding: 5rem 2rem;
-    }
-    
-    .contact-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 3rem;
-    }
-    
-    .contact-info h3 {
-      font-size: 1.8rem;
-      margin-bottom: 1.5rem;
-      color: var(--primary);
-    }
-    
-    .contact-details {
-      margin-bottom: 2rem;
-    }
-    
-    .contact-item {
-      display: flex;
-      align-items: flex-start;
-      margin-bottom: 1.5rem;
-      transition: transform 0.3s;
-    }
-    
-    .contact-item:hover {
-      transform: translateX(10px);
-    }
-    
-    .contact-icon {
-      margin-right: 1rem;
-      color: var(--primary);
-      font-size: 1.2rem;
-      min-width: 20px;
-    }
-    
-    .contact-form {
-      background: white;
-      padding: 2rem;
-      border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-      animation: fadeInRight 1s ease-out;
-    }
-    
-    @keyframes fadeInRight {
-      from {
-        opacity: 0;
-        transform: translateX(50px);
-      }
-      to {
-        opacity: 1;
-        transform: translateX(0);
-      }
-    }
-    
-    textarea.form-control {
-      min-height: 150px;
-      resize: vertical;
-    }
-    
-    /* Live Chat */
-    .live-chat {
-      position: fixed;
-      bottom: 2rem;
-      right: 2rem;
-      z-index: 100;
-    }
-    
-    .chat-btn {
-      background: var(--primary);
-      color: white;
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.5rem;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-      cursor: pointer;
-      transition: all 0.3s;
-      animation: float 3s ease-in-out infinite;
-      border: none;
-    }
-    
-    .chat-btn:hover {
-      transform: scale(1.1);
-      background: #C2185B;
-      animation: none;
-    }
-    
-    .chat-window {
-      position: absolute;
-      bottom: 70px;
-      right: 0;
-      width: 300px;
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-      overflow: hidden;
-      transform: scale(0);
-      transform-origin: bottom right;
-      transition: transform 0.3s;
-    }
-    
-    .chat-window.active {
-      transform: scale(1);
-    }
-    
-    .chat-header {
-      background: var(--primary);
-      color: white;
-      padding: 1rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    
-    .close-chat {
-      background: none;
-      border: none;
-      color: white;
-      font-size: 1.2rem;
-      cursor: pointer;
-    }
-    
-    .chat-body {
-      padding: 1rem;
-      height: 300px;
-      overflow-y: auto;
-    }
-    
-    .chat-message {
-      margin-bottom: 1rem;
-      padding: 0.5rem 1rem;
-      border-radius: 5px;
-      max-width: 80%;
-    }
-    
-    .received {
-      background: var(--light);
-      margin-right: auto;
-    }
-    
-    .sent {
-      background: var(--primary);
-      color: white;
-      margin-left: auto;
-    }
-    
-    .chat-input {
-      display: flex;
-      padding: 1rem;
-      border-top: 1px solid #eee;
-    }
-    
-    .chat-input input {
-      flex: 1;
-      padding: 0.5rem 1rem;
-      border: 1px solid #ddd;
-      border-radius: 20px;
-      margin-right: 0.5rem;
-    }
-    
-    .send-btn {
-      background: var(--primary);
-      color: white;
-      border: none;
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: all 0.3s;
-    }
-    
-    .send-btn:hover {
-      background: #C2185B;
-    }
-    
-    /* Footer */
-    footer {
-      background: var(--dark);
-      color: white;
-      padding: 3rem 2rem;
-      text-align: center;
-    }
-    
-    .footer-content {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      text-align: left;
-    }
-    
-    .footer-column h3 {
-      color: var(--accent);
-      margin-bottom: 1.5rem;
-      font-size: 1.2rem;
-    }
-    
-    .footer-links {
-      list-style: none;
-    }
-    
-    .footer-links li {
-      margin-bottom: 0.8rem;
-    }
-    
-    .footer-links a {
-      color: rgba(255,255,255,0.8);
-      text-decoration: none;
-      transition: all 0.3s;
-    }
-    
-    .footer-links a:hover {
-      color: white;
-      padding-left: 5px;
-    }
-    
-    .social-links-footer {
-      display: flex;
-      gap: 1rem;
-      margin-top: 1rem;
-    }
-    
-    .social-links-footer a {
-      color: white;
-      background: rgba(255,255,255,0.1);
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.3s;
-    }
-    
-    .social-links-footer a:hover {
-      background: var(--primary);
-      transform: translateY(-3px);
-    }
-    
-    .newsletter-form {
-      margin-top: 1rem;
-    }
-    
-    .newsletter-form input {
-      width: 100%;
-      padding: 0.8rem;
-      border: none;
-      border-radius: 5px;
-      margin-bottom: 0.5rem;
-    }
-    
-    .newsletter-btn {
-      background: var(--primary);
-      color: white;
-      border: none;
-      padding: 0.8rem;
-      width: 100%;
-      border-radius: 5px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s;
-    }
-    
-    .newsletter-btn:hover {
-      background: #C2185B;
-    }
-    
-    .copyright {
-      margin-top: 3rem;
-      padding-top: 1.5rem;
-      border-top: 1px solid rgba(255,255,255,0.1);
-      color: rgba(255,255,255,0.7);
-      font-size: 0.9rem;
-    }
-    
-    /* Responsive Styles */
-    @media (max-width: 768px) {
-      header {
-        flex-direction: column;
-        padding: 1rem;
-      }
-      
-      nav ul {
-        margin-top: 1rem;
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-      
-      nav ul li {
-        margin: 0.5rem 1rem;
-      }
-      
-      .hero h1 {
-        font-size: 2.5rem;
-      }
-      
-      .rotating-message {
-        font-size: 1.3rem;
-      }
-      
-      .cta-container {
-        flex-direction: column;
-        gap: 1rem;
-      }
-      
-      .section {
-        padding: 3rem 1.5rem;
-      }
-      
-      .dashboard-content {
-        grid-template-columns: 1fr;
-      }
-      
-      .meeting-container, .about-content, .contact-container {
-        grid-template-columns: 1fr;
-      }
-      
-      .inventory-tabs {
-        flex-wrap: wrap;
-      }
-      
-      .tab-btn {
-        flex: 1;
-        min-width: 120px;
-      }
-      
-      .product-form {
-        grid-template-columns: 1fr;
-      }
-    }
-    
-    @media (max-width: 480px) {
-      .hero h1 {
-        font-size: 2rem;
-      }
-      
-      .rotating-text {
-        height: 120px;
-      }
-      
-      .section-title h2 {
-        font-size: 2rem;
-      }
-      
-      .tab-btn {
-        padding: 0.8rem 1rem;
-        font-size: 0.9rem;
-      }
-      
-      .data-table {
-        font-size: 0.9rem;
-      }
-      
-      .data-table th,
-      .data-table td {
-        padding: 0.5rem;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Science Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #4361ee;
+            --secondary: #3a0ca3;
+            --accent: #7209b7;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --success: #4cc9f0;
+        }
+
+        body {
+            background-color: #f5f7fb;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 8px 20px;
+            border-radius: 5px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--secondary);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 80px 0;
+            text-align: center;
+            background: linear-gradient(135deg, #4361ee, #3a0ca3);
+            color: white;
+            border-radius: 0 0 20px 20px;
+            margin-bottom: 40px;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        .search-bar {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+        }
+
+        .search-bar input {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            border-radius: 5px 0 0 5px;
+            font-size: 1rem;
+        }
+
+        .search-bar button {
+            padding: 0 25px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+        }
+
+        /* Filters Section */
+        .filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 30px;
+            justify-content: center;
+        }
+
+        .filter-btn {
+            padding: 8px 20px;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-image {
+            height: 200px;
+            background-color: #eee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray);
+            font-size: 1.2rem;
+        }
+
+        .project-content {
+            padding: 20px;
+        }
+
+        .project-title {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+
+        .project-author {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .author-avatar {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: #ddd;
+            margin-right: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+
+        .tag {
+            padding: 4px 10px;
+            background: #e9ecef;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: var(--gray);
+        }
+
+        .project-description {
+            color: var(--gray);
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .project-stats {
+            display: flex;
+            justify-content: space-between;
+            color: var(--gray);
+            font-size: 0.85rem;
+            border-top: 1px solid #eee;
+            padding-top: 15px;
+        }
+
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 50px;
+        }
+
+        .page-btn {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 5px;
+            background: white;
+            border: 1px solid #ddd;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .page-btn.active, .page-btn:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 50px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column a {
+            color: #adb5bd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-column a:hover {
+            color: white;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: background 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #adb5bd;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .nav-links {
+                gap: 15px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-  <!-- Header -->
-  <header id="mainHeader">
-    <a href="#" class="logo">
-      <i class="fas fa-chart-line logo-icon"></i>Fox<span>Analytics</span>
-    </a>
-    <nav>
-      <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#clients">Clients</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li><a href="#insights">Insights</a></li>
-        <li><a href="#" id="inventoryLoginBtn">Inventory Login</a></li>
-      </ul>
-    </nav>
-  </header>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="navbar">
+                <a href="#" class="logo">DataSciencePortfolio</a>
+                <div class="nav-links">
+                    <a href="#">Explore projects</a>
+                    <a href="#">Portfolio builder</a>
+                    <a href="#">Resources</a>
+                    <a href="#">Community</a>
+                </div>
+                <div class="auth-buttons">
+                    <button class="btn btn-outline">Sign in</button>
+                    <button class="btn btn-primary">Get started</button>
+                </div>
+            </div>
+        </div>
+    </header>
 
-  <!-- Login Modal -->
-  <div class="login-modal" id="loginModal">
-    <div class="login-container">
-      <button class="close-modal" id="closeModal">&times;</button>
-      <div class="login-header">
-        <h2>Inventory Login</h2>
-        <p>Access your inventory management system</p>
-      </div>
-      <form id="loginForm">
-        <div class="form-group">
-          <label for="username">Username</label>
-          <input type="text" id="username" class="form-control" placeholder="Enter your username" required>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Explore thousands of data science projects</h1>
+            <p>Find inspiration for your next project, discover new techniques, and showcase your work to the community.</p>
+            <div class="search-bar">
+                <input type="text" placeholder="Search projects, topics, or authors...">
+                <button><i class="fas fa-search"></i></button>
+            </div>
         </div>
-        <div class="form-group">
-          <label for="password">Password</label>
-          <input type="password" id="password" class="form-control" placeholder="Enter your password" required>
-        </div>
-        <button type="submit" class="cta-button" style="width: 100%;">Login</button>
-      </form>
-      <div class="login-footer">
-        <p>Demo credentials: user / password</p>
-      </div>
-    </div>
-  </div>
+    </section>
 
-  <!-- Hero Section with Animated Gradient -->
-  <section class="hero">
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <h1>Data-Driven Decisions for East African Businesses</h1>
-      
-      <div class="rotating-text">
-        <p class="rotating-message active">We transform raw data into actionable business intelligence</p>
-        <p class="rotating-message">Trusted by leading banks and telecom companies</p>
-        <p class="rotating-message">Machine learning solutions tailored for East Africa</p>
-        <p class="rotating-message">Data training programs for business professionals</p>
-      </div>
-      
-      <div class="cta-container">
-        <a href="#contact" class="cta-button">Get Started</a>
-        <a href="#services" class="secondary-button">Learn More</a>
-      </div>
-    </div>
-    <div class="scroll-indicator">
-      <i class="fas fa-chevron-down"></i>
-    </div>
-  </section>
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Filters -->
+        <div class="filters">
+            <button class="filter-btn active">Any topic</button>
+            <button class="filter-btn">SQL</button>
+            <button class="filter-btn">Python</button>
+            <button class="filter-btn">R</button>
+            <button class="filter-btn">Machine learning</button>
+            <button class="filter-btn">Data visualisation</button>
+        </div>
 
-  <!-- Inventory Section (Hidden by default) -->
-  <section id="inventory" class="inventory-section">
-    <div class="inventory-header">
-      <div class="section-title">
-        <h2>Inventory Management System</h2>
-        <p>Track your products, sales, and profits in real-time</p>
-      </div>
-      <button id="logoutBtn" class="secondary-button" style="background: var(--secondary); color: white;">Logout</button>
-    </div>
-    
-    <div class="inventory-container">
-      <div class="inventory-tabs">
-        <button class="tab-btn active" data-tab="products">Products</button>
-        <button class="tab-btn" data-tab="sales">Sales Entry</button>
-        <button class="tab-btn" data-tab="reports">Reports</button>
-      </div>
-      
-      <div class="inventory-content">
-        <!-- Products Tab -->
-        <div class="tab-content active" id="products-tab">
-          <h3>Product Management</h3>
-          <p>Add and manage your product inventory</p>
-          
-          <form class="product-form" id="productForm">
-            <div class="form-group">
-              <label for="productName">Product Name</label>
-              <input type="text" id="productName" class="form-control" placeholder="e.g., Sugar 50kg" required>
+        <!-- Projects Grid -->
+        <div class="projects-grid">
+            <!-- Project 1 -->
+            <div class="project-card">
+                <div class="project-image">
+                    <i class="fas fa-music fa-3x"></i>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Spotify Recommender and Visualizer</h3>
+                    <div class="project-author">
+                        <div class="author-avatar">JL</div>
+                        Julie Lai
+                    </div>
+                    <div class="project-tags">
+                        <span class="tag">Machine Learning</span>
+                        <span class="tag">Cluster Models</span>
+                        <span class="tag">Data Visualization</span>
+                        <span class="tag">JavaScript</span>
+                    </div>
+                    <p class="project-description">By generating global song recommendations towards highlighting global talent and multilingual songs, our project aims to create a more diverse experience to music listeners while also providing a fun user experience by generating live, audio-responsive artistic visuals.</p>
+                    <div class="project-stats">
+                        <span><i class="far fa-eye"></i> 1.2k views</span>
+                        <span><i class="far fa-heart"></i> 84 likes</span>
+                    </div>
+                </div>
             </div>
-            
-            <div class="form-group">
-              <label for="productQuantity">Initial Quantity</label>
-              <input type="number" id="productQuantity" class="form-control" placeholder="e.g., 100" required>
-            </div>
-            
-            <div class="form-group">
-              <label for="productCost">Cost Price (KSh)</label>
-              <input type="number" id="productCost" class="form-control" placeholder="e.g., 5000" step="0.01" required>
-            </div>
-            
-            <div class="form-group">
-              <label for="productPrice">Selling Price (KSh)</label>
-              <input type="number" id="productPrice" class="form-control" placeholder="e.g., 6000" step="0.01" required>
-            </div>
-            
-            <div class="form-group">
-              <label for="productCategory">Category</label>
-              <select id="productCategory" class="form-control">
-                <option value="food">Food & Beverages</option>
-                <option value="electronics">Electronics</option>
-                <option value="clothing">Clothing</option>
-                <option value="other">Other</option>
-              </select>
-            </div>
-            
-            <button type="submit" class="cta-button" style="align-self: end;">Add Product</button>
-          </form>
-          
-          <h3>Current Inventory</h3>
-          <table class="data-table" id="inventoryTable">
-            <thead>
-              <tr>
-                <th>Product Name</th>
-                <th>Category</th>
-                <th>Quantity</th>
-                <th>Cost Price</th>
-                <th>Selling Price</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody id="inventoryTableBody">
-              <!-- Products will be added here dynamically -->
-            </tbody>
-          </table>
-        </div>
-        
-        <!-- Sales Tab -->
-        <div class="tab-content" id="sales-tab">
-          <h3>Record Sales</h3>
-          <p>Enter daily sales to track revenue and profits</p>
-          
-          <form class="product-form" id="salesForm">
-            <div class="form-group">
-              <label for="salesProduct">Product</label>
-              <select id="salesProduct" class="form-control" required>
-                <option value="">Select a product</option>
-                <!-- Products will be added here dynamically -->
-              </select>
-            </div>
-            
-            <div class="form-group">
-              <label for="salesQuantity">Quantity Sold</label>
-              <input type="number" id="salesQuantity" class="form-control" placeholder="e.g., 10" required>
-            </div>
-            
-            <div class="form-group">
-              <label for="salesDate">Date</label>
-              <input type="date" id="salesDate" class="form-control" required>
-            </div>
-            
-            <button type="submit" class="cta-button" style="align-self: end;">Record Sale</button>
-          </form>
-          
-          <h3>Recent Sales</h3>
-          <table class="data-table" id="salesTable">
-            <thead>
-              <tr>
-                <th>Date</th>
-                <th>Product</th>
-                <th>Quantity</th>
-                <th>Revenue</th>
-                <th>Profit</th>
-              </tr>
-            </thead>
-            <tbody id="salesTableBody">
-              <!-- Sales will be added here dynamically -->
-            </tbody>
-          </table>
-        </div>
-        
-        <!-- Reports Tab -->
-        <div class="tab-content" id="reports-tab">
-          <h3>Sales & Profit Reports</h3>
-          <p>View analytics and insights from your sales data</p>
-          
-          <div class="analytics-dashboard">
-            <div class="metric-card">
-              <h4>Total Revenue</h4>
-              <div class="metric-value" id="totalRevenue">KSh 0</div>
-              <p>All time</p>
-            </div>
-            
-            <div class="metric-card">
-              <h4>Total Profit</h4>
-              <div class="metric-value" id="totalProfit">KSh 0</div>
-              <p>All time</p>
-            </div>
-            
-            <div class="metric-card">
-              <h4>Best Selling Product</h4>
-              <div class="metric-value" id="bestProduct">-</div>
-              <p>By quantity sold</p>
-            </div>
-            
-            <div class="metric-card">
-              <h4>Inventory Value</h4>
-              <div class="metric-value" id="inventoryValue">KSh 0</div>
-              <p>Current stock</p>
-            </div>
-          </div>
-          
-          <div class="chart-container">
-            <canvas id="salesChart"></canvas>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- About Section -->
-  <section id="about" class="section">
-    <div class="section-title">
-      <h2>About Fox Analytics</h2>
-      <p>Your trusted partner for data-driven decision making</p>
-    </div>
-    
-    <div class="about-content">
-      <div class="about-image">
-        <img src="https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Fox Analytics Team" loading="lazy">
-      </div>
-      <div>
-        <p>Fox Analytics is a premier provider of business offshore outsourcing, data-centric research, data analytics, and business intelligence services. Our office locations are primarily in Kenya with operations across East Africa.</p>
-        <p>We combine cutting-edge technology with deep industry knowledge to deliver actionable insights that drive business growth. Our team of experts specializes in transforming complex data into clear, actionable strategies.</p>
-        <p>Whether you need comprehensive data analysis, machine learning solutions, or complete data strategy development, Fox Analytics has the expertise to help your business thrive in today's data-driven economy.</p>
-      </div>
-    </div>
-
-    <!-- Team Section -->
-    <div class="section-title" style="margin-top: 5rem;">
-      <h2>Our Team</h2>
-      <p>Meet the experts behind your data success</p>
-    </div>
-    
-    <div class="team-grid">
-      <div class="team-member">
-        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80" alt="Data Scientist" class="member-photo" loading="lazy">
-        <div class="member-info">
-          <h3>Weldon Langat</h3>
-          <p>Chief Data Scientist</p>
-          <div class="social-links">
-            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-          </div>
-        </div>
-      </div>
-      
-      <div class="team-member">
-        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80" alt="Business Analyst" class="member-photo" loading="lazy">
-        <div class="member-info">
-          <h3>Sarah Mwangi</h3>
-          <p>Senior Business Analyst</p>
-          <div class="social-links">
-            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-          </div>
-        </div>
-      </div>
-      
-      <div class="team-member">
-        <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80" alt="ML Engineer" class="member-photo" loading="lazy">
-        <div class="member-info">
-          <h3>James Omondi</h3>
-          <p>Machine Learning Engineer</p>
-          <div class="social-links">
-            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Services Section -->
-  <section id="services" class="section" style="background-color: var(--light);">
-    <div class="section-title">
-      <h2>Our Services</h2>
-      <p>Comprehensive data solutions tailored to your business needs</p>
-    </div>
-    
-    <div class="services-grid">
-      <div class="service-card">
-        <div class="service-icon">
-          <i class="fas fa-robot"></i>
-        </div>
-        <h3>Machine Learning</h3>
-        <p>We develop advanced ML models for credit scoring, chatbots, real estate predictions, and more to help reduce risk and identify opportunities.</p>
-      </div>
-      
-      <div class="service-card">
-        <div class="service-icon">
-          <i class="fas fa-chalkboard-teacher"></i>
-        </div>
-        <h3>Training & Coaching</h3>
-        <p>World-class training programs in data visualization, machine learning, data audits, and SQL for business professionals.</p>
-      </div>
-      
-      <div class="service-card">
-        <div class="service-icon">
-          <i class="fas fa-search"></i>
-        </div>
-        <h3>Data Audit</h3>
-        <p>We identify gaps in your data ecosystem and provide a customized roadmap aligned with your market positioning.</p>
-      </div>
-      
-      <div class="service-card">
-        <div class="service-icon">
-          <i class="fas fa-user-graduate"></i>
-        </div>
-        <h3>Premium Internships</h3>
-        <p>3-month intensive programs where participants gain hands-on experience solving real data challenges.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Demo Section -->
-  <section class="demo-section">
-    <div class="section-title">
-      <h2>See Our Analytics in Action</h2>
-      <p>Explore interactive examples of our data solutions</p>
-    </div>
-    
-    <div class="dashboard-container">
-      <div class="dashboard-tabs">
-        <button class="tab-btn active" data-tab="financial">Financial Insights</button>
-        <button class="tab-btn" data-tab="customer">Customer Behavior</button>
-      </div>
-      <div class="dashboard-content">
-        <div class="chart-container">
-          <canvas id="dataChart"></canvas>
-        </div>
-        <div class="metrics-container">
-          <div class="metric" id="conversionRate">
-            <h5>Conversion Rate</h5>
-            <div class="metric-value">12.8%</div>
-          </div>
-          <div class="metric" id="revenueGrowth">
-            <h5>Revenue Growth</h5>
-            <div class="metric-value">27%</div>
-          </div>
-          <div class="metric" id="customerRetention">
-            <h5>Customer Retention</h5>
-            <div class="metric-value">84%</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- More Section -->
-  <section id="more" class="section more-section">
-    <div class="section-title">
-      <h2>Our Approach</h2>
-      <p>See how we work with clients to deliver results</p>
-    </div>
-    
-    <div class="meeting-container">
-      <div>
-        <h3>Collaborative Problem Solving</h3>
-        <p>At Fox Analytics, we believe in working closely with our clients to understand their unique challenges and develop customized solutions.</p>
-        <p>Our team of experts will guide you through every step of the process, from initial data collection to final implementation and beyond.</p>
-        <p>We pride ourselves on clear communication and transparent methodologies that ensure you understand exactly how we're helping your business grow.</p>
-      </div>
-      
-      <div class="meeting-image">
-        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Analytics team presenting to clients" loading="lazy">
-        <div class="meeting-caption">
-          Our team presenting data insights to executive clients
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Case Studies Section -->
-  <section class="case-studies">
-    <div class="section-title">
-      <h2>Success Stories</h2>
-      <p>Quantifiable results we've delivered for clients</p>
-    </div>
-    
-    <div class="case-study-carousel">
-      <div class="case-study">
-        <div class="results-grid">
-          <div class="result-card">
-            <div class="result-value" data-target="42">0</div>
-            <p>% Reduction in Fraud Cases</p>
-          </div>
-          <div class="result-card">
-            <div class="result-value" data-target="35">0</div>
-            <p>% Faster Loan Approvals</p>
-          </div>
-          <div class="result-card">
-            <div class="result-value" data-target="18">0</div>
-            <p>% Increase in Customer Satisfaction</p>
-          </div>
-        </div>
-        <div class="case-content">
-          <h3>Kenyan Commercial Bank</h3>
-          <p>Implemented AI-powered fraud detection system that reduced false positives by 42% while maintaining 99.8% accuracy. Our machine learning models also automated loan approval processes, reducing processing time by 35%.</p>
-          <a href="#" class="read-more">Read Full Case Study →</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Clients Section -->
-  <section id="clients" class="section">
-    <div class="section-title">
-      <h2>Our Clients</h2>
-      <p>Trusted by leading organizations across East Africa</p>
-    </div>
-    
-    <div class="clients-grid">
-      <div class="client-item">
-        <img src="https://www.kcbgroup.com/themes/custom/kcb/logo.png" alt="KCB Bank" class="client-logo" loading="lazy">
-        <p>KCB Bank</p>
-      </div>
-      
-      <div class="client-item">
-        <img src="https://equitygroupholdings.com/images/logos/Equity-Logo.png" alt="Equity Bank" class="client-logo" loading="lazy">
-        <p>Equity Bank</p>
-      </div>
-      
-      <div class="client-item">
-        <img src="https://www.co-opbank.co.ke/sites/default/files/logo.png" alt="Co-operative Bank" class="client-logo" loading="lazy">
-        <p>Co-operative Bank</p>
-      </div>
-      
-      <div class="client-item">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Safaricom_logo.svg" alt="Safaricom Kenya" class="client-logo" loading="lazy">
-        <p>Safaricom Kenya</p>
-      </div>
-      
-      <div class="client-item">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/f/f6/Tigo.svg" alt="Tigo Tanzania" class="client-logo" loading="lazy">
-        <p>Tigo Tanzania</p>
-      </div>
-      
-      <div class="client-item">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/d/de/MTN_Logo.svg" alt="MTN Uganda" class="client-logo" loading="lazy">
-        <p>MTN Uganda</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Insights Section -->
-  <section id="insights" class="insights">
-    <div class="section-title">
-      <h2>Latest Insights</h2>
-      <p>Data trends and industry analysis</p>
-    </div>
-    
-    <div class="insights-grid">
-      <article class="insight-card">
-        <div class="insight-img">
-          <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="AI Trends" loading="lazy">
-          <div class="insight-tag">Machine Learning</div>
-        </div>
-        <div class="insight-content">
-          <h3>AI Adoption in East African Banks</h3>
-          <p>How financial institutions are leveraging machine learning to reduce fraud and improve customer experience.</p>
-          <a href="#" class="read-more">Read Article →</a>
-        </div>
-      </article>
-      
-      <article class="insight-card">
-        <div class="insight-img">
-          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Data Visualization" loading="lazy">
-          <div class="insight-tag">Data Visualization</div>
-        </div>
-        <div class="insight-content">
-          <h3>Effective Data Storytelling</h3>
-          <p>Best practices for communicating insights through compelling data visualizations in the African context.</p>
-          <a href="#" class="read-more">Read Article →</a>
-        </div>
-      </article>
-      
-      <article class="insight-card">
-        <div class="insight-img">
-          <img src="https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Market Trends" loading="lazy">
-          <div class="insight-tag">Market Trends</div>
-        </div>
-        <div class="insight-content">
-          <h3>East Africa Fintech Growth 2023</h3>
-          <p>Analysis of the latest trends in financial technology adoption across Kenya, Uganda, and Tanzania.</p>
-          <a href="#" class="read-more">Read Article →</a>
-        </div>
-      </article>
-    </div>
-  </section>
-
-  <!-- Reviews Section -->
-  <section id="reviews" class="reviews-section">
-    <div class="section-title">
-      <h2>Client Reviews</h2>
-      <p>What our clients are saying about us</p>
-    </div>
-    
-    <div class="testimonials-grid">
-      <div class="testimonial-card animate-on-scroll">
-        <p>"Fox Analytics completely transformed our reporting process. Their dashboards made it easier to make real-time decisions, and their team was always available to support us."</p>
-        <div class="client-info">
-          <strong>Joseph Mwangi</strong><br>
-          <span>Data Manager, KCB Bank</span>
-        </div>
-        <div class="star-rating">★★★★★</div>
-      </div>
-      
-      <div class="testimonial-card animate-on-scroll">
-        <p>"Their fraud detection model helped us reduce suspicious transactions by over 40%. Professional and reliable team that understood our specific needs in the Ugandan market."</p>
-        <div class="client-info">
-          <strong>Aisha Lukwago</strong><br>
-          <span>Risk Officer, MTN Uganda</span>
-        </div>
-        <div class="star-rating">★★★★☆</div>
-      </div>
-      
-      <div class="testimonial-card animate-on-scroll">
-        <p>"We appreciated the training sessions. Our staff learned advanced Excel and SQL skills that improved internal workflows and reporting efficiency by 30%."</p>
-        <div class="client-info">
-          <strong>Daniel Oduor</strong><br>
-          <span>Operations Head, Tigo Tanzania</span>
-        </div>
-        <div class="star-rating">★★★★★</div>
-      </div>
-    </div>
-
-    <div class="review-form-container">
-      <h3>Leave Your Review</h3>
-      <form id="reviewForm">
-        <div class="form-group">
-          <label for="reviewName">Name</label>
-          <input type="text" id="reviewName" class="form-control" required>
-        </div>
-        <div class="form-group">
-          <label for="reviewRole">Your Role/Company</label>
-          <input type="text" id="reviewRole" class="form-control" required>
-        </div>
-        <div class="form-group">
-          <label for="reviewText">Your Review</label>
-          <textarea id="reviewText" class="form-control" rows="4" required></textarea>
-        </div>
-        <div class="form-group">
-          <label for="reviewRating">Rating</label>
-          <select id="reviewRating" class="form-control" required>
-            <option value="★★★★★">5 - Excellent</option>
-            <option value="★★★★☆">4 - Good</option>
-            <option value="★★★☆☆">3 - Average</option>
-            <option value="★★☆☆☆">2 - Poor</option>
-            <option value="★☆☆☆☆">1 - Bad</option>
-          </select>
-        </div>
-        <button type="submit" class="cta-button" style="width: 100%;">Submit Review</button>
-      </form>
-    </div>
-  </section>
-
-  <!-- Contact Section -->
-  <section id="contact" class="contact-section">
-    <div class="section-title">
-      <h2>Contact Us</h2>
-      <p>Ready to transform your data into business success?</p>
-    </div>
-    
-    <div class="contact-container">
-      <div class="contact-info">
-        <h3>Get in touch</h3>
-        
-        <div class="contact-details">
-          <div class="contact-item">
-            <div class="contact-icon">
-              <i class="fas fa-phone"></i>
+            <!-- Project 2 -->
+            <div class="project-card">
+                <div class="project-image">
+                    <i class="fas fa-map-marked-alt fa-3x"></i>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Using R Shiny to Inform Community Officials</h3>
+                    <div class="project-author">
+                        <div class="author-avatar">BK</div>
+                        Brianna King
+                    </div>
+                    <div class="project-tags">
+                        <span class="tag">R</span>
+                        <span class="tag">R Shiny</span>
+                        <span class="tag">Web App</span>
+                        <span class="tag">Data Analytics</span>
+                    </div>
+                    <p class="project-description">Using a leaflet interactive map, we created a multilevel, informational dashboard that enables community officials to develop better insights into their population, facilities, and areas in need. This project utilized data from Census reports, facilities information, housing, and abandoned...</p>
+                    <div class="project-stats">
+                        <span><i class="far fa-eye"></i> 956 views</span>
+                        <span><i class="far fa-heart"></i> 67 likes</span>
+                    </div>
+                </div>
             </div>
-            <div>
-              <h4>Call Us</h4>
-              <p>+254 111203826</p>
-            </div>
-          </div>
-          
-          <div class="contact-item">
-            <div class="contact-icon">
-              <i class="fas fa-envelope"></i>
-            </div>
-            <div>
-              <h4>Email</h4>
-              <p>langatweldon665@gmail.com</p>
-            </div>
-          </div>
-          
-          <div class="contact-item">
-            <div class="contact-icon">
-              <i class="fas fa-map-marker-alt"></i>
-            </div>
-            <div>
-              <h4>Visit Us</h4>
-              <p>Nairobi, Kenya</p>
-            </div>
-          </div>
-        </div>
-        
-        <h3 style="margin-top: 2rem;">Business Hours</h3>
-        <div class="contact-item">
-          <div class="contact-icon">
-            <i class="fas fa-clock"></i>
-          </div>
-          <div>
-            <p>Monday - Friday: 8:00 AM - 5:00 PM</p>
-            <p>Saturday: 9:00 AM - 1:00 PM</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="contact-form">
-        <form id="contactForm">
-          <div class="form-group">
-            <label for="name">Name</label>
-            <input type="text" id="name" class="form-control" required>
-          </div>
-          
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" class="form-control" required>
-          </div>
-          
-          <div class="form-group">
-            <label for="phone">Phone Number</label>
-            <input type="tel" id="phone" class="form-control">
-          </div>
-          
-          <div class="form-group">
-            <label for="subject">Subject</label>
-            <input type="text" id="subject" class="form-control">
-          </div>
-          
-          <div class="form-group">
-            <label for="message">Message</label>
-            <textarea id="message" class="form-control" rows="5" required></textarea>
-          </div>
-          
-          <button type="submit" class="cta-button" style="width: 100%;">Send Message</button>
-        </form>
-      </div>
-    </div>
-  </section>
 
-  <!-- Live Chat -->
-  <div class="live-chat">
-    <button class="chat-btn">
-      <i class="fas fa-comment-dots"></i>
-    </button>
-    <div class="chat-window">
-      <div class="chat-header">
-        <h4>Fox Analytics Support</h4>
-        <button class="close-chat">
-          <i class="fas fa-times"></i>
-        </button>
-      </div>
-      <div class="chat-body">
-        <div class="chat-message received">
-          Hello! How can we help you today?
-        </div>
-      </div>
-      <div class="chat-input">
-        <input type="text" placeholder="Type your message...">
-        <button class="send-btn">
-          <i class="fas fa-paper-plane"></i>
-        </button>
-      </div>
-    </div>
-  </div>
+            <!-- Project 3 -->
+            <div class="project-card">
+                <div class="project-image">
+                    <i class="fas fa-book fa-3x"></i>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Goodreads - Web Scraping using Beautiful Soup</h3>
+                    <div class="project-author">
+                        <div class="author-avatar">AS</div>
+                        Akriti Sood
+                    </div>
+                    <div class="project-tags">
+                        <span class="tag">Data extraction</span>
+                        <span class="tag">Web Scraping</span>
+                        <span class="tag">Beautiful Soup</span>
+                        <span class="tag">Pandas</span>
+                    </div>
+                    <p class="project-description">A mug of coffee and my favorite novel, an ideal day for me. But deciding which novel to read is a tedious job, I always go for Goodreads for recommendation and reviewing of the novel. Goodreads is one the world's largest community for reviewing and recommending books...</p>
+                    <div class="project-stats">
+                        <span><i class="far fa-eye"></i> 1.5k views</span>
+                        <span><i class="far fa-heart"></i> 112 likes</span>
+                    </div>
+                </div>
+            </div>
 
-  <!-- Footer -->
-  <footer>
-    <div class="footer-content">
-      <div class="footer-column">
-        <h3>Fox Analytics</h3>
-        <p>Transforming data into business success across East Africa through cutting-edge analytics and machine learning solutions.</p>
-        <div class="social-links-footer">
-          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-        </div>
-      </div>
-      
-      <div class="footer-column">
-        <h3>Quick Links</h3>
-        <ul class="footer-links">
-          <li><a href="#">Home</a></li>
-          <li><a href="#about">About Us</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#clients">Clients</a></li>
-          <li><a href="#insights">Insights</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </div>
-      
-      <div class="footer-column">
-        <h3>Services</h3>
-        <ul class="footer-links">
-          <li><a href="#">Machine Learning</a></li>
-          <li><a href="#">Data Training</a></li>
-          <li><a href="#">Data Audits</a></li>
-          <li><a href="#">Premium Internships</a></li>
-          <li><a href="#">Business Intelligence</a></li>
-          <li><a href="#">Custom Solutions</a></li>
-        </ul>
-      </div>
-      
-      <div class="footer-column">
-        <h3>Newsletter</h3>
-        <p>Subscribe to our newsletter for the latest insights and updates.</p>
-        <form class="newsletter-form">
-          <input type="email" placeholder="Your email address">
-          <button type="submit" class="newsletter-btn">Subscribe</button>
-        </form>
-      </div>
-    </div>
-    
-    <div class="copyright">
-      <p>&copy; 2023 Fox Analytics. All rights reserved. | <a href="#" style="color: rgba(255,255,255,0.7);">Privacy Policy</a> | <a href="#" style="color: rgba(255,255,255,0.7);">Terms of Service</a></p>
-    </div>
-  </footer>
+            <!-- Project 4 -->
+            <div class="project-card">
+                <div class="project-image">
+                    <i class="fas fa-mobile-alt fa-3x"></i>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">The Effect of Greyscale on Screentime</h3>
+                    <div class="project-author">
+                        <div class="author-avatar">JL</div>
+                        Julie Lai
+                    </div>
+                    <div class="project-tags">
+                        <span class="tag">R</span>
+                        <span class="tag">dplyr</span>
+                        <span class="tag">Hypothesis Testing</span>
+                        <span class="tag">t-test</span>
+                    </div>
+                    <p class="project-description">A high amount of screen time and phone use can have a serious effect on mental health and physical well being. To tackle this issue, our project explores the use of removing colors from mobile phones to reduce overall screen time.</p>
+                    <div class="project-stats">
+                        <span><i class="far fa-eye"></i> 892 views</span>
+                        <span><i class="far fa-heart"></i> 73 likes</span>
+                    </div>
+                </div>
+            </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script>
-    // Login functionality
-    const loginModal = document.getElementById('loginModal');
-    const loginBtn = document.getElementById('inventoryLoginBtn');
-    const closeModal = document.getElementById('closeModal');
-    const loginForm = document.getElementById('loginForm');
-    const inventorySection = document.getElementById('inventory');
-    const logoutBtn = document.getElementById('logoutBtn');
-    
-    // Show login modal
-    loginBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      loginModal.classList.add('active');
-    });
-    
-    // Close login modal
-    closeModal.addEventListener('click', () => {
-      loginModal.classList.remove('active');
-    });
-    
-    // Login form submission
-    loginForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      
-      const username = document.getElementById('username').value;
-      const password = document.getElementById('password').value;
-      
-      // Simple authentication (in a real app, this would be server-side)
-      if (username === 'user' && password === 'password') {
-        // Hide login modal and show inventory section
-        loginModal.classList.remove('active');
-        inventorySection.classList.add('active');
-        
-        // Scroll to inventory section
-        window.scrollTo({
-          top: inventorySection.offsetTop - 80,
-          behavior: 'smooth'
+            <!-- Project 5 -->
+            <div class="project-card">
+                <div class="project-image">
+                    <i class="fas fa-microscope fa-3x"></i>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Sartorius Cell Segmentation Competition</h3>
+                    <div class="project-author">
+                        <div class="author-avatar">AZ</div>
+                        Alberto Zorzetto
+                    </div>
+                    <div class="project-tags">
+                        <span class="tag">Pytorch</span>
+                        <span class="tag">Transfer Learning</span>
+                        <span class="tag">IoU Segmentation</span>
+                        <span class="tag">DeepLabV3Plus</span>
+                    </div>
+                    <p class="project-description">In this competition i detected and delineate distinct objects of interest in biological phase contrast microscopy images depicting neuronal cell types commonly used in the study of neurological disorders.</p>
+                    <div class="project-stats">
+                        <span><i class="far fa-eye"></i> 1.1k views</span>
+                        <span><i class="far fa-heart"></i> 91 likes</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 6 -->
+            <div class="project-card">
+                <div class="project-image">
+                    <i class="fas fa-star fa-3x"></i>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Kepler Mission: Celestial Bodies Classification</h3>
+                    <div class="project-author">
+                        <div class="author-avatar">AM</div>
+                        Alberto Monaco
+                    </div>
+                    <div class="project-tags">
+                        <span class="tag">Supervised Learning</span>
+                        <span class="tag">R</span>
+                    </div>
+                    <p class="project-description">Classification of the observed objects by Kepler orbital telescope as Exoplanets or not.</p>
+                    <div class="project-stats">
+                        <span><i class="far fa-eye"></i> 745 views</span>
+                        <span><i class="far fa-heart"></i> 58 likes</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination">
+            <button class="page-btn active">1</button>
+            <button class="page-btn">2</button>
+            <button class="page-btn">3</button>
+            <button class="page-btn">4</button>
+            <button class="page-btn"><i class="fas fa-chevron-right"></i></button>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>DataSciencePortfolio</h3>
+                    <p>The best platform to showcase your data science projects and discover amazing work from the community.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Explore</h3>
+                    <ul>
+                        <li><a href="#">All Projects</a></li>
+                        <li><a href="#">Featured Projects</a></li>
+                        <li><a href="#">Popular Tags</a></li>
+                        <li><a href="#">Top Authors</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#">Documentation</a></li>
+                        <li><a href="#">Tutorials</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Community Guidelines</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>Created by Pasquale Bruno - follow me on <a href="#" style="color: var(--success);">Twitter</a></p>
+                <p>Any questions? Chat with us</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple filter functionality
+        document.querySelectorAll('.filter-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                document.querySelectorAll('.filter-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                button.classList.add('active');
+            });
         });
-        
-        // Initialize inventory system
-        initInventory();
-      } else {
-        alert('Invalid credentials. Please try again.');
-      }
-    });
-    
-    // Logout functionality
-    logoutBtn.addEventListener('click', () => {
-      inventorySection.classList.remove('active');
-      alert('You have been logged out.');
-    });
-    
-    // Inventory system functionality
-    let products = JSON.parse(localStorage.getItem('foxProducts')) || [];
-    let sales = JSON.parse(localStorage.getItem('foxSales')) || [];
-    
-    function initInventory() {
-      // Initialize date for sales form
-      document.getElementById('salesDate').valueAsDate = new Date();
-      
-      // Tab functionality
-      const tabBtns = document.querySelectorAll('.inventory-tabs .tab-btn');
-      const tabContents = document.querySelectorAll('.inventory-content .tab-content');
-      
-      tabBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-          const tabId = btn.dataset.tab;
-          
-          // Update active tab button
-          tabBtns.forEach(b => b.classList.remove('active'));
-          btn.classList.add('active');
-          
-          // Show active tab content
-          tabContents.forEach(content => {
-            content.classList.remove('active');
-            if (content.id === `${tabId}-tab`) {
-              content.classList.add('active');
-            }
-          });
-          
-          // Refresh data when switching to reports tab
-          if (tabId === 'reports') {
-            updateReports();
-          }
+
+        // Simple pagination functionality
+        document.querySelectorAll('.page-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                if (button.querySelector('i')) return; // Skip the arrow button
+                
+                document.querySelectorAll('.page-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                button.classList.add('active');
+            });
         });
-      });
-      
-      // Product form submission
-      document.getElementById('productForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        const product = {
-          id: Date.now(),
-          name: document.getElementById('productName').value,
-          category: document.getElementById('productCategory').value,
-          quantity: parseInt(document.getElementById('productQuantity').value),
-          costPrice: parseFloat(document.getElementById('productCost').value),
-          sellingPrice: parseFloat(document.getElementById('productPrice').value),
-          sales: 0
-        };
-        
-        products.push(product);
-        saveProducts();
-        renderProducts();
-        updateProductDropdown();
-        this.reset();
-        
-        alert('Product added successfully!');
-      });
-      
-      // Sales form submission
-      document.getElementById('salesForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        const productId = parseInt(document.getElementById('salesProduct').value);
-        const quantity = parseInt(document.getElementById('salesQuantity').value);
-        const date = document.getElementById('salesDate').value;
-        
-        const product = products.find(p => p.id === productId);
-        
-        if (!product) {
-          alert('Please select a valid product');
-          return;
-        }
-        
-        if (quantity > product.quantity) {
-          alert(`Not enough inventory! Only ${product.quantity} units available.`);
-          return;
-        }
-        
-        // Update product quantity
-        product.quantity -= quantity;
-        product.sales += quantity;
-        
-        // Record sale
-        const sale = {
-          id: Date.now(),
-          productId: productId,
-          productName: product.name,
-          quantity: quantity,
-          revenue: quantity * product.sellingPrice,
-          profit: quantity * (product.sellingPrice - product.costPrice),
-          date: date
-        };
-        
-        sales.push(sale);
-        saveSales();
-        saveProducts();
-        renderProducts();
-        renderSales();
-        updateReports();
-        this.reset();
-        document.getElementById('salesDate').valueAsDate = new Date();
-        
-        alert('Sale recorded successfully!');
-      });
-      
-      // Initialize inventory data
-      renderProducts();
-      renderSales();
-      updateProductDropdown();
-      updateReports();
-    }
-    
-    // Save products to localStorage
-    function saveProducts() {
-      localStorage.setItem('foxProducts', JSON.stringify(products));
-    }
-    
-    // Save sales to localStorage
-    function saveSales() {
-      localStorage.setItem('foxSales', JSON.stringify(sales));
-    }
-    
-    // Render products table
-    function renderProducts() {
-      const tbody = document.getElementById('inventoryTableBody');
-      tbody.innerHTML = '';
-      
-      if (products.length === 0) {
-        tbody.innerHTML = '<tr><td colspan="6" style="text-align: center;">No products added yet</td></tr>';
-        return;
-      }
-      
-      products.forEach(product => {
-        const tr = document.createElement('tr');
-        tr.innerHTML = `
-          <td>${product.name}</td>
-          <td>${product.category}</td>
-          <td>${product.quantity}</td>
-          <td>KSh ${product.costPrice.toLocaleString()}</td>
-          <td>KSh ${product.sellingPrice.toLocaleString()}</td>
-          <td class="action-buttons">
-            <button class="btn btn-sell" onclick="quickSell(${product.id})">Sell</button>
-            <button class="btn btn-edit" onclick="editProduct(${product.id})">Edit</button>
-            <button class="btn btn-delete" onclick="deleteProduct(${product.id})">Delete</button>
-          </td>
-        `;
-        tbody.appendChild(tr);
-      });
-    }
-    
-    // Render sales table
-    function renderSales() {
-      const tbody = document.getElementById('salesTableBody');
-      tbody.innerHTML = '';
-      
-      if (sales.length === 0) {
-        tbody.innerHTML = '<tr><td colspan="5" style="text-align: center;">No sales recorded yet</td></tr>';
-        return;
-      }
-      
-      // Show latest sales first
-      const sortedSales = [...sales].sort((a, b) => new Date(b.date) - new Date(a.date));
-      
-      sortedSales.slice(0, 10).forEach(sale => {
-        const tr = document.createElement('tr');
-        tr.innerHTML = `
-          <td>${new Date(sale.date).toLocaleDateString()}</td>
-          <td>${sale.productName}</td>
-          <td>${sale.quantity}</td>
-          <td>KSh ${sale.revenue.toLocaleString()}</td>
-          <td>KSh ${sale.profit.toLocaleString()}</td>
-        `;
-        tbody.appendChild(tr);
-      });
-    }
-    
-    // Update product dropdown
-    function updateProductDropdown() {
-      const select = document.getElementById('salesProduct');
-      select.innerHTML = '<option value="">Select a product</option>';
-      
-      products.forEach(product => {
-        const option = document.createElement('option');
-        option.value = product.id;
-        option.textContent = `${product.name} (${product.quantity} available)`;
-        select.appendChild(option);
-      });
-    }
-    
-    // Quick sell function
-    function quickSell(productId) {
-      const product = products.find(p => p.id === productId);
-      if (!product) return;
-      
-      const quantity = prompt(`How many units of ${product.name} did you sell?`, "1");
-      if (!quantity || isNaN(quantity) || quantity <= 0) return;
-      
-      const qty = parseInt(quantity);
-      if (qty > product.quantity) {
-        alert(`Not enough inventory! Only ${product.quantity} units available.`);
-        return;
-      }
-      
-      // Update product
-      product.quantity -= qty;
-      product.sales += qty;
-      
-      // Record sale
-      const sale = {
-        id: Date.now(),
-        productId: productId,
-        productName: product.name,
-        quantity: qty,
-        revenue: qty * product.sellingPrice,
-        profit: qty * (product.sellingPrice - product.costPrice),
-        date: new Date().toISOString().split('T')[0]
-      };
-      
-      sales.push(sale);
-      saveSales();
-      saveProducts();
-      renderProducts();
-      renderSales();
-      updateReports();
-      updateProductDropdown();
-      
-      alert(`Sold ${qty} units of ${product.name}!`);
-    }
-    
-    // Edit product
-    function editProduct(productId) {
-      const product = products.find(p => p.id === productId);
-      if (!product) return;
-      
-      document.getElementById('productName').value = product.name;
-      document.getElementById('productCategory').value = product.category;
-      document.getElementById('productQuantity').value = product.quantity;
-      document.getElementById('productCost').value = product.costPrice;
-      document.getElementById('productPrice').value = product.sellingPrice;
-      
-      // Remove the product from the list
-      products = products.filter(p => p.id !== productId);
-      saveProducts();
-      renderProducts();
-      updateProductDropdown();
-    }
-    
-    // Delete product
-    function deleteProduct(productId) {
-      if (!confirm('Are you sure you want to delete this product?')) return;
-      
-      products = products.filter(p => p.id !== productId);
-      saveProducts();
-      renderProducts();
-      updateProductDropdown();
-    }
-    
-    // Update reports
-    function updateReports() {
-      // Calculate totals
-      const totalRevenue = sales.reduce((sum, sale) => sum + sale.revenue, 0);
-      const totalProfit = sales.reduce((sum, sale) => sum + sale.profit, 0);
-      const inventoryValue = products.reduce((sum, product) => sum + (product.quantity * product.costPrice), 0);
-      
-      // Find best selling product
-      const productSales = {};
-      sales.forEach(sale => {
-        if (!productSales[sale.productName]) {
-          productSales[sale.productName] = 0;
-        }
-        productSales[sale.productName] += sale.quantity;
-      });
-      
-      let bestProduct = '-';
-      let maxSales = 0;
-      for (const [product, qty] of Object.entries(productSales)) {
-        if (qty > maxSales) {
-          maxSales = qty;
-          bestProduct = product;
-        }
-      }
-      
-      // Update UI
-      document.getElementById('totalRevenue').textContent = `KSh ${totalRevenue.toLocaleString()}`;
-      document.getElementById('totalProfit').textContent = `KSh ${totalProfit.toLocaleString()}`;
-      document.getElementById('bestProduct').textContent = bestProduct;
-      document.getElementById('inventoryValue').textContent = `KSh ${inventoryValue.toLocaleString()}`;
-      
-      // Update chart
-      updateSalesChart();
-    }
-    
-    // Sales chart
-    let salesChart = null;
-    
-    function updateSalesChart() {
-      const ctx = document.getElementById('salesChart').getContext('2d');
-      
-      // Group sales by month
-      const monthlySales = {};
-      sales.forEach(sale => {
-        const date = new Date(sale.date);
-        const monthYear = `${date.getFullYear()}-${date.getMonth() + 1}`;
-        
-        if (!monthlySales[monthYear]) {
-          monthlySales[monthYear] = { revenue: 0, profit: 0 };
-        }
-        
-        monthlySales[monthYear].revenue += sale.revenue;
-        monthlySales[monthYear].profit += sale.profit;
-      });
-      
-      // Sort by date
-      const sortedMonths = Object.keys(monthlySales).sort();
-      
-      const labels = sortedMonths.map(month => {
-        const [year, m] = month.split('-');
-        return new Date(year, m-1).toLocaleDateString('en', { month: 'short', year: 'numeric' });
-      });
-      
-      const revenueData = sortedMonths.map(month => monthlySales[month].revenue);
-      const profitData = sortedMonths.map(month => monthlySales[month].profit);
-      
-      if (salesChart) {
-        salesChart.destroy();
-      }
-      
-      // Create empty chart if no data
-      if (sortedMonths.length === 0) {
-        salesChart = new Chart(ctx, {
-          type: 'bar',
-          data: {
-            labels: ['No data available'],
-            datasets: [
-              {
-                label: 'Revenue',
-                data: [0],
-                backgroundColor: '#E91E63',
-                borderRadius: 5
-              },
-              {
-                label: 'Profit',
-                data: [0],
-                backgroundColor: '#4CAF50',
-                borderRadius: 5
-              }
-            ]
-          },
-          options: {
-            responsive: true,
-            plugins: {
-              legend: {
-                position: 'top',
-              }
-            }
-          }
-        });
-        return;
-      }
-      
-      salesChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-          labels: labels,
-          datasets: [
-            {
-              label: 'Revenue',
-              data: revenueData,
-              backgroundColor: '#E91E63',
-              borderRadius: 5
-            },
-            {
-              label: 'Profit',
-              data: profitData,
-              backgroundColor: '#4CAF50',
-              borderRadius: 5
-            }
-          ]
-        },
-        options: {
-          responsive: true,
-          plugins: {
-            legend: {
-              position: 'top',
-            },
-            tooltip: {
-              callbacks: {
-                label: function(context) {
-                  return `KSh ${context.parsed.y.toLocaleString()}`;
-                }
-              }
-            }
-          },
-          scales: {
-            y: {
-              beginAtZero: true,
-              ticks: {
-                callback: function(value) {
-                  return 'KSh ' + value.toLocaleString();
-                }
-              }
-            }
-          }
-        }
-      });
-    }
-
-    // Demo chart functionality
-    const ctx = document.getElementById('dataChart').getContext('2d');
-    const sampleChart = new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels: ['Q1', 'Q2', 'Q3', 'Q4'],
-        datasets: [{
-          label: 'Revenue Growth',
-          data: [12, 19, 15, 27],
-          backgroundColor: '#E91E63',
-          borderRadius: 5
-        }]
-      },
-      options: {
-        responsive: true,
-        plugins: {
-          legend: {
-            position: 'top',
-          },
-          tooltip: {
-            callbacks: {
-              label: function(context) {
-                return context.parsed.y + '% growth';
-              }
-            }
-          }
-        },
-        scales: {
-          y: {
-            beginAtZero: true,
-            ticks: {
-              callback: function(value) {
-                return value + '%';
-              }
-            }
-          }
-        }
-      }
-    });
-
-    // Demo tab functionality
-    const demoTabBtns = document.querySelectorAll('.dashboard-tabs .tab-btn');
-    demoTabBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        demoTabBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        
-        // In a real implementation, this would update the chart data
-        if(btn.dataset.tab === 'financial') {
-          sampleChart.data.datasets[0].data = [12, 19, 15, 27];
-          sampleChart.data.datasets[0].label = 'Revenue Growth';
-          document.getElementById('conversionRate').querySelector('.metric-value').textContent = '12.8%';
-          document.getElementById('revenueGrowth').querySelector('.metric-value').textContent = '27%';
-          document.getElementById('customerRetention').querySelector('.metric-value').textContent = '84%';
-        } else {
-          sampleChart.data.datasets[0].data = [45, 32, 28, 51];
-          sampleChart.data.datasets[0].label = 'Customer Engagement';
-          document.getElementById('conversionRate').querySelector('.metric-value').textContent = '8.2%';
-          document.getElementById('revenueGrowth').querySelector('.metric-value').textContent = '18%';
-          document.getElementById('customerRetention').querySelector('.metric-value').textContent = '92%';
-        }
-        sampleChart.update();
-      });
-    });
-
-    // Animated counter
-    const animateCounters = () => {
-      const counters = document.querySelectorAll('.result-value');
-      const speed = 200;
-      
-      counters.forEach(counter => {
-        const target = +counter.getAttribute('data-target');
-        const count = +counter.innerText;
-        const increment = target / speed;
-        
-        if(counter.classList.contains('animated')) return;
-        
-        const position = counter.getBoundingClientRect().top;
-        const screenPosition = window.innerHeight / 1.3;
-        
-        if(position < screenPosition) {
-          counter.classList.add('animated');
-          
-          const updateCounter = () => {
-            if(count < target) {
-              counter.innerText = Math.ceil(count + increment);
-              setTimeout(updateCounter, 1);
-            } else {
-              counter.innerText = target + '%';
-            }
-          }
-          updateCounter();
-        }
-      });
-    };
-
-    // Live chat functionality
-    const chatBtn = document.querySelector('.chat-btn');
-    const chatWindow = document.querySelector('.chat-window');
-    const closeChat = document.querySelector('.close-chat');
-    
-    chatBtn.addEventListener('click', () => {
-      chatWindow.classList.toggle('active');
-    });
-    
-    closeChat.addEventListener('click', () => {
-      chatWindow.classList.remove('active');
-    });
-
-    // Form submission
-    const contactForm = document.getElementById('contactForm');
-    const reviewForm = document.getElementById('reviewForm');
-    
-    contactForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      
-      // Get form values
-      const name = document.getElementById('name').value;
-      const email = document.getElementById('email').value;
-      
-      // Simple validation
-      if(name && email) {
-        alert(`Thank you, ${name}! We'll contact you soon at ${email}.`);
-        contactForm.reset();
-      } else {
-        alert('Please fill in all required fields.');
-      }
-    });
-    
-    reviewForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      
-      const name = document.getElementById('reviewName').value;
-      const role = document.getElementById('reviewRole').value;
-      const text = document.getElementById('reviewText').value;
-      const rating = document.getElementById('reviewRating').value;
-
-      if (name && role && text && rating) {
-        alert(`Thank you, ${name}! Your review has been submitted.`);
-        reviewForm.reset();
-      } else {
-        alert("Please fill in all fields.");
-      }
-    });
-    
-    // Smooth scrolling for navigation
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          window.scrollTo({
-            top: target.offsetTop - 80,
-            behavior: 'smooth'
-          });
-        }
-      });
-    });
-    
-    // Animate elements when they come into view
-    const animateOnScroll = () => {
-      const elements = document.querySelectorAll('.service-card, .section-title, .about-image, .contact-form, .animate-on-scroll');
-      
-      elements.forEach(element => {
-        const elementPosition = element.getBoundingClientRect().top;
-        const screenPosition = window.innerHeight / 1.3;
-        
-        if(elementPosition < screenPosition) {
-          element.style.opacity = '1';
-          element.style.transform = 'translateY(0)';
-        }
-      });
-      
-      animateCounters();
-    };
-    
-    window.addEventListener('scroll', animateOnScroll);
-    window.addEventListener('load', animateOnScroll);
-
-    // Rotating text functionality
-    const rotatingMessages = document.querySelectorAll('.rotating-message');
-    let currentMessage = 0;
-    
-    function rotateMessages() {
-      rotatingMessages.forEach(message => message.classList.remove('active'));
-      rotatingMessages[currentMessage].classList.add('active');
-      currentMessage = (currentMessage + 1) % rotatingMessages.length;
-    }
-    
-    setInterval(rotateMessages, 4000);
-    
-    // Header scroll effect
-    window.addEventListener('scroll', () => {
-      const header = document.getElementById('mainHeader');
-      if (window.scrollY > 100) {
-        header.classList.add('scrolled');
-      } else {
-        header.classList.remove('scrolled');
-      }
-    });
-  </script>
+    </script>
 </body>
 </html>
