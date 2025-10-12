@@ -109,6 +109,85 @@
             background: var(--secondary);
         }
 
+        /* Profile Section */
+        .profile-section {
+            display: flex;
+            gap: 40px;
+            margin: 40px 0;
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #4361ee, #3a0ca3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+        }
+
+        .profile-info {
+            flex: 1;
+        }
+
+        .profile-name {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+
+        .profile-title {
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .profile-bio {
+            color: var(--gray);
+            margin-bottom: 20px;
+        }
+
+        .profile-stats {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 20px;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        .profile-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .profile-tag {
+            padding: 5px 15px;
+            background: #e9ecef;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
         /* Hero Section */
         .hero {
             padding: 80px 0;
@@ -376,6 +455,15 @@
                 gap: 15px;
             }
 
+            .profile-section {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .profile-stats {
+                justify-content: center;
+            }
+
             .hero h1 {
                 font-size: 2rem;
             }
@@ -410,17 +498,43 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <h1>Explore thousands of data science projects</h1>
-            <p>Find inspiration for your next project, discover new techniques, and showcase your work to the community.</p>
-            <div class="search-bar">
-                <input type="text" placeholder="Search projects, topics, or authors...">
-                <button><i class="fas fa-search"></i></button>
+    <!-- Profile Section -->
+    <div class="container">
+        <div class="profile-section">
+            <div class="profile-image">
+                <i class="fas fa-user"></i>
+            </div>
+            <div class="profile-info">
+                <h1 class="profile-name">Alex Johnson</h1>
+                <p class="profile-title">Data Scientist & Machine Learning Engineer</p>
+                <p class="profile-bio">Passionate about transforming complex data into actionable insights. Specialized in machine learning, natural language processing, and data visualization. Currently working on improving healthcare outcomes through predictive analytics.</p>
+                
+                <div class="profile-stats">
+                    <div class="stat">
+                        <div class="stat-value">24</div>
+                        <div class="stat-label">Projects</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">3.2k</div>
+                        <div class="stat-label">Followers</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">187</div>
+                        <div class="stat-label">Following</div>
+                    </div>
+                </div>
+                
+                <div class="profile-tags">
+                    <div class="profile-tag">Python</div>
+                    <div class="profile-tag">Machine Learning</div>
+                    <div class="profile-tag">SQL</div>
+                    <div class="profile-tag">Data Visualization</div>
+                    <div class="profile-tag">Deep Learning</div>
+                    <div class="profile-tag">NLP</div>
+                </div>
             </div>
         </div>
-    </section>
+    </div>
 
     <!-- Main Content -->
     <main class="container">
